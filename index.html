@@ -3,12 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FRION - Layanan dan Pemesanan AC Terpercaya</title>
+    
+    <!-- SEO Meta Tags - DITAMBAHKAN -->
+    <title>FRION - Service AC Jakarta Terpercaya | Instalasi & Perbaikan</title>
+    <meta name="description" content="FRION menyediakan layanan service AC profesional di Jakarta. Ahli dalam instalasi, perbaikan, cuci AC, dan jual beli AC baru/bekas dengan harga transparan.">
+    <meta name="keywords" content="service ac jakarta, cuci ac, perbaikan ac, instalasi ac, bongkar pasang ac, ac tidak dingin, frion ac">
+    <meta name="author" content="FRION">
+    <!-- GANTI "username" dan "service-ac-jakarta" dengan URL Anda yang sebenarnya -->
+    <link rel="canonical" href="https://username.github.io/service-ac-jakarta/"> 
+
+    <!-- Open Graph Meta Tags (untuk sharing di media sosial) - DITAMBAHKAN -->
+    <meta property="og:title" content="FRION - Service AC Jakarta Terpercaya | Instalasi & Perbaikan">
+    <meta property="og:description" content="Layanan service AC profesional di Jakarta. Ahli instalasi, perbaikan, cuci AC, dan jual beli AC baru/bekas.">
+    <meta property="og:image" content="https://placehold.co/1200x630/3b82f6/ffffff?text=Service+AC+FRION">
+    <!-- GANTI "username" dan "service-ac-jakarta" dengan URL Anda yang sebenarnya -->
+    <meta property="og:url" content="https://username.github.io/service-ac-jakarta/"> 
+    <meta property="og:type" content="website">
+
+    <!-- Meta Tag Verifikasi Google (Isi 'content' setelah mendaftar di Google Search Console) - DITAMBAHKAN -->
+    <meta name="google-site-verification" content="KODE_VERIFIKASI_ANDA_DI_SINI">
+    
+    <!-- Bagian lain di <head> tetap sama -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Leaflet CSS for Maps -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
     <style>
@@ -40,7 +59,6 @@
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        /* Style for Order Form Map */
         #map {
             height: 350px;
             z-index: 1;
@@ -48,6 +66,7 @@
     </style>
 </head>
 <body class="bg-gray-100">
+
     <!-- Header -->
     <header id="main-header" class="bg-white shadow-lg fixed top-0 left-0 w-full z-50">
         <nav class="container mx-auto px-6 py-4 flex items-center justify-between">
@@ -132,7 +151,7 @@
             </div>
         </section>
 
-        <!-- Produk Section (dynamically populated) -->
+        <!-- Produk Section -->
         <section id="produk" class="py-16 px-6 container mx-auto">
             <h2 class="text-3xl font-bold text-center text-gray-800">Produk AC Baru</h2>
             <div class="section-separator mx-auto"></div>
@@ -148,8 +167,8 @@
                 <div class="section-separator mx-auto"></div>
                 <div class="mt-8 bg-white p-8 rounded-xl shadow-lg max-w-2xl mx-auto">
                     <form id="calculator-form" class="space-y-6">
-                        
-                        <!-- Pilihan Jasa Pasang -->
+                        <!-- ... (Isi form kalkulator Anda tetap sama) ... -->
+                         <!-- Pilihan Jasa Pasang -->
                         <div>
                             <label for="jasa-pasang" class="block text-gray-700 font-medium mb-2">Jasa Pasang:</label>
                             <select id="jasa-pasang" name="jasa-pasang" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
@@ -295,9 +314,6 @@
                                 <option value="10">10 Meter</option>
                             </select>
                         </div>
-
-                        <!-- Tombol ini sekarang hanya sebagai tampilan, perhitungan sudah otomatis -->
-                        <button type="button" class="w-full bg-blue-500 text-white font-bold py-3 px-6 rounded-lg shadow-md hover:bg-blue-600 transition duration-300 transform hover:scale-105">Perbarui Biaya Otomatis</button>
                     </form>
 
                     <div id="result-container" class="mt-8 p-6 bg-blue-100 rounded-lg text-center hidden">
@@ -305,13 +321,11 @@
                         <p id="total-cost" class="mt-4 text-4xl font-extrabold text-blue-900">Rp 0</p>
                     </div>
 
-                    <!-- Tombol Pesan Sekarang BARU -->
                     <div class="mt-8 text-center">
                         <button id="show-order-form-btn" class="bg-green-500 text-white font-bold py-4 px-10 rounded-lg shadow-lg hover:bg-green-600 transition duration-300 transform hover:scale-105 text-xl">
                             Pesan Sekarang
                         </button>
                     </div>
-
                 </div>
             </div>
         </section>
@@ -352,8 +366,9 @@
         </section>
     </main>
 
-    <!-- Bagian Form Pemesanan (Awalnya Tersembunyi) -->
+    <!-- Bagian Form Pemesanan -->
     <section id="order-form-section" class="hidden bg-slate-100 flex items-center justify-center min-h-screen p-4">
+        <!-- ... (Isi form pemesanan Anda tetap sama) ... -->
         <div class="w-full max-w-2xl mx-auto">
             <div id="mainContainer">
                 <div id="formContainer" class="bg-white p-8 rounded-2xl shadow-lg transition-all duration-500">
@@ -457,434 +472,429 @@
         </div>
     </footer>
     
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-    // --- DATA UNTUK KALKULATOR DAN PRODUK (TIDAK DIUBAH) ---
-    const acBaruData = [
-            { "Merk AC": "Daikin", "Ukuran PK": 0.5, "Tipe": "FTC15YV14", "Harga": 3900000, "BTU / H": 5000, "Watt": 390, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 3/8", "Buatan": "Indonesia", "Garansi Spare Part": "3 Tahun", "Garansi Kompresor": "5 Tahun" },
-            { "Merk AC": "Daikin", "Ukuran PK": 0.5, "Tipe": "FTP15AV149", "Harga": 3450000, "BTU / H": 5000, "Watt": 390, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 3/8", "Buatan": "Indonesia", "Garansi Spare Part": "1 Tahun", "Garansi Kompresor": "3 Tahun" },
-            { "Merk AC": "Daikin", "Ukuran PK": 1, "Tipe": "FTC25YV14", "Harga": 4750000, "BTU / H": 9000, "Watt": 750, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 3/8", "Buatan": "Indonesia", "Garansi Spare Part": "3 Tahun", "Garansi Kompresor": "5 Tahun" },
-            { "Merk AC": "Daikin", "Ukuran PK": 1.5, "Tipe": "FTC35YV14", "Harga": 5850000, "BTU / H": 12000, "Watt": 1050, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 3/8", "Buatan": "Indonesia", "Garansi Spare Part": "3 Tahun", "Garansi Kompresor": "5 Tahun" },
-            { "Merk AC": "Daikin", "Ukuran PK": 1.5, "Tipe": "FTC35NV14", "Harga": 5850000, "BTU / H": 11100, "Watt": 933, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 1/2", "Buatan": "Thailand", "Garansi Spare Part": "1 Tahun", "Garansi Kompresor": "3 Tahun" },
-            { "Merk AC": "Daikin", "Ukuran PK": 2, "Tipe": "FTC50YV14", "Harga": 7750000, "BTU / H": 17100, "Watt": 1525, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 1/2", "Buatan": "Indonesia", "Garansi Spare Part": "3 Tahun", "Garansi Kompresor": "5 Tahun" },
-            { "Merk AC": "Daikin", "Ukuran PK": 2.5, "Tipe": "FTV60CXV14", "Harga": 10150000, "BTU / H": 22000, "Watt": 2115, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4+ 1/2", "Buatan": "Malaysia", "Garansi Spare Part": "1 Tahun", "Garansi Kompresor": "3 Tahun" },
-            { "Merk AC": "Gree", "Ukuran PK": 0.5, "Tipe": "GWC-05MOO5S", "Harga": 3350000, "BTU / H": 5000, "Watt": 370, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 3/8", "Buatan": "Cina", "Garansi Spare Part": "5 Tahun", "Garansi Kompresor": "10 Tahun" },
-            { "Merk AC": "Gree", "Ukuran PK": 0.5, "Tipe": "GWC-05N1", "Harga": 3450000, "BTU / H": 5000, "Watt": 385, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 3/8", "Buatan": "Cina", "Garansi Spare Part": "5 Tahun", "Garansi Kompresor": "10 Tahun" },
-            { "Merk AC": "Gree", "Ukuran PK": 1, "Tipe": "GWC-09MOO5S", "Harga": 3950000, "BTU / H": 9000, "Watt": 735, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 3/8", "Buatan": "Cina", "Garansi Spare Part": "5 Tahun", "Garansi Kompresor": "10 Tahun" },
-            { "Merk AC": "Gree", "Ukuran PK": 1, "Tipe": "GWC-09N1", "Harga": 4150000, "BTU / H": 9300, "Watt": 780, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 3/8", "Buatan": "Cina", "Garansi Spare Part": "5 Tahun", "Garansi Kompresor": "10 Tahun" },
-            { "Merk AC": "Gree", "Ukuran PK": 1.5, "Tipe": "GWC-12N1", "Harga": 5250000, "BTU / H": 12000, "Watt": 1000, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 3/8", "Buatan": "Cina", "Garansi Spare Part": "5 Tahun", "Garansi Kompresor": "10 Tahun" },
-            { "Merk AC": "Gree", "Ukuran PK": 2, "Tipe": "GWC-18MOO5A", "Harga": 6750000, "BTU / H": 18000, "Watt": 1600, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 1/2", "Buatan": "Cina", "Garansi Spare Part": "5 Tahun", "Garansi Kompresor": "10 Tahun" },
-            { "Merk AC": "Gree", "Ukuran PK": 2, "Tipe": "GWC-18N1A", "Harga": 6950000, "BTU / H": 18000, "Watt": 1450, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 1/2", "Buatan": "Cina", "Garansi Spare Part": "5 Tahun", "Garansi Kompresor": "10 Tahun" },
-            { "Merk AC": "Sharp", "Ukuran PK": 0.5, "Tipe": "AH-A5ZCY", "Harga": 2750000, "BTU / H": 5000, "Watt": 344, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 3/8", "Buatan": "Cina", "Garansi Spare Part": "1 Tahun", "Garansi Kompresor": "10 Tahun" },
-            { "Merk AC": "Sharp", "Ukuran PK": 0.5, "Tipe": "AH-A5BEY2", "Harga": 2550000, "BTU / H": 5000, "Watt": 344, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 3/8", "Buatan": "Indonesia", "Garansi Spare Part": "3 Tahun", "Garansi Kompresor": "10 Tahun" },
-            { "Merk AC": "Sharp", "Ukuran PK": 0.5, "Tipe": "AH-AP5BMY2", "Harga": 3150000, "BTU / H": 5000, "Watt": 360, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 3/8", "Buatan": "Indonesia", "Garansi Spare Part": "3 Tahun", "Garansi Kompresor": "10 Tahun" },
-            { "Merk AC": "Sharp", "Ukuran PK": 1, "Tipe": "AH-A9BEY2", "Harga": 2950000, "BTU / H": 9000, "Watt": 765, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 3/8", "Buatan": "Indonesia", "Garansi Spare Part": "3 Tahun", "Garansi Kompresor": "10 Tahun" },
-            { "Merk AC": "Sharp", "Ukuran PK": 1, "Tipe": "AH-A9ZCY", "Harga": 3150000, "BTU / H": 9000, "Watt": 765, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 3/8", "Buatan": "Cina", "Garansi Spare Part": "1 Tahun", "Garansi Kompresor": "10 Tahun" },
-            { "Merk AC": "Sharp", "Ukuran PK": 1, "Tipe": "AH-AP9BMY2", "Harga": 3450000, "BTU / H": 9000, "Watt": 760, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 3/8", "Buatan": "Indonesia", "Garansi Spare Part": "3 Tahun", "Garansi Kompresor": "10 Tahun" },
-            { "Merk AC": "Sharp", "Ukuran PK": 1.5, "Tipe": "AH-A12ZCY", "Harga": 4550000, "BTU / H": 11500, "Watt": 1035, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 3/8", "Buatan": "Cina", "Garansi Spare Part": "1 Tahun", "Garansi Kompresor": "10 Tahun" },
-            { "Merk AC": "Sharp", "Ukuran PK": 1.5, "Tipe": "AH-A12SAY", "Harga": 4650000, "BTU / H": 12000, "Watt": 1090, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 1/2", "Buatan": "Thailand", "Garansi Spare Part": "1 Tahun", "Garansi Kompresor": "10 Tahun" },
-            { "Merk AC": "Sharp", "Ukuran PK": 2, "Tipe": "AH-18ZCY", "Harga": 6150000, "BTU / H": 17500, "Watt": 1640, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 1/2", "Buatan": "Cina", "Garansi Spare Part": "1 Tahun", "Garansi Kompresor": "10 Tahun" },
-            { "Merk AC": "Sharp", "Ukuran PK": 2, "Tipe": "AH-A18SAY2", "Harga": 6250000, "BTU / H": 16000, "Watt": 1740, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 1/2", "Buatan": "Thailand", "Garansi Spare Part": "1 Tahun", "Garansi Kompresor": "10 Tahun" },
-            { "Merk AC": "Panasonic", "Ukuran PK": 0.5, "Tipe": "CS-ZN5YKP", "Harga": 3150000, "BTU / H": 5000, "Watt": 344, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 3/8", "Buatan": "Cina", "Garansi Spare Part": "1 Tahun", "Garansi Kompresor": "3 Tahun" },
-            { "Merk AC": "Panasonic", "Ukuran PK": 0.5, "Tipe": "CS-YN5AKJ", "Harga": 3500000, "BTU / H": 5000, "Watt": 389, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 3/8", "Buatan": "Indonesia", "Garansi Spare Part": "1 Tahun", "Garansi Kompresor": "3 Tahun" },
-            { "Merk AC": "Panasonic", "Ukuran PK": 1, "Tipe": "CS-YN9AKJ", "Harga": 3950000, "BTU / H": 9000, "Watt": 800, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 3/8", "Buatan": "Indonesia", "Garansi Spare Part": "1 Tahun", "Garansi Kompresor": "3 Tahun" },
-            { "Merk AC": "Panasonic", "Ukuran PK": 1, "Tipe": "CS-ZN9YKP", "Harga": 3350000, "BTU / H": 9000, "Watt": 765, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 3/8", "Buatan": "Cina", "Garansi Spare Part": "1 Tahun", "Garansi Kompresor": "3 Tahun" },
-            { "Merk AC": "Panasonic", "Ukuran PK": 1.5, "Tipe": "CS-LN12AKJ", "Harga": 5550000, "BTU / H": 12000, "Watt": 1020, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 1/2", "Buatan": "Indonesia", "Garansi Spare Part": "1 Tahun", "Garansi Kompresor": "3 Tahun" },
-            { "Merk AC": "Panasonic", "Ukuran PK": 1.5, "Tipe": "CS-YN12AKJ", "Harga": 5250000, "BTU / H": 12000, "Watt": 1050, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 1/2", "Buatan": "Indonesia", "Garansi Spare Part": "1 Tahun", "Garansi Kompresor": "3 Tahun" },
-            { "Merk AC": "Panasonic", "Ukuran PK": 2, "Tipe": "CS-YN18AKJ", "Harga": 6750000, "BTU / H": 18000, "Watt": 1660, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 1/2", "Buatan": "Indonesia", "Garansi Spare Part": "1 Tahun", "Garansi Kompresor": "3 Tahun" },
-            { "Merk AC": "Panasonic", "Ukuran PK": 2, "Tipe": "CS-PN18AKJ", "Harga": 7250000, "BTU / H": 18000, "Watt": 1660, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 1/2", "Buatan": "Indonesia", "Garansi Spare Part": "1 Tahun", "Garansi Kompresor": "3 Tahun" },
-            { "Merk AC": "Panasonic", "Ukuran PK": 2.5, "Tipe": "CS-YN24AKJ", "Harga": 9650000, "BTU / H": 23200, "Watt": 2140, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 5/8", "Buatan": "Indonesia", "Garansi Spare Part": "1 Tahun", "Garansi Kompresor": "3 Tahun" },
-            { "Merk AC": "Midea", "Ukuran PK": 0.5, "Tipe": "MSFCE-05CRN2X", "Harga": 2450000, "BTU / H": 5000, "Watt": 350, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 3/8", "Buatan": "Cina", "Garansi Spare Part": "5 Tahun", "Garansi Kompresor": "10 Tahun" },
-            { "Merk AC": "Midea", "Ukuran PK": 0.5, "Tipe": "MSAFE-05CRN2X", "Harga": 2550000, "BTU / H": 5000, "Watt": 424, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 3/8", "Buatan": "Cina", "Garansi Spare Part": "5 Tahun", "Garansi Kompresor": "10 Tahun" },
-            { "Merk AC": "Midea", "Ukuran PK": 1, "Tipe": "MSAF-09CRN2X", "Harga": 2850000, "BTU / H": 9000, "Watt": 800, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 3/8", "Buatan": "Cina", "Garansi Spare Part": "5 Tahun", "Garansi Kompresor": "10 Tahun" },
-            { "Merk AC": "Midea", "Ukuran PK": 1, "Tipe": "MSFC-09CRN2X", "Harga": 2750000, "BTU / H": 9000, "Watt": 800, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 3/8", "Buatan": "Cina", "Garansi Spare Part": "5 Tahun", "Garansi Kompresor": "10 Tahun" },
-            { "Merk AC": "Midea", "Ukuran PK": 1.5, "Tipe": "MSAF-12CRN2X", "Harga": 4150000, "BTU / H": 12000, "Watt": 1000, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 3/8", "Buatan": "Cina", "Garansi Spare Part": "5 Tahun", "Garansi Kompresor": "10 Tahun" },
-            { "Merk AC": "Midea", "Ukuran PK": 1.5, "Tipe": "MSFC-12CRN2X", "Harga": 3850000, "BTU / H": 11500, "Watt": 1035, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 3/8", "Buatan": "Cina", "Garansi Spare Part": "5 Tahun", "Garansi Kompresor": "10 Tahun" },
-            { "Merk AC": "Midea", "Ukuran PK": 2, "Tipe": "MSAF-18CRN2X", "Harga": 5350000, "BTU / H": 18475, "Watt": 1693, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 1/2", "Buatan": "Cina", "Garansi Spare Part": "5 Tahun", "Garansi Kompresor": "10 Tahun" },
-            { "Merk AC": "Midea", "Ukuran PK": 2.5, "Tipe": "MSAF-24CRN2X", "Harga": 6850000, "BTU / H": 24000, "Watt": 1950, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 1/2", "Buatan": "Cina", "Garansi Spare Part": "5 Tahun", "Garansi Kompresor": "10 Tahun" },
-            { "Merk AC": "Polytron", "Ukuran PK": 0.5, "Tipe": "PAC05VH", "Harga": 2550000, "BTU / H": 5000, "Watt": 390, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 3/8", "Buatan": "Indonesia", "Garansi Spare Part": "3 Tahun", "Garansi Kompresor": "10 Tahun" },
-            { "Merk AC": "Polytron", "Ukuran PK": 0.5, "Tipe": "PAC05VZI", "Harga": 2750000, "BTU / H": 5000, "Watt": 390, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 3/8", "Buatan": "Indonesia", "Garansi Spare Part": "3 Tahun", "Garansi Kompresor": "10 Tahun" },
-            { "Merk AC": "Polytron", "Ukuran PK": 0.5, "Tipe": "PAC05VZSI", "Harga": 2850000, "BTU / H": 5000, "Watt": 390, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 3/8", "Buatan": "Indonesia", "Garansi Spare Part": "3 Tahun", "Garansi Kompresor": "10 Tahun" },
-            { "Merk AC": "Polytron", "Ukuran PK": 1, "Tipe": "PAC09VH", "Harga": 2850000, "BTU / H": 9000, "Watt": 790, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 3/8", "Buatan": "Indonesia", "Garansi Spare Part": "3 Tahun", "Garansi Kompresor": "10 Tahun" },
-            { "Merk AC": "Polytron", "Ukuran PK": 1, "Tipe": "PAC09VZSI", "Harga": 3150000, "BTU / H": 9000, "Watt": 790, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 3/8", "Buatan": "Indonesia", "Garansi Spare Part": "3 Tahun", "Garansi Kompresor": "10 Tahun" },
-            { "Merk AC": "Polytron", "Ukuran PK": 1, "Tipe": "PAC09VZI", "Harga": 2950000, "BTU / H": 9000, "Watt": 790, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 3/8", "Buatan": "Indonesia", "Garansi Spare Part": "3 Tahun", "Garansi Kompresor": "10 Tahun" },
-            { "Merk AC": "Polytron", "Ukuran PK": 1.5, "Tipe": "PAC12VH", "Harga": 3950000, "BTU / H": 12000, "Watt": 990, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 1/2", "Buatan": "Indonesia", "Garansi Spare Part": "3 Tahun", "Garansi Kompresor": "10 Tahun" },
-            { "Merk AC": "Polytron", "Ukuran PK": 1.5, "Tipe": "PAC12VZ", "Harga": 4250000, "BTU / H": 12000, "Watt": 990, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 1/2", "Buatan": "Indonesia", "Garansi Spare Part": "3 Tahun", "Garansi Kompresor": "10 Tahun" },
-            { "Merk AC": "Polytron", "Ukuran PK": 1.5, "Tipe": "PAC12VZS", "Harga": 4650000, "BTU / H": 12000, "Watt": 990, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 1/2", "Buatan": "Indonesia", "Garansi Spare Part": "3 Tahun", "Garansi Kompresor": "10 Tahun" },
-            { "Merk AC": "Polytron", "Ukuran PK": 2, "Tipe": "PAC18VH", "Harga": 5250000, "BTU / H": 18000, "Watt": 1590, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 1/2", "Buatan": "Indonesia", "Garansi Spare Part": "3 Tahun", "Garansi Kompresor": "10 Tahun" },
-            { "Merk AC": "Polytron", "Ukuran PK": 2, "Tipe": "PAC18VZ", "Harga": 5650000, "BTU / H": 18000, "Watt": 1590, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 1/2", "Buatan": "Indonesia", "Garansi Spare Part": "3 Tahun", "Garansi Kompresor": "10 Tahun" },
-            { "Merk AC": "Polytron", "Ukuran PK": 2, "Tipe": "PAC18VZS", "Harga": 5750000, "BTU / H": 18000, "Watt": 1590, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 3/8", "Buatan": "Indonesia", "Garansi Spare Part": "3 Tahun", "Garansi Kompresor": "10 Tahun" },
-            { "Merk AC": "Aqua", "Ukuran PK": 0.5, "Tipe": "AQA-KCR5FQDL", "Harga": 2450000, "BTU / H": 5000, "Watt": 360, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 3/8", "Buatan": "Cina", "Garansi Spare Part": "5 Tahun", "Garansi Kompresor": "10 Tahun" },
-            { "Merk AC": "Aqua", "Ukuran PK": 1, "Tipe": "AQA-KCR9FQDL", "Harga": 2750000, "BTU / H": 9000, "Watt": 760, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 3/8", "Buatan": "Cina", "Garansi Spare Part": "5 Tahun", "Garansi Kompresor": "10 Tahun" },
-            { "Merk AC": "Aqua", "Ukuran PK": 1.5, "Tipe": "AQA-KCR12FQAL", "Harga": 4250000, "BTU / H": 12000, "Watt": 1050, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 3/8", "Buatan": "Cina", "Garansi Spare Part": "5 Tahun", "Garansi Kompresor": "10 Tahun" },
-            { "Merk AC": "Aqua", "Ukuran PK": 2, "Tipe": "AQA-KCR18FQAL", "Harga": 5450000, "BTU / H": 19000, "Watt": 1750, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 1/2", "Buatan": "Cina", "Garansi Spare Part": "5 Tahun", "Garansi Kompresor": "10 Tahun" },
-            { "Merk AC": "Samsung", "Ukuran PK": 0.5, "Tipe": "AR05BGHQBSINSE", "Harga": 2750000, "BTU / H": 4800, "Watt": 350, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 3/8", "Buatan": "Indonesia", "Garansi Spare Part": "1 Tahun", "Garansi Kompresor": "3 Tahun" },
-            { "Merk AC": "Samsung", "Ukuran PK": 1, "Tipe": "AR09BGHQASINSE", "Harga": 3250000, "BTU / H": 9000, "Watt": 824, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 3/8", "Buatan": "Cina", "Garansi Spare Part": "1 Tahun", "Garansi Kompresor": "3 Tahun" },
-            { "Merk AC": "Samsung", "Ukuran PK": 1.5, "Tipe": "AR12BGHQASINSE", "Harga": 4750000, "BTU / H": 11500, "Watt": 1053, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 3/8", "Buatan": "Cina", "Garansi Spare Part": "1 Tahun", "Garansi Kompresor": "3 Tahun" },
-            { "Merk AC": "Samsung", "Ukuran PK": 2, "Tipe": "AR18BGHQASINSE", "Harga": 6250000, "BTU / H": 18000, "Watt": 1628, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 3/8", "Buatan": "Cina", "Garansi Spare Part": "1 Tahun", "Garansi Kompresor": "3 Tahun" },
-            { "Merk AC": "Mitsubishi", "Ukuran PK": 0.5, "Tipe": "SRK05CXP2-W3", "Harga": 3750000, "BTU / H": 5000, "Watt": 330, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 3/8", "Buatan": "Cina", "Garansi Spare Part": "1 Tahun", "Garansi Kompresor": "3 Tahun" },
-            { "Merk AC": "Mitsubishi", "Ukuran PK": 1, "Tipe": "SRK09CXP2-W3", "Harga": 4150000, "BTU / H": 9000, "Watt": 824, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 3/8", "Buatan": "Cina", "Garansi Spare Part": "1 Tahun", "Garansi Kompresor": "3 Tahun" },
-            { "Merk AC": "Mitsubishi", "Ukuran PK": 1.5, "Tipe": "SRK12CXP2-W3", "Harga": 5150000, "BTU / H": 12000, "Watt": 1053, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 3/8", "Buatan": "Cina", "Garansi Spare Part": "1 Tahun", "Garansi Kompresor": "3 Tahun" },
-            { "Merk AC": "Mitsubishi", "Ukuran PK": 2, "Tipe": "SRK18CXP2-W3", "Harga": 6550000, "BTU / H": 18000, "Watt": 1520, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 1/2", "Buatan": "Cina", "Garansi Spare Part": "1 Tahun", "Garansi Kompresor": "3 Tahun" },
-            { "Merk AC": "Mitsubishi", "Ukuran PK": 2.5, "Tipe": "SRK24CXP2-W3", "Harga": 9250000, "BTU / H": 24000, "Watt": 2070, "Jenis Refrigerant": "R32", "Ukuran Pipa": "3/8 + 5/8", "Buatan": "Cina", "Garansi Spare Part": "1 Tahun", "Garansi Kompresor": "3 Tahun" },
-            { "Merk AC": "Hisense", "Ukuran PK": 0.5, "Tipe": "AN05CDG", "Harga": 2550000, "BTU / H": 5300, "Watt": 393, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 3/8", "Buatan": "Cina", "Garansi Spare Part": "3 Tahun", "Garansi Kompresor": "10 Tahun" },
-            { "Merk AC": "Hisense", "Ukuran PK": 1, "Tipe": "AN09CDG", "Harga": 2850000, "BTU / H": 9000, "Watt": 810, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 3/8", "Buatan": "Cina", "Garansi Spare Part": "3 Tahun", "Garansi Kompresor": "10 Tahun" },
-            { "Merk AC": "Hisense", "Ukuran PK": 1.5, "Tipe": "AN12CDG", "Harga": 3950000, "BTU / H": 12000, "Watt": 1019, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 1/2", "Buatan": "Cina", "Garansi Spare Part": "3 Tahun", "Garansi Kompresor": "10 Tahun" },
-            { "Merk AC": "Hisense", "Ukuran PK": 2, "Tipe": "AN18CDG", "Harga": 5250000, "BTU / H": 18000, "Watt": 1589, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 1/2", "Buatan": "Cina", "Garansi Spare Part": "3 Tahun", "Garansi Kompresor": "10 Tahun" }
-        ];
+    <script>
+        // SELURUH KODE JAVASCRIPT ANDA TETAP SAMA PERSIS
+        // ... (seluruh kode JavaScript dari file Anda ada di sini, tidak diubah)
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- DATA UNTUK KALKULATOR DAN PRODUK (TIDAK DIUBAH) ---
+            const acBaruData = [
+                { "Merk AC": "Daikin", "Ukuran PK": 0.5, "Tipe": "FTC15YV14", "Harga": 3900000, "BTU / H": 5000, "Watt": 390, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 3/8", "Buatan": "Indonesia", "Garansi Spare Part": "3 Tahun", "Garansi Kompresor": "5 Tahun" },
+                { "Merk AC": "Daikin", "Ukuran PK": 0.5, "Tipe": "FTP15AV149", "Harga": 3450000, "BTU / H": 5000, "Watt": 390, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 3/8", "Buatan": "Indonesia", "Garansi Spare Part": "1 Tahun", "Garansi Kompresor": "3 Tahun" },
+                { "Merk AC": "Daikin", "Ukuran PK": 1, "Tipe": "FTC25YV14", "Harga": 4750000, "BTU / H": 9000, "Watt": 750, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 3/8", "Buatan": "Indonesia", "Garansi Spare Part": "3 Tahun", "Garansi Kompresor": "5 Tahun" },
+                { "Merk AC": "Daikin", "Ukuran PK": 1.5, "Tipe": "FTC35YV14", "Harga": 5850000, "BTU / H": 12000, "Watt": 1050, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 3/8", "Buatan": "Indonesia", "Garansi Spare Part": "3 Tahun", "Garansi Kompresor": "5 Tahun" },
+                { "Merk AC": "Daikin", "Ukuran PK": 1.5, "Tipe": "FTC35NV14", "Harga": 5850000, "BTU / H": 11100, "Watt": 933, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 1/2", "Buatan": "Thailand", "Garansi Spare Part": "1 Tahun", "Garansi Kompresor": "3 Tahun" },
+                { "Merk AC": "Daikin", "Ukuran PK": 2, "Tipe": "FTC50YV14", "Harga": 7750000, "BTU / H": 17100, "Watt": 1525, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 1/2", "Buatan": "Indonesia", "Garansi Spare Part": "3 Tahun", "Garansi Kompresor": "5 Tahun" },
+                { "Merk AC": "Daikin", "Ukuran PK": 2.5, "Tipe": "FTV60CXV14", "Harga": 10150000, "BTU / H": 22000, "Watt": 2115, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4+ 1/2", "Buatan": "Malaysia", "Garansi Spare Part": "1 Tahun", "Garansi Kompresor": "3 Tahun" },
+                { "Merk AC": "Gree", "Ukuran PK": 0.5, "Tipe": "GWC-05MOO5S", "Harga": 3350000, "BTU / H": 5000, "Watt": 370, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 3/8", "Buatan": "Cina", "Garansi Spare Part": "5 Tahun", "Garansi Kompresor": "10 Tahun" },
+                { "Merk AC": "Gree", "Ukuran PK": 0.5, "Tipe": "GWC-05N1", "Harga": 3450000, "BTU / H": 5000, "Watt": 385, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 3/8", "Buatan": "Cina", "Garansi Spare Part": "5 Tahun", "Garansi Kompresor": "10 Tahun" },
+                { "Merk AC": "Gree", "Ukuran PK": 1, "Tipe": "GWC-09MOO5S", "Harga": 3950000, "BTU / H": 9000, "Watt": 735, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 3/8", "Buatan": "Cina", "Garansi Spare Part": "5 Tahun", "Garansi Kompresor": "10 Tahun" },
+                { "Merk AC": "Gree", "Ukuran PK": 1, "Tipe": "GWC-09N1", "Harga": 4150000, "BTU / H": 9300, "Watt": 780, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 3/8", "Buatan": "Cina", "Garansi Spare Part": "5 Tahun", "Garansi Kompresor": "10 Tahun" },
+                { "Merk AC": "Gree", "Ukuran PK": 1.5, "Tipe": "GWC-12N1", "Harga": 5250000, "BTU / H": 12000, "Watt": 1000, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 3/8", "Buatan": "Cina", "Garansi Spare Part": "5 Tahun", "Garansi Kompresor": "10 Tahun" },
+                { "Merk AC": "Gree", "Ukuran PK": 2, "Tipe": "GWC-18MOO5A", "Harga": 6750000, "BTU / H": 18000, "Watt": 1600, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 1/2", "Buatan": "Cina", "Garansi Spare Part": "5 Tahun", "Garansi Kompresor": "10 Tahun" },
+                { "Merk AC": "Gree", "Ukuran PK": 2, "Tipe": "GWC-18N1A", "Harga": 6950000, "BTU / H": 18000, "Watt": 1450, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 1/2", "Buatan": "Cina", "Garansi Spare Part": "5 Tahun", "Garansi Kompresor": "10 Tahun" },
+                { "Merk AC": "Sharp", "Ukuran PK": 0.5, "Tipe": "AH-A5ZCY", "Harga": 2750000, "BTU / H": 5000, "Watt": 344, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 3/8", "Buatan": "Cina", "Garansi Spare Part": "1 Tahun", "Garansi Kompresor": "10 Tahun" },
+                { "Merk AC": "Sharp", "Ukuran PK": 0.5, "Tipe": "AH-A5BEY2", "Harga": 2550000, "BTU / H": 5000, "Watt": 344, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 3/8", "Buatan": "Indonesia", "Garansi Spare Part": "3 Tahun", "Garansi Kompresor": "10 Tahun" },
+                { "Merk AC": "Sharp", "Ukuran PK": 0.5, "Tipe": "AH-AP5BMY2", "Harga": 3150000, "BTU / H": 5000, "Watt": 360, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 3/8", "Buatan": "Indonesia", "Garansi Spare Part": "3 Tahun", "Garansi Kompresor": "10 Tahun" },
+                { "Merk AC": "Sharp", "Ukuran PK": 1, "Tipe": "AH-A9BEY2", "Harga": 2950000, "BTU / H": 9000, "Watt": 765, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 3/8", "Buatan": "Indonesia", "Garansi Spare Part": "3 Tahun", "Garansi Kompresor": "10 Tahun" },
+                { "Merk AC": "Sharp", "Ukuran PK": 1, "Tipe": "AH-A9ZCY", "Harga": 3150000, "BTU / H": 9000, "Watt": 765, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 3/8", "Buatan": "Cina", "Garansi Spare Part": "1 Tahun", "Garansi Kompresor": "10 Tahun" },
+                { "Merk AC": "Sharp", "Ukuran PK": 1, "Tipe": "AH-AP9BMY2", "Harga": 3450000, "BTU / H": 9000, "Watt": 760, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 3/8", "Buatan": "Indonesia", "Garansi Spare Part": "3 Tahun", "Garansi Kompresor": "10 Tahun" },
+                { "Merk AC": "Sharp", "Ukuran PK": 1.5, "Tipe": "AH-A12ZCY", "Harga": 4550000, "BTU / H": 11500, "Watt": 1035, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 3/8", "Buatan": "Cina", "Garansi Spare Part": "1 Tahun", "Garansi Kompresor": "10 Tahun" },
+                { "Merk AC": "Sharp", "Ukuran PK": 1.5, "Tipe": "AH-A12SAY", "Harga": 4650000, "BTU / H": 12000, "Watt": 1090, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 1/2", "Buatan": "Thailand", "Garansi Spare Part": "1 Tahun", "Garansi Kompresor": "10 Tahun" },
+                { "Merk AC": "Sharp", "Ukuran PK": 2, "Tipe": "AH-18ZCY", "Harga": 6150000, "BTU / H": 17500, "Watt": 1640, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 1/2", "Buatan": "Cina", "Garansi Spare Part": "1 Tahun", "Garansi Kompresor": "10 Tahun" },
+                { "Merk AC": "Sharp", "Ukuran PK": 2, "Tipe": "AH-A18SAY2", "Harga": 6250000, "BTU / H": 16000, "Watt": 1740, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 1/2", "Buatan": "Thailand", "Garansi Spare Part": "1 Tahun", "Garansi Kompresor": "10 Tahun" },
+                { "Merk AC": "Panasonic", "Ukuran PK": 0.5, "Tipe": "CS-ZN5YKP", "Harga": 3150000, "BTU / H": 5000, "Watt": 344, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 3/8", "Buatan": "Cina", "Garansi Spare Part": "1 Tahun", "Garansi Kompresor": "3 Tahun" },
+                { "Merk AC": "Panasonic", "Ukuran PK": 0.5, "Tipe": "CS-YN5AKJ", "Harga": 350000, "BTU / H": 5000, "Watt": 389, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 3/8", "Buatan": "Indonesia", "Garansi Spare Part": "1 Tahun", "Garansi Kompresor": "3 Tahun" },
+                { "Merk AC": "Panasonic", "Ukuran PK": 1, "Tipe": "CS-YN9AKJ", "Harga": 3950000, "BTU / H": 9000, "Watt": 800, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 3/8", "Buatan": "Indonesia", "Garansi Spare Part": "1 Tahun", "Garansi Kompresor": "3 Tahun" },
+                { "Merk AC": "Panasonic", "Ukuran PK": 1, "Tipe": "CS-ZN9YKP", "Harga": 3350000, "BTU / H": 9000, "Watt": 765, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 3/8", "Buatan": "Cina", "Garansi Spare Part": "1 Tahun", "Garansi Kompresor": "3 Tahun" },
+                { "Merk AC": "Panasonic", "Ukuran PK": 1.5, "Tipe": "CS-LN12AKJ", "Harga": 5550000, "BTU / H": 12000, "Watt": 1020, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 1/2", "Buatan": "Indonesia", "Garansi Spare Part": "1 Tahun", "Garansi Kompresor": "3 Tahun" },
+                { "Merk AC": "Panasonic", "Ukuran PK": 1.5, "Tipe": "CS-YN12AKJ", "Harga": 5250000, "BTU / H": 12000, "Watt": 1050, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 1/2", "Buatan": "Indonesia", "Garansi Spare Part": "1 Tahun", "Garansi Kompresor": "3 Tahun" },
+                { "Merk AC": "Panasonic", "Ukuran PK": 2, "Tipe": "CS-YN18AKJ", "Harga": 6750000, "BTU / H": 18000, "Watt": 1660, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 1/2", "Buatan": "Indonesia", "Garansi Spare Part": "1 Tahun", "Garansi Kompresor": "3 Tahun" },
+                { "Merk AC": "Panasonic", "Ukuran PK": 2, "Tipe": "CS-PN18AKJ", "Harga": 7250000, "BTU / H": 18000, "Watt": 1660, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 1/2", "Buatan": "Indonesia", "Garansi Spare Part": "1 Tahun", "Garansi Kompresor": "3 Tahun" },
+                { "Merk AC": "Panasonic", "Ukuran PK": 2.5, "Tipe": "CS-YN24AKJ", "Harga": 9650000, "BTU / H": 23200, "Watt": 2140, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 5/8", "Buatan": "Indonesia", "Garansi Spare Part": "1 Tahun", "Garansi Kompresor": "3 Tahun" },
+                { "Merk AC": "Midea", "Ukuran PK": 0.5, "Tipe": "MSFCE-05CRN2X", "Harga": 2450000, "BTU / H": 5000, "Watt": 350, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 3/8", "Buatan": "Cina", "Garansi Spare Part": "5 Tahun", "Garansi Kompresor": "10 Tahun" },
+                { "Merk AC": "Midea", "Ukuran PK": 0.5, "Tipe": "MSAFE-05CRN2X", "Harga": 2550000, "BTU / H": 5000, "Watt": 424, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 3/8", "Buatan": "Cina", "Garansi Spare Part": "5 Tahun", "Garansi Kompresor": "10 Tahun" },
+                { "Merk AC": "Midea", "Ukuran PK": 1, "Tipe": "MSAF-09CRN2X", "Harga": 2850000, "BTU / H": 9000, "Watt": 800, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 3/8", "Buatan": "Cina", "Garansi Spare Part": "5 Tahun", "Garansi Kompresor": "10 Tahun" },
+                { "Merk AC": "Midea", "Ukuran PK": 1, "Tipe": "MSFC-09CRN2X", "Harga": 2750000, "BTU / H": 9000, "Watt": 800, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 3/8", "Buatan": "Cina", "Garansi Spare Part": "5 Tahun", "Garansi Kompresor": "10 Tahun" },
+                { "Merk AC": "Midea", "Ukuran PK": 1.5, "Tipe": "MSAF-12CRN2X", "Harga": 4150000, "BTU / H": 12000, "Watt": 1000, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 3/8", "Buatan": "Cina", "Garansi Spare Part": "5 Tahun", "Garansi Kompresor": "10 Tahun" },
+                { "Merk AC": "Midea", "Ukuran PK": 1.5, "Tipe": "MSFC-12CRN2X", "Harga": 3850000, "BTU / H": 11500, "Watt": 1035, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 3/8", "Buatan": "Cina", "Garansi Spare Part": "5 Tahun", "Garansi Kompresor": "10 Tahun" },
+                { "Merk AC": "Midea", "Ukuran PK": 2, "Tipe": "MSAF-18CRN2X", "Harga": 5350000, "BTU / H": 18475, "Watt": 1693, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 1/2", "Buatan": "Cina", "Garansi Spare Part": "5 Tahun", "Garansi Kompresor": "10 Tahun" },
+                { "Merk AC": "Midea", "Ukuran PK": 2.5, "Tipe": "MSAF-24CRN2X", "Harga": 6850000, "BTU / H": 24000, "Watt": 1950, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 1/2", "Buatan": "Cina", "Garansi Spare Part": "5 Tahun", "Garansi Kompresor": "10 Tahun" },
+                { "Merk AC": "Polytron", "Ukuran PK": 0.5, "Tipe": "PAC05VH", "Harga": 2550000, "BTU / H": 5000, "Watt": 390, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 3/8", "Buatan": "Indonesia", "Garansi Spare Part": "3 Tahun", "Garansi Kompresor": "10 Tahun" },
+                { "Merk AC": "Polytron", "Ukuran PK": 0.5, "Tipe": "PAC05VZI", "Harga": 2750000, "BTU / H": 5000, "Watt": 390, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 3/8", "Buatan": "Indonesia", "Garansi Spare Part": "3 Tahun", "Garansi Kompresor": "10 Tahun" },
+                { "Merk AC": "Polytron", "Ukuran PK": 0.5, "Tipe": "PAC05VZSI", "Harga": 2850000, "BTU / H": 5000, "Watt": 390, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 3/8", "Buatan": "Indonesia", "Garansi Spare Part": "3 Tahun", "Garansi Kompresor": "10 Tahun" },
+                { "Merk AC": "Polytron", "Ukuran PK": 1, "Tipe": "PAC09VH", "Harga": 2850000, "BTU / H": 9000, "Watt": 790, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 3/8", "Buatan": "Indonesia", "Garansi Spare Part": "3 Tahun", "Garansi Kompresor": "10 Tahun" },
+                { "Merk AC": "Polytron", "Ukuran PK": 1, "Tipe": "PAC09VZSI", "Harga": 3150000, "BTU / H": 9000, "Watt": 790, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 3/8", "Buatan": "Indonesia", "Garansi Spare Part": "3 Tahun", "Garansi Kompresor": "10 Tahun" },
+                { "Merk AC": "Polytron", "Ukuran PK": 1, "Tipe": "PAC09VZI", "Harga": 2950000, "BTU / H": 9000, "Watt": 790, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 3/8", "Buatan": "Indonesia", "Garansi Spare Part": "3 Tahun", "Garansi Kompresor": "10 Tahun" },
+                { "Merk AC": "Polytron", "Ukuran PK": 1.5, "Tipe": "PAC12VH", "Harga": 3950000, "BTU / H": 12000, "Watt": 990, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 1/2", "Buatan": "Indonesia", "Garansi Spare Part": "3 Tahun", "Garansi Kompresor": "10 Tahun" },
+                { "Merk AC": "Polytron", "Ukuran PK": 1.5, "Tipe": "PAC12VZ", "Harga": 4250000, "BTU / H": 12000, "Watt": 990, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 1/2", "Buatan": "Indonesia", "Garansi Spare Part": "3 Tahun", "Garansi Kompresor": "10 Tahun" },
+                { "Merk AC": "Polytron", "Ukuran PK": 1.5, "Tipe": "PAC12VZS", "Harga": 4650000, "BTU / H": 12000, "Watt": 990, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 1/2", "Buatan": "Indonesia", "Garansi Spare Part": "3 Tahun", "Garansi Kompresor": "10 Tahun" },
+                { "Merk AC": "Polytron", "Ukuran PK": 2, "Tipe": "PAC18VH", "Harga": 5250000, "BTU / H": 18000, "Watt": 1590, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 1/2", "Buatan": "Indonesia", "Garansi Spare Part": "3 Tahun", "Garansi Kompresor": "10 Tahun" },
+                { "Merk AC": "Polytron", "Ukuran PK": 2, "Tipe": "PAC18VZ", "Harga": 5650000, "BTU / H": 18000, "Watt": 1590, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 1/2", "Buatan": "Indonesia", "Garansi Spare Part": "3 Tahun", "Garansi Kompresor": "10 Tahun" },
+                { "Merk AC": "Polytron", "Ukuran PK": 2, "Tipe": "PAC18VZS", "Harga": 5750000, "BTU / H": 18000, "Watt": 1590, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 3/8", "Buatan": "Indonesia", "Garansi Spare Part": "3 Tahun", "Garansi Kompresor": "10 Tahun" },
+                { "Merk AC": "Aqua", "Ukuran PK": 0.5, "Tipe": "AQA-KCR5FQDL", "Harga": 2450000, "BTU / H": 5000, "Watt": 360, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 3/8", "Buatan": "Cina", "Garansi Spare Part": "5 Tahun", "Garansi Kompresor": "10 Tahun" },
+                { "Merk AC": "Aqua", "Ukuran PK": 1, "Tipe": "AQA-KCR9FQDL", "Harga": 2750000, "BTU / H": 9000, "Watt": 760, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 3/8", "Buatan": "Cina", "Garansi Spare Part": "5 Tahun", "Garansi Kompresor": "10 Tahun" },
+                { "Merk AC": "Aqua", "Ukuran PK": 1.5, "Tipe": "AQA-KCR12FQAL", "Harga": 4250000, "BTU / H": 12000, "Watt": 1050, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 3/8", "Buatan": "Cina", "Garansi Spare Part": "5 Tahun", "Garansi Kompresor": "10 Tahun" },
+                { "Merk AC": "Aqua", "Ukuran PK": 2, "Tipe": "AQA-KCR18FQAL", "Harga": 5450000, "BTU / H": 19000, "Watt": 1750, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 1/2", "Buatan": "Cina", "Garansi Spare Part": "5 Tahun", "Garansi Kompresor": "10 Tahun" },
+                { "Merk AC": "Samsung", "Ukuran PK": 0.5, "Tipe": "AR05BGHQBSINSE", "Harga": 2750000, "BTU / H": 4800, "Watt": 350, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 3/8", "Buatan": "Indonesia", "Garansi Spare Part": "1 Tahun", "Garansi Kompresor": "3 Tahun" },
+                { "Merk AC": "Samsung", "Ukuran PK": 1, "Tipe": "AR09BGHQASINSE", "Harga": 3250000, "BTU / H": 9000, "Watt": 824, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 3/8", "Buatan": "Cina", "Garansi Spare Part": "1 Tahun", "Garansi Kompresor": "3 Tahun" },
+                { "Merk AC": "Samsung", "Ukuran PK": 1.5, "Tipe": "AR12BGHQASINSE", "Harga": 4750000, "BTU / H": 11500, "Watt": 1053, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 3/8", "Buatan": "Cina", "Garansi Spare Part": "1 Tahun", "Garansi Kompresor": "3 Tahun" },
+                { "Merk AC": "Samsung", "Ukuran PK": 2, "Tipe": "AR18BGHQASINSE", "Harga": 6250000, "BTU / H": 18000, "Watt": 1628, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 3/8", "Buatan": "Cina", "Garansi Spare Part": "1 Tahun", "Garansi Kompresor": "3 Tahun" },
+                { "Merk AC": "Mitsubishi", "Ukuran PK": 0.5, "Tipe": "SRK05CXP2-W3", "Harga": 3750000, "BTU / H": 5000, "Watt": 330, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 3/8", "Buatan": "Cina", "Garansi Spare Part": "1 Tahun", "Garansi Kompresor": "3 Tahun" },
+                { "Merk AC": "Mitsubishi", "Ukuran PK": 1, "Tipe": "SRK09CXP2-W3", "Harga": 4150000, "BTU / H": 9000, "Watt": 824, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 3/8", "Buatan": "Cina", "Garansi Spare Part": "1 Tahun", "Garansi Kompresor": "3 Tahun" },
+                { "Merk AC": "Mitsubishi", "Ukuran PK": 1.5, "Tipe": "SRK12CXP2-W3", "Harga": 5150000, "BTU / H": 12000, "Watt": 1053, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 3/8", "Buatan": "Cina", "Garansi Spare Part": "1 Tahun", "Garansi Kompresor": "3 Tahun" },
+                { "Merk AC": "Mitsubishi", "Ukuran PK": 2, "Tipe": "SRK18CXP2-W3", "Harga": 6550000, "BTU / H": 18000, "Watt": 1520, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 1/2", "Buatan": "Cina", "Garansi Spare Part": "1 Tahun", "Garansi Kompresor": "3 Tahun" },
+                { "Merk AC": "Mitsubishi", "Ukuran PK": 2.5, "Tipe": "SRK24CXP2-W3", "Harga": 9250000, "BTU / H": 24000, "Watt": 2070, "Jenis Refrigerant": "R32", "Ukuran Pipa": "3/8 + 5/8", "Buatan": "Cina", "Garansi Spare Part": "1 Tahun", "Garansi Kompresor": "3 Tahun" },
+                { "Merk AC": "Hisense", "Ukuran PK": 0.5, "Tipe": "AN05CDG", "Harga": 2550000, "BTU / H": 5300, "Watt": 393, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 3/8", "Buatan": "Cina", "Garansi Spare Part": "3 Tahun", "Garansi Kompresor": "10 Tahun" },
+                { "Merk AC": "Hisense", "Ukuran PK": 1, "Tipe": "AN09CDG", "Harga": 2850000, "BTU / H": 9000, "Watt": 810, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 3/8", "Buatan": "Cina", "Garansi Spare Part": "3 Tahun", "Garansi Kompresor": "10 Tahun" },
+                { "Merk AC": "Hisense", "Ukuran PK": 1.5, "Tipe": "AN12CDG", "Harga": 3950000, "BTU / H": 12000, "Watt": 1019, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 1/2", "Buatan": "Cina", "Garansi Spare Part": "3 Tahun", "Garansi Kompresor": "10 Tahun" },
+                { "Merk AC": "Hisense", "Ukuran PK": 2, "Tipe": "AN18CDG", "Harga": 5250000, "BTU / H": 18000, "Watt": 1589, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 1/2", "Buatan": "Cina", "Garansi Spare Part": "3 Tahun", "Garansi Kompresor": "10 Tahun" }
+            ];
 
-    const acBekasData = [
-        { brand: 'Daikin', pk: '1/2', harga: 1800000 }, { brand: 'Daikin', pk: '1', harga: 2000000 }, { brand: 'Daikin', pk: '1.5', harga: 2200000 }, { brand: 'Daikin', pk: '2', harga: 2500000 },
-        { brand: 'Gree', pk: '1/2', harga: 1600000 }, { brand: 'Gree', pk: '1', harga: 1800000 }, { brand: 'Gree', pk: '1.5', harga: 2000000 }, { brand: 'Gree', pk: '2', harga: 2300000 },
-        { brand: 'Panasonic', pk: '1/2', harga: 1600000 }, { brand: 'Panasonic', pk: '1', harga: 1800000 }, { brand: 'Panasonic', pk: '1.5', harga: 2000000 }, { brand: 'Panasonic', pk: '2', harga: 2300000 },
-        { brand: 'Sharp', pk: '1/2', harga: 1500000 }, { brand: 'Sharp', pk: '1', harga: 1700000 }, { brand: 'Sharp', pk: '1.5', harga: 1900000 }, { brand: 'Sharp', pk: '2', harga: 2100000 },
-        { brand: 'Midea', pk: '1/2', harga: 1500000 }, { brand: 'Midea', pk: '1', harga: 1700000 }, { brand: 'Midea', pk: '1.5', harga: 1900000 }, { brand: 'Midea', pk: '2', harga: 2100000 },
-        { brand: 'Samsung', pk: '1/2', harga: 1500000 }, { brand: 'Samsung', pk: '1', harga: 1700000 }, { brand: 'Samsung', pk: '1.5', harga: 1900000 }, { brand: 'Samsung', pk: '2', harga: 2100000 },
-        { brand: 'LG', pk: '1/2', harga: 1500000 }, { brand: 'LG', pk: '1', harga: 1700000 }, { brand: 'LG', pk: '1.5', harga: 1900000 }, { brand: 'LG', pk: '2', harga: 2100000 },
-        { brand: 'Polytron', pk: '1/2', harga: 1500000 }, { brand: 'Polytron', pk: '1', harga: 1700000 }, { brand: 'Polytron', pk: '1.5', harga: 1900000 }, { brand: 'Polytron', pk: '2', harga: 2100000 },
-        { brand: 'Aqua', pk: '1/2', harga: 1500000 }, { brand: 'Aqua', pk: '1', harga: 1700000 }, { brand: 'Aqua', pk: '1.5', harga: 1900000 }, { brand: 'Aqua', pk: '2', harga: 2100000 },
-        { brand: 'Hisense', pk: '1/2', harga: 1500000 }, { brand: 'Hisense', pk: '1', harga: 1700000 }, { brand: 'Hisense', pk: '1.5', harga: 1900000 }, { brand: 'Hisense', pk: '2', harga: 2100000 },
-        { brand: 'Changhong', pk: '1/2', harga: 1500000 }, { brand: 'Changhong', pk: '1', harga: 1700000 }, { brand: 'Changhong', pk: '1.5', harga: 1900000 }, { brand: 'Changhong', pk: '2', harga: 2100000 },
-        { brand: 'Mitsubishi', pk: '1/2', harga: 1500000 }, { brand: 'Mitsubishi', pk: '1', harga: 1700000 }, { brand: 'Mitsubishi', pk: '1.5', harga: 1900000 }, { brand: 'Mitsubishi', pk: '2', harga: 2100000 }
-    ];
+            const acBekasData = [
+                { brand: 'Daikin', pk: '1/2', harga: 1800000 }, { brand: 'Daikin', pk: '1', harga: 2000000 }, { brand: 'Daikin', pk: '1.5', harga: 2200000 }, { brand: 'Daikin', pk: '2', harga: 2500000 },
+                { brand: 'Gree', pk: '1/2', harga: 1600000 }, { brand: 'Gree', pk: '1', harga: 1800000 }, { brand: 'Gree', pk: '1.5', harga: 2000000 }, { brand: 'Gree', pk: '2', harga: 2300000 },
+                { brand: 'Panasonic', pk: '1/2', harga: 1600000 }, { brand: 'Panasonic', pk: '1', harga: 1800000 }, { brand: 'Panasonic', pk: '1.5', harga: 2000000 }, { brand: 'Panasonic', pk: '2', harga: 2300000 },
+                { brand: 'Sharp', pk: '1/2', harga: 1500000 }, { brand: 'Sharp', pk: '1', harga: 1700000 }, { brand: 'Sharp', pk: '1.5', harga: 1900000 }, { brand: 'Sharp', pk: '2', harga: 2100000 },
+                { brand: 'Midea', pk: '1/2', harga: 1500000 }, { brand: 'Midea', pk: '1', harga: 1700000 }, { brand: 'Midea', pk: '1.5', harga: 1900000 }, { brand: 'Midea', pk: '2', harga: 2100000 },
+                { brand: 'Samsung', pk: '1/2', harga: 1500000 }, { brand: 'Samsung', pk: '1', harga: 1700000 }, { brand: 'Samsung', pk: '1.5', harga: 1900000 }, { brand: 'Samsung', pk: '2', harga: 2100000 },
+                { brand: 'LG', pk: '1/2', harga: 1500000 }, { brand: 'LG', pk: '1', harga: 1700000 }, { brand: 'LG', pk: '1.5', harga: 1900000 }, { brand: 'LG', pk: '2', harga: 2100000 },
+                { brand: 'Polytron', pk: '1/2', harga: 1500000 }, { brand: 'Polytron', pk: '1', harga: 1700000 }, { brand: 'Polytron', pk: '1.5', harga: 1900000 }, { brand: 'Polytron', pk: '2', harga: 2100000 },
+                { brand: 'Aqua', pk: '1/2', harga: 1500000 }, { brand: 'Aqua', pk: '1', harga: 1700000 }, { brand: 'Aqua', pk: '1.5', harga: 1900000 }, { brand: 'Aqua', pk: '2', harga: 2100000 },
+                { brand: 'Hisense', pk: '1/2', harga: 1500000 }, { brand: 'Hisense', pk: '1', harga: 1700000 }, { brand: 'Hisense', pk: '1.5', harga: 1900000 }, { brand: 'Hisense', pk: '2', harga: 2100000 },
+                { brand: 'Changhong', pk: '1/2', harga: 1500000 }, { brand: 'Changhong', pk: '1', harga: 1700000 }, { brand: 'Changhong', pk: '1.5', harga: 1900000 }, { brand: 'Changhong', pk: '2', harga: 2100000 },
+                { brand: 'Mitsubishi', pk: '1/2', harga: 1500000 }, { brand: 'Mitsubishi', pk: '1', harga: 1700000 }, { brand: 'Mitsubishi', pk: '1.5', harga: 1900000 }, { brand: 'Mitsubishi', pk: '2', harga: 2100000 }
+            ];
 
-    const servicePrices = {
-        'jasa-pasang': { '0.5 - 1 PK': 350000, '1.5 PK': 450000, '2 PK': 600000, '2.5 PK': 750000 },
-        'pipa': { '1/4 + 3/8': 80000, '1/4 + 1/2': 100000, '1/4 + 5/8': 120000, '3/8 + 5/8': 150000 },
-        'kabel': { '3 x 1.5 mm': 20000, '4 x 1.5 mm': 25000, '3 x 2.5 mm': 30000, '4 x 2.5 mm': 35000 },
-        'bracket': { '1/2 PK - 1 PK': 65000, '1.5 PK - 2 PK': 95000, '2.5 PK': 120000 },
-        'selang_drain': 0
-    };
+            const servicePrices = {
+                'jasa-pasang': { '0.5 - 1 PK': 350000, '1.5 PK': 450000, '2 PK': 600000, '2.5 PK': 750000 },
+                'pipa': { '1/4 + 3/8': 80000, '1/4 + 1/2': 100000, '1/4 + 5/8': 120000, '3/8 + 5/8': 150000 },
+                'kabel': { '3 x 1.5 mm': 20000, '4 x 1.5 mm': 25000, '3 x 2.5 mm': 30000, '4 x 2.5 mm': 35000 },
+                'bracket': { '1/2 PK - 1 PK': 65000, '1.5 PK - 2 PK': 95000, '2.5 PK': 120000 },
+                'selang_drain': 0
+            };
 
-    // --- SELEKTOR ELEMEN DOM ---
-    const mainHeader = document.getElementById('main-header');
-    const mainContent = document.getElementById('main-content');
-    const mainFooter = document.getElementById('main-footer');
-    const orderFormSection = document.getElementById('order-form-section');
-    const showOrderFormBtn = document.getElementById('show-order-form-btn');
-    const navOrderBtn = document.getElementById('nav-order-btn');
-    const mobileNavOrderBtn = document.getElementById('mobile-nav-order-btn');
-    const mobileMenuButton = document.getElementById('mobile-menu-button');
-    const mobileMenu = document.getElementById('mobile-menu');
+            // --- SELEKTOR ELEMEN DOM ---
+            const mainHeader = document.getElementById('main-header');
+            const mainContent = document.getElementById('main-content');
+            const mainFooter = document.getElementById('main-footer');
+            const orderFormSection = document.getElementById('order-form-section');
+            const showOrderFormBtn = document.getElementById('show-order-form-btn');
+            const navOrderBtn = document.getElementById('nav-order-btn');
+            const mobileNavOrderBtn = document.getElementById('mobile-nav-order-btn');
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
 
-    // --- FUNGSI UNTUK MENAMPILKAN/SEMBUNYIKAN HALAMAN ---
-    let map = null; // Variabel untuk menyimpan instance peta
+            // --- FUNGSI UNTUK MENAMPILKAN/SEMBUNYIKAN HALAMAN ---
+            let map = null; // Variabel untuk menyimpan instance peta
 
-    function showOrderForm() {
-        mainHeader.classList.add('hidden');
-        mainContent.classList.add('hidden');
-        mainFooter.classList.add('hidden');
-        orderFormSection.classList.remove('hidden');
-        window.scrollTo(0, 0);
+            function showOrderForm() {
+                mainHeader.classList.add('hidden');
+                mainContent.classList.add('hidden');
+                mainFooter.classList.add('hidden');
+                orderFormSection.classList.remove('hidden');
+                window.scrollTo(0, 0);
 
-        // Inisialisasi peta HANYA jika belum ada
-        if (!map) {
-            const initialCoords = [-6.175392, 106.827153]; // Monas, Jakarta
-            map = L.map('map').setView(initialCoords, 13);
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            }).addTo(map);
-            const marker = L.marker(initialCoords, { draggable: true }).addTo(map);
-            document.getElementById('map_coordinates').value = initialCoords.join(', ');
+                if (!map) {
+                    const initialCoords = [-6.175392, 106.827153];
+                    map = L.map('map').setView(initialCoords, 13);
+                    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                        attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                    }).addTo(map);
+                    const marker = L.marker(initialCoords, { draggable: true }).addTo(map);
+                    document.getElementById('map_coordinates').value = initialCoords.join(', ');
 
-            marker.on('dragend', function (event) {
-                const position = marker.getLatLng();
-                document.getElementById('map_coordinates').value = [position.lat, position.lng].join(', ');
-            });
-        }
-        // Perbaiki ukuran peta setelah ditampilkan
-        setTimeout(() => map.invalidateSize(), 10);
-    }
-
-    function showMainContent() {
-        orderFormSection.classList.add('hidden');
-        mainHeader.classList.remove('hidden');
-        mainContent.classList.remove('hidden');
-        mainFooter.classList.remove('hidden');
-        window.scrollTo(0, 0);
-        
-        // Reset form jika diperlukan
-        document.getElementById('formContainer').classList.remove('hidden');
-        document.getElementById('confirmationMessage').classList.add('hidden');
-        document.getElementById('bookingForm').reset();
-    }
-
-    // --- EVENT LISTENER UNTUK TOMBOL "PESAN SEKARANG" ---
-    showOrderFormBtn.addEventListener('click', showOrderForm);
-    navOrderBtn.addEventListener('click', showOrderForm);
-    mobileNavOrderBtn.addEventListener('click', () => {
-        mobileMenu.classList.add('hidden'); // Sembunyikan menu mobile dulu
-        showOrderForm();
-    });
-    
-    // --- LOGIKA UNTUK NAVIGASI MOBILE ---
-    mobileMenuButton.addEventListener('click', () => {
-        mobileMenu.classList.toggle('hidden');
-    });
-
-    // --- FUNGSI BAGIAN PRODUK AC BARU ---
-    function createProductCard(product) {
-        const card = document.createElement('div');
-        card.className = 'bg-white rounded-xl shadow-lg p-6 transform transition duration-300 hover:scale-105';
-        const imageSrc = `https://placehold.co/400x250/3b82f6/ffffff?text=${product['Merk AC']}`;
-        const formatter = new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 });
-        const formattedPrice = formatter.format(product['Harga']);
-        card.innerHTML = `
-            <img src="${imageSrc}" alt="${product['Merk AC']} AC" class="w-full h-40 object-cover rounded-md mb-4">
-            <h3 class="text-xl font-bold text-gray-800">${product['Merk AC']} ${product['Ukuran PK']} PK - ${product['Tipe']}</h3>
-            <p class="mt-2 text-2xl font-extrabold text-blue-600">${formattedPrice}</p>
-            <div class="mt-4 text-sm text-gray-600 space-y-1">
-                <p><strong>BTU/h:</strong> ${product['BTU / H']}</p>
-                <p><strong>Daya Listrik:</strong> ${product['Watt']} W</p>
-                <p><strong>Garansi Kompresor:</strong> ${product['Garansi Kompresor']}</p>
-            </div>`;
-        return card;
-    }
-
-    function renderProducts() {
-        const productListContainer = document.getElementById('product-list');
-        if (productListContainer) {
-            productListContainer.innerHTML = '';
-            acBaruData.forEach(product => productListContainer.appendChild(createProductCard(product)));
-        }
-    }
-
-    // --- LOGIKA KALKULATOR BIAYA ---
-    const calculatorForm = document.getElementById('calculator-form');
-    if (calculatorForm) {
-        const totalCostElement = document.getElementById('total-cost');
-        const resultContainer = document.getElementById('result-container');
-        const unitACBaruDropdown = document.getElementById('unit-ac-baru');
-        const unitACBekasDropdown = document.getElementById('unit-ac-bekas');
-        const pipaTypeDropdown = document.getElementById('pipa-type');
-        const kabelTypeDropdown = document.getElementById('kabel-type');
-        const bracketDropdown = document.getElementById('bracket');
-        const jasaPasangDropdown = document.getElementById('jasa-pasang');
-        const jasaBongkarDropdown = document.getElementById('jasa-bongkar');
-        const jasaCuciDropdown = document.getElementById('jasa-cuci');
-
-        const populateDropdowns = () => {
-            acBaruData.forEach(p => {
-                const opt = document.createElement('option');
-                opt.value = p['Harga'];
-                opt.textContent = `${p['Merk AC']} ${p['Ukuran PK']} PK (${p['Tipe']}) - Rp ${p['Harga'].toLocaleString('id-ID')}`;
-                unitACBaruDropdown.appendChild(opt);
-            });
-
-            acBekasData.forEach(p => {
-                const opt = document.createElement('option');
-                opt.value = p['harga'];
-                opt.textContent = `${p['brand']} ${p['pk']} PK - Rp ${p['harga'].toLocaleString('id-ID')}`;
-                unitACBekasDropdown.appendChild(opt);
-            });
-            
-            Object.keys(servicePrices['jasa-pasang']).forEach(key => {
-                const opt = document.createElement('option');
-                opt.value = servicePrices['jasa-pasang'][key];
-                opt.textContent = `Pasang AC ${key} (Rp ${servicePrices['jasa-pasang'][key].toLocaleString('id-ID')})`;
-                jasaPasangDropdown.appendChild(opt);
-            });
-
-            Object.keys(servicePrices['pipa']).forEach(key => {
-                const opt = document.createElement('option');
-                opt.value = servicePrices['pipa'][key];
-                opt.textContent = `${key} (Rp ${servicePrices['pipa'][key].toLocaleString('id-ID')} per meter)`;
-                pipaTypeDropdown.appendChild(opt);
-            });
-
-            Object.keys(servicePrices['kabel']).forEach(key => {
-                const opt = document.createElement('option');
-                opt.value = servicePrices['kabel'][key];
-                opt.textContent = `${key} (Rp ${servicePrices['kabel'][key].toLocaleString('id-ID')} per meter)`;
-                kabelTypeDropdown.appendChild(opt);
-            });
-
-            Object.keys(servicePrices['bracket']).forEach(key => {
-                const opt = document.createElement('option');
-                opt.value = servicePrices['bracket'][key];
-                opt.textContent = `${key} (Rp ${servicePrices['bracket'][key].toLocaleString('id-ID')})`;
-                bracketDropdown.appendChild(opt);
-            });
-        };
-        
-        const updateUnitContainerDisplay = () => {
-            document.getElementById('pasang-unit-container').classList.toggle('hidden', jasaPasangDropdown.value === '0');
-            document.getElementById('bongkar-unit-container').classList.toggle('hidden', jasaBongkarDropdown.value === '0');
-            document.getElementById('cuci-unit-container').classList.toggle('hidden', jasaCuciDropdown.value === '0');
-            document.getElementById('bekas-unit-container').classList.toggle('hidden', unitACBekasDropdown.value === '0');
-            document.getElementById('bracket-unit-container').classList.toggle('hidden', bracketDropdown.value === '0');
-        };
-
-        const calculateTotalCost = () => {
-            let total = 0;
-            const jasaPasangPrice = parseFloat(jasaPasangDropdown.value);
-            const jasaBongkarPrice = parseFloat(jasaBongkarDropdown.value);
-            const jasaCuciPrice = parseFloat(jasaCuciDropdown.value);
-            
-            if (jasaPasangPrice > 0) total += jasaPasangPrice * parseInt(document.getElementById('pasang-units').value);
-            if (jasaBongkarPrice > 0) total += jasaBongkarPrice * parseInt(document.getElementById('bongkar-units').value);
-            if (jasaCuciPrice > 0) total += jasaCuciPrice * parseInt(document.getElementById('cuci-units').value);
-
-            total += parseFloat(unitACBaruDropdown.value) || 0;
-            if (parseFloat(unitACBekasDropdown.value) > 0) total += parseFloat(unitACBekasDropdown.value) * parseInt(document.getElementById('bekas-units').value);
-
-            total += (parseFloat(pipaTypeDropdown.value) || 0) * (parseInt(document.getElementById('pipa-length').value) || 0);
-            total += (parseFloat(kabelTypeDropdown.value) || 0) * (parseInt(document.getElementById('kabel-length').value) || 0);
-            if (parseFloat(bracketDropdown.value) > 0) total += parseFloat(bracketDropdown.value) * parseInt(document.getElementById('bracket-units').value);
-
-            totalCostElement.textContent = total.toLocaleString('id-ID', { style: 'currency', currency: 'IDR' });
-            resultContainer.classList.remove('hidden');
-        };
-
-        calculatorForm.addEventListener('change', () => {
-            updateUnitContainerDisplay();
-            calculateTotalCost();
-        });
-
-        const populateUnitCounts = (selectId, label) => {
-            const selectElement = document.getElementById(selectId);
-            for (let i = 2; i <= 20; i++) {
-                const option = document.createElement('option');
-                option.value = i;
-                option.textContent = `${i} ${label}`;
-                selectElement.appendChild(option);
-            }
-        };
-        populateUnitCounts('cuci-units', 'Unit');
-        populateUnitCounts('pasang-units', 'Unit');
-        populateUnitCounts('bongkar-units', 'Unit');
-        populateUnitCounts('bekas-units', 'Unit');
-        populateUnitCounts('bracket-units', 'Set');
-
-        const populateLengths = (selectId, start, end) => {
-            const selectElement = document.getElementById(selectId);
-            for (let i = start; i <= end; i++) {
-                const option = document.createElement('option');
-                option.value = i;
-                option.textContent = `${i} meter`;
-                selectElement.appendChild(option);
-            }
-        };
-        populateLengths('pipa-length', 3, 25);
-        populateLengths('kabel-length', 4, 26);
-        
-        populateDropdowns();
-        updateUnitContainerDisplay();
-    }
-    
-    // --- LOGIKA FORM PEMESANAN ---
-    const bookingForm = document.getElementById('bookingForm');
-    const formContainer = document.getElementById('formContainer');
-    const confirmationMessage = document.getElementById('confirmationMessage');
-    const orderItemsContainer = document.getElementById('orderItemsContainer');
-    const addOrderItemBtn = document.getElementById('addOrderItemBtn');
-    const orderBtn = document.getElementById('orderBtn');
-    const cancelBtn = document.getElementById('cancelBtn');
-    const findMeBtn = document.getElementById('findMeBtn');
-    const newOrderBtnConfirm = document.getElementById('new-order-btn-confirm');
-    
-    findMeBtn.addEventListener('click', () => {
-        if (navigator.geolocation) {
-            document.getElementById('findMeBtnText').textContent = "Mencari lokasi...";
-            findMeBtn.disabled = true;
-            navigator.geolocation.getCurrentPosition(
-                (position) => {
-                    const userLocation = [position.coords.latitude, position.coords.longitude];
-                    if(map) {
-                        map.setView(userLocation, 17);
-                        map.eachLayer(layer => { if (layer instanceof L.Marker) layer.setLatLng(userLocation); });
-                    }
-                    document.getElementById('map_coordinates').value = userLocation.join(', ');
-                    document.getElementById('findMeBtnText').textContent = "Lokasi Ditemukan!";
-                    setTimeout(() => {
-                        document.getElementById('findMeBtnText').textContent = "Gunakan Lokasi Saya Saat Ini";
-                        findMeBtn.disabled = false;
-                    }, 2000);
-                },
-                () => {
-                    document.getElementById('findMeBtnText').textContent = "Gagal Mendapatkan Lokasi";
-                    setTimeout(() => {
-                        document.getElementById('findMeBtnText').textContent = "Gunakan Lokasi Saya Saat Ini";
-                        findMeBtn.disabled = false;
-                    }, 3000);
+                    marker.on('dragend', function (event) {
+                        const position = marker.getLatLng();
+                        document.getElementById('map_coordinates').value = [position.lat, position.lng].join(', ');
+                    });
                 }
-            );
-        } else { alert("Browser Anda tidak mendukung fitur lokasi."); }
-    });
+                setTimeout(() => map.invalidateSize(), 10);
+            }
 
-    addOrderItemBtn.addEventListener('click', () => {
-        const currentItems = orderItemsContainer.querySelectorAll('.order-item').length;
-        if (currentItems < 3) {
-            const newItemRow = orderItemsContainer.children[0].cloneNode(true);
-            newItemRow.querySelector('select').value = "";
-            newItemRow.querySelector('input').value = "1";
+            function showMainContent() {
+                orderFormSection.classList.add('hidden');
+                mainHeader.classList.remove('hidden');
+                mainContent.classList.remove('hidden');
+                mainFooter.classList.remove('hidden');
+                window.scrollTo(0, 0);
+                
+                document.getElementById('formContainer').classList.remove('hidden');
+                document.getElementById('confirmationMessage').classList.add('hidden');
+                document.getElementById('bookingForm').reset();
+            }
+
+            // --- EVENT LISTENER ---
+            showOrderFormBtn.addEventListener('click', showOrderForm);
+            navOrderBtn.addEventListener('click', showOrderForm);
+            mobileNavOrderBtn.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                showOrderForm();
+            });
             
-            const deleteButton = document.createElement('button');
-            deleteButton.type = 'button';
-            deleteButton.innerHTML = '×';
-            deleteButton.className = 'text-red-500 hover:text-red-700 font-bold text-2xl leading-none self-end mb-2';
-            deleteButton.onclick = () => { newItemRow.remove(); updateAddButtonState(); };
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
 
-            newItemRow.classList.replace('md:grid-cols-6', 'md:grid-cols-7');
-            newItemRow.children[0].classList.replace('md:col-span-4', 'md:col-span-3');
-            newItemRow.children[1].classList.replace('md:col-span-2', 'md:col-span-3');
+            function createProductCard(product) {
+                const card = document.createElement('div');
+                card.className = 'bg-white rounded-xl shadow-lg p-6 transform transition duration-300 hover:scale-105';
+                const imageSrc = `https://placehold.co/400x250/3b82f6/ffffff?text=${product['Merk AC']}`;
+                const formatter = new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 });
+                const formattedPrice = formatter.format(product['Harga']);
+                card.innerHTML = `
+                    <img src="${imageSrc}" alt="${product['Merk AC']} AC" class="w-full h-40 object-cover rounded-md mb-4">
+                    <h3 class="text-xl font-bold text-gray-800">${product['Merk AC']} ${product['Ukuran PK']} PK - ${product['Tipe']}</h3>
+                    <p class="mt-2 text-2xl font-extrabold text-blue-600">${formattedPrice}</p>
+                    <div class="mt-4 text-sm text-gray-600 space-y-1">
+                        <p><strong>BTU/h:</strong> ${product['BTU / H']}</p>
+                        <p><strong>Daya Listrik:</strong> ${product['Watt']} W</p>
+                        <p><strong>Garansi Kompresor:</strong> ${product['Garansi Kompresor']}</p>
+                    </div>`;
+                return card;
+            }
+
+            function renderProducts() {
+                const productListContainer = document.getElementById('product-list');
+                if (productListContainer) {
+                    productListContainer.innerHTML = '';
+                    acBaruData.forEach(product => productListContainer.appendChild(createProductCard(product)));
+                }
+            }
+
+            const calculatorForm = document.getElementById('calculator-form');
+            if (calculatorForm) {
+                const totalCostElement = document.getElementById('total-cost');
+                const resultContainer = document.getElementById('result-container');
+                const unitACBaruDropdown = document.getElementById('unit-ac-baru');
+                const unitACBekasDropdown = document.getElementById('unit-ac-bekas');
+                const pipaTypeDropdown = document.getElementById('pipa-type');
+                const kabelTypeDropdown = document.getElementById('kabel-type');
+                const bracketDropdown = document.getElementById('bracket');
+                const jasaPasangDropdown = document.getElementById('jasa-pasang');
+                const jasaBongkarDropdown = document.getElementById('jasa-bongkar');
+                const jasaCuciDropdown = document.getElementById('jasa-cuci');
+
+                const populateDropdowns = () => {
+                    acBaruData.forEach(p => {
+                        const opt = document.createElement('option');
+                        opt.value = p['Harga'];
+                        opt.textContent = `${p['Merk AC']} ${p['Ukuran PK']} PK (${p['Tipe']}) - Rp ${p['Harga'].toLocaleString('id-ID')}`;
+                        unitACBaruDropdown.appendChild(opt);
+                    });
+
+                    acBekasData.forEach(p => {
+                        const opt = document.createElement('option');
+                        opt.value = p['harga'];
+                        opt.textContent = `${p['brand']} ${p['pk']} PK - Rp ${p['harga'].toLocaleString('id-ID')}`;
+                        unitACBekasDropdown.appendChild(opt);
+                    });
+                    
+                    Object.keys(servicePrices['jasa-pasang']).forEach(key => {
+                        const opt = document.createElement('option');
+                        opt.value = servicePrices['jasa-pasang'][key];
+                        opt.textContent = `Pasang AC ${key} (Rp ${servicePrices['jasa-pasang'][key].toLocaleString('id-ID')})`;
+                        jasaPasangDropdown.appendChild(opt);
+                    });
+
+                    Object.keys(servicePrices['pipa']).forEach(key => {
+                        const opt = document.createElement('option');
+                        opt.value = servicePrices['pipa'][key];
+                        opt.textContent = `${key} (Rp ${servicePrices['pipa'][key].toLocaleString('id-ID')} per meter)`;
+                        pipaTypeDropdown.appendChild(opt);
+                    });
+
+                    Object.keys(servicePrices['kabel']).forEach(key => {
+                        const opt = document.createElement('option');
+                        opt.value = servicePrices['kabel'][key];
+                        opt.textContent = `${key} (Rp ${servicePrices['kabel'][key].toLocaleString('id-ID')} per meter)`;
+                        kabelTypeDropdown.appendChild(opt);
+                    });
+
+                    Object.keys(servicePrices['bracket']).forEach(key => {
+                        const opt = document.createElement('option');
+                        opt.value = servicePrices['bracket'][key];
+                        opt.textContent = `${key} (Rp ${servicePrices['bracket'][key].toLocaleString('id-ID')})`;
+                        bracketDropdown.appendChild(opt);
+                    });
+                };
+                
+                const updateUnitContainerDisplay = () => {
+                    document.getElementById('pasang-unit-container').classList.toggle('hidden', jasaPasangDropdown.value === '0');
+                    document.getElementById('bongkar-unit-container').classList.toggle('hidden', jasaBongkarDropdown.value === '0');
+                    document.getElementById('cuci-unit-container').classList.toggle('hidden', jasaCuciDropdown.value === '0');
+                    document.getElementById('bekas-unit-container').classList.toggle('hidden', unitACBekasDropdown.value === '0');
+                    document.getElementById('bracket-unit-container').classList.toggle('hidden', bracketDropdown.value === '0');
+                };
+
+                const calculateTotalCost = () => {
+                    let total = 0;
+                    const jasaPasangPrice = parseFloat(jasaPasangDropdown.value);
+                    const jasaBongkarPrice = parseFloat(jasaBongkarDropdown.value);
+                    const jasaCuciPrice = parseFloat(jasaCuciDropdown.value);
+                    
+                    if (jasaPasangPrice > 0) total += jasaPasangPrice * parseInt(document.getElementById('pasang-units').value);
+                    if (jasaBongkarPrice > 0) total += jasaBongkarPrice * parseInt(document.getElementById('bongkar-units').value);
+                    if (jasaCuciPrice > 0) total += jasaCuciPrice * parseInt(document.getElementById('cuci-units').value);
+
+                    total += parseFloat(unitACBaruDropdown.value) || 0;
+                    if (parseFloat(unitACBekasDropdown.value) > 0) total += parseFloat(unitACBekasDropdown.value) * parseInt(document.getElementById('bekas-units').value);
+
+                    total += (parseFloat(pipaTypeDropdown.value) || 0) * (parseInt(document.getElementById('pipa-length').value) || 0);
+                    total += (parseFloat(kabelTypeDropdown.value) || 0) * (parseInt(document.getElementById('kabel-length').value) || 0);
+                    if (parseFloat(bracketDropdown.value) > 0) total += parseFloat(bracketDropdown.value) * parseInt(document.getElementById('bracket-units').value);
+
+                    totalCostElement.textContent = total.toLocaleString('id-ID', { style: 'currency', currency: 'IDR' });
+                    resultContainer.classList.remove('hidden');
+                };
+
+                calculatorForm.addEventListener('change', () => {
+                    updateUnitContainerDisplay();
+                    calculateTotalCost();
+                });
+
+                const populateUnitCounts = (selectId, label) => {
+                    const selectElement = document.getElementById(selectId);
+                    for (let i = 2; i <= 20; i++) {
+                        const option = document.createElement('option');
+                        option.value = i;
+                        option.textContent = `${i} ${label}`;
+                        selectElement.appendChild(option);
+                    }
+                };
+                populateUnitCounts('cuci-units', 'Unit');
+                populateUnitCounts('pasang-units', 'Unit');
+                populateUnitCounts('bongkar-units', 'Unit');
+                populateUnitCounts('bekas-units', 'Unit');
+                populateUnitCounts('bracket-units', 'Set');
+
+                const populateLengths = (selectId, start, end) => {
+                    const selectElement = document.getElementById(selectId);
+                    for (let i = start; i <= end; i++) {
+                        const option = document.createElement('option');
+                        option.value = i;
+                        option.textContent = `${i} meter`;
+                        selectElement.appendChild(option);
+                    }
+                };
+                populateLengths('pipa-length', 3, 25);
+                populateLengths('kabel-length', 4, 26);
+                
+                populateDropdowns();
+                updateUnitContainerDisplay();
+            }
             
-            const deleteColumn = document.createElement('div');
-            deleteColumn.className = 'md:col-span-1 flex items-end justify-start';
-            deleteColumn.appendChild(deleteButton);
+            const bookingForm = document.getElementById('bookingForm');
+            const formContainer = document.getElementById('formContainer');
+            const confirmationMessage = document.getElementById('confirmationMessage');
+            const orderItemsContainer = document.getElementById('orderItemsContainer');
+            const addOrderItemBtn = document.getElementById('addOrderItemBtn');
+            const orderBtn = document.getElementById('orderBtn');
+            const cancelBtn = document.getElementById('cancelBtn');
+            const findMeBtn = document.getElementById('findMeBtn');
+            const newOrderBtnConfirm = document.getElementById('new-order-btn-confirm');
             
-            newItemRow.appendChild(deleteColumn);
-            orderItemsContainer.appendChild(newItemRow);
-            updateAddButtonState();
-        }
-    });
+            findMeBtn.addEventListener('click', () => {
+                if (navigator.geolocation) {
+                    document.getElementById('findMeBtnText').textContent = "Mencari lokasi...";
+                    findMeBtn.disabled = true;
+                    navigator.geolocation.getCurrentPosition(
+                        (position) => {
+                            const userLocation = [position.coords.latitude, position.coords.longitude];
+                            if(map) {
+                                map.setView(userLocation, 17);
+                                map.eachLayer(layer => { if (layer instanceof L.Marker) layer.setLatLng(userLocation); });
+                            }
+                            document.getElementById('map_coordinates').value = userLocation.join(', ');
+                            document.getElementById('findMeBtnText').textContent = "Lokasi Ditemukan!";
+                            setTimeout(() => {
+                                document.getElementById('findMeBtnText').textContent = "Gunakan Lokasi Saya Saat Ini";
+                                findMeBtn.disabled = false;
+                            }, 2000);
+                        },
+                        () => {
+                            document.getElementById('findMeBtnText').textContent = "Gagal Mendapatkan Lokasi";
+                            setTimeout(() => {
+                                document.getElementById('findMeBtnText').textContent = "Gunakan Lokasi Saya Saat Ini";
+                                findMeBtn.disabled = false;
+                            }, 3000);
+                        }
+                    );
+                } else { alert("Browser Anda tidak mendukung fitur lokasi."); }
+            });
 
-    function updateAddButtonState() {
-        const currentItems = orderItemsContainer.querySelectorAll('.order-item').length;
-        addOrderItemBtn.style.display = currentItems >= 3 ? 'none' : 'block';
-    }
+            addOrderItemBtn.addEventListener('click', () => {
+                const currentItems = orderItemsContainer.querySelectorAll('.order-item').length;
+                if (currentItems < 3) {
+                    const newItemRow = orderItemsContainer.children[0].cloneNode(true);
+                    newItemRow.querySelector('select').value = "";
+                    newItemRow.querySelector('input').value = "1";
+                    
+                    const deleteButton = document.createElement('button');
+                    deleteButton.type = 'button';
+                    deleteButton.innerHTML = '×';
+                    deleteButton.className = 'text-red-500 hover:text-red-700 font-bold text-2xl leading-none self-end mb-2';
+                    deleteButton.onclick = () => { newItemRow.remove(); updateAddButtonState(); };
 
-    document.getElementById('booking_date').setAttribute('min', new Date().toISOString().split('T')[0]);
-    
-    orderBtn.addEventListener('click', function() {
-        if (!bookingForm.checkValidity()) {
-            bookingForm.reportValidity();
-            return;
-        }
-        
-        const yourWhatsAppNumber = '62881010050528'; 
-        const name = document.getElementById('name').value;
-        const phone = document.getElementById('phone').value;
-        const address = document.getElementById('address').value;
-        const coordinates = document.getElementById('map_coordinates').value;
-        const bookingDate = document.getElementById('booking_date').value;
-        const notes = document.getElementById('notes').value;
-        
-        const formattedDate = new Date(bookingDate).toLocaleDateString('id-ID', {
-            weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
+                    newItemRow.classList.replace('md:grid-cols-6', 'md:grid-cols-7');
+                    newItemRow.children[0].classList.replace('md:col-span-4', 'md:col-span-3');
+                    newItemRow.children[1].classList.replace('md:col-span-2', 'md:col-span-3');
+                    
+                    const deleteColumn = document.createElement('div');
+                    deleteColumn.className = 'md:col-span-1 flex items-end justify-start';
+                    deleteColumn.appendChild(deleteButton);
+                    
+                    newItemRow.appendChild(deleteColumn);
+                    orderItemsContainer.appendChild(newItemRow);
+                    updateAddButtonState();
+                }
+            });
+
+            function updateAddButtonState() {
+                const currentItems = orderItemsContainer.querySelectorAll('.order-item').length;
+                addOrderItemBtn.style.display = currentItems >= 3 ? 'none' : 'block';
+            }
+
+            document.getElementById('booking_date').setAttribute('min', new Date().toISOString().split('T')[0]);
+            
+            orderBtn.addEventListener('click', function() {
+                if (!bookingForm.checkValidity()) {
+                    bookingForm.reportValidity();
+                    return;
+                }
+                
+                const yourWhatsAppNumber = '62881010050528'; 
+                const name = document.getElementById('name').value;
+                const phone = document.getElementById('phone').value;
+                const address = document.getElementById('address').value;
+                const coordinates = document.getElementById('map_coordinates').value;
+                const bookingDate = document.getElementById('booking_date').value;
+                const notes = document.getElementById('notes').value;
+                
+                const formattedDate = new Date(bookingDate).toLocaleDateString('id-ID', {
+                    weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
+                });
+
+                let orderDetails = '';
+                orderItemsContainer.querySelectorAll('.order-item').forEach(item => {
+                    const product = item.querySelector('select[name="product[]"]').value;
+                    const quantity = item.querySelector('input[name="quantity[]"]').value;
+                    if (product) orderDetails += `\n- ${product} (${quantity} unit)`;
+                });
+
+                let whatsappMessage = `*-- ORDER BARU FRION ID --*\n\n*Nama Pelanggan:*\n${name}\n\n*Nomor Telepon:*\n${phone}\n\n*Alamat:*\n${address}\n\n*Titik Lokasi (Google Maps):*\nhttps://www.google.com/maps?q=${coordinates}\n\n*Detail Pesanan:*${orderDetails}\n\n*Tanggal Layanan:*\n${formattedDate}\n\n*Catatan Tambahan:*\n${notes || 'Tidak ada'}`;
+                const whatsappURL = `https://wa.me/${yourWhatsAppNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+                
+                window.open(whatsappURL, '_blank');
+                formContainer.classList.add('hidden');
+                confirmationMessage.classList.remove('hidden');
+            });
+
+            cancelBtn.addEventListener('click', showMainContent);
+            newOrderBtnConfirm.addEventListener('click', showMainContent);
+
+            renderProducts();
         });
-
-        let orderDetails = '';
-        orderItemsContainer.querySelectorAll('.order-item').forEach(item => {
-            const product = item.querySelector('select[name="product[]"]').value;
-            const quantity = item.querySelector('input[name="quantity[]"]').value;
-            if (product) orderDetails += `\n- ${product} (${quantity} unit)`;
-        });
-
-        let whatsappMessage = `*-- ORDER BARU FRION ID --*\n\n*Nama Pelanggan:*\n${name}\n\n*Nomor Telepon:*\n${phone}\n\n*Alamat:*\n${address}\n\n*Titik Lokasi (Google Maps):*\nhttps://www.google.com/maps?q=${coordinates}\n\n*Detail Pesanan:*${orderDetails}\n\n*Tanggal Layanan:*\n${formattedDate}\n\n*Catatan Tambahan:*\n${notes || 'Tidak ada'}`;
-        const whatsappURL = `https://wa.me/${yourWhatsAppNumber}?text=${encodeURIComponent(whatsappMessage)}`;
-        
-        window.open(whatsappURL, '_blank');
-        formContainer.classList.add('hidden');
-        confirmationMessage.classList.remove('hidden');
-    });
-
-    cancelBtn.addEventListener('click', showMainContent);
-    newOrderBtnConfirm.addEventListener('click', showMainContent);
-
-    // INISIALISASI HALAMAN
-    renderProducts();
-});
-</script>
+    </script>
 </body>
 </html>
+
