@@ -1,9 +1,8 @@
+# Memberitahu Netlify untuk bekerja dari dalam folder 'chatbot'
 [build]
-  # Direktori yang berisi file website Anda
-  publish = "chatbot"
-  # Direktori tempat function Anda berada
-  functions = "chatbot/netlify/functions"
+  base    = "chatbot"
+  publish = "."
+  functions = "netlify/functions"
 
 [functions]
-  # Pastikan Netlify menginstall dependency dari package.json Anda
   node_bundler = "esbuild"
