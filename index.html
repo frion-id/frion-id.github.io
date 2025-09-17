@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FRION - Service AC Jakarta Terpercaya | Instalasi & Perbaikan</title>
     <meta name="description" content="FRION menyediakan layanan service AC profesional di Jakarta. Ahli dalam instalasi, perbaikan, cuci AC, dan jual beli AC baru/bekas dengan harga transparan.">
-    <meta name="keywords" content="service ac jakarta, cuci ac, perbaikan ac, instalasi ac, pasang ac, bongkar pasang ac, ac tidak dingin, isi freon ac, tambah freon ac, service ac jakarta selatan, service ac jakarta timur, service ac jakarta pusat, service ac jakarta barat, service ac jakarta utara, service ac panggilan, biaya service ac, jual ac bekas jakarta">
+    <meta name="keywords" content="service ac jakarta, cuci ac, perbaikan ac, instalasi ac, bongkar pasang ac, ac tidak dingin, frion ac, service ac jakarta selatan, service ac jakarta timur, service ac panggilan, biaya service ac, jual ac bekas jakarta">
     <meta name="author" content="FRION">
     <link rel="canonical" href="https://frion-id.github.io/"> 
     <meta property="og:title" content="FRION - Service AC Jakarta Terpercaya | Instalasi & Perbaikan">
@@ -38,7 +38,10 @@
 
     <header id="main-header" class="bg-white shadow-lg fixed top-0 left-0 w-full z-50">
         <nav class="container mx-auto px-6 py-4 flex items-center justify-between">
-            <a href="#" class="text-3xl font-bold text-gray-800">FRION</a>
+            <a href="#" class="flex items-center">
+                <!-- Ganti src="..." dengan URL logo Anda. Atur tinggi logo dengan class h-10, h-12, dll. -->
+                <img src="https://github.com/frion-id/frion-id.github.io/blob/main/logo.png" alt="Logo FRION" class="h-10 w-auto">
+            </a>
             <div class="hidden md:flex items-center space-x-6">
                 <a href="#tentang" class="text-gray-600 hover:text-blue-500 font-medium">Tentang Kami</a>
                 <a href="#layanan" class="text-gray-600 hover:text-blue-500 font-medium">Layanan</a>
@@ -63,7 +66,7 @@
 
     <main id="main-content" class="mt-20">
         <section class="bg-blue-500 text-white py-20 px-6 text-center shadow-lg">
-            <h1 class="text-4xl sm:text-5xl font-bold fade-in">Solusi Terpadu Untuk Kebutuhan AC Anda</h1>
+            <h1 class="text-4xl sm:text-5xl font-bold fade-in">Solusi AC Lengkap untuk Kebutuhan Anda</h1>
             <p class="mt-4 text-xl fade-in-delay">Ahli dalam Instalasi, Perbaikan, dan Perawatan AC</p>
             <a href="#kalkulator" class="mt-8 inline-block bg-white text-blue-500 font-bold py-3 px-8 rounded-full shadow-lg hover:bg-gray-100 transition duration-300 transform hover:scale-105">Hitung Biaya Sekarang</a>
         </section>
@@ -545,7 +548,6 @@ document.addEventListener('DOMContentLoaded', () => {
         mobileMenu.classList.toggle('hidden');
     });
 
-    // PERBAIKAN DI SINI: FUNGSI createProductCard dikembalikan ke versi lengkap
     function createProductCard(product) {
         const card = document.createElement('div');
         card.className = 'bg-white rounded-xl shadow-lg p-6 transform transition duration-300 hover:scale-105';
