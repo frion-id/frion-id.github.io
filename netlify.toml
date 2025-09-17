@@ -1,8 +1,10 @@
-# Memberitahu Netlify untuk bekerja dari dalam folder 'chatbot'
 [build]
-  base    = "chatbot"
-  publish = "."
+  base      = "chatbot"
+  publish   = "."
   functions = "netlify/functions"
 
 [functions]
   node_bundler = "esbuild"
+  # Baris ini memberitahu Netlify untuk tidak menggabungkan modul Google
+  # dan menyediakannya secara eksternal.
+  external_node_modules = ["@google/generative-ai"]
