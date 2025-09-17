@@ -1,7 +1,2 @@
 [build]
-  # Direktori dasar proyek (base directory) ada di dalam folder 'chatbot'
-  base = "chatbot"
-
-  # Direktori tempat Netlify akan menemukan function Anda
-  # (relatif terhadap direktori dasar)
-  functions = "netlify/functions"
+  functions = "chatbot/netlify/functions"
