@@ -1,2 +1,9 @@
 [build]
+  # Direktori yang berisi file website Anda
+  publish = "chatbot"
+  # Direktori tempat function Anda berada
   functions = "chatbot/netlify/functions"
+
+[functions]
+  # Pastikan Netlify menginstall dependency dari package.json Anda
+  node_bundler = "esbuild"
