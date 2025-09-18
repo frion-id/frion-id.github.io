@@ -33,7 +33,6 @@
         @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
         #map { height: 350px; z-index: 1; }
         
-        /* CSS UNTUK TOMBOL SUARA */
         #mute-button {
             position: absolute;
             bottom: 20px;
@@ -88,7 +87,7 @@
                     <a href="#produk" class="text-gray-600 hover:text-blue-500 font-medium">Produk</a>
                     <a href="#kalkulator" class="text-gray-600 hover:text-blue-500 font-medium">Kalkulator Biaya</a>
                     <a href="#artikel" class="text-gray-600 hover:text-blue-500 font-medium">Artikel & Tips</a>
-                    <a href="https://frion-id.netlify.app" target="_blank" rel="noopener noreferrer" class="text-gray-600 hover:text-blue-500 font-medium">🤖 Diagnosa AI</a>
+                    <a href="https://frion-id.netlify.app" target="_blank" rel="noopener noreferrer" class="text-gray-600 hover:text-blue-500 font-medium"> Diagnosa AI</a>
                     <button id="nav-order-btn" class="bg-blue-600 text-white font-bold py-2 px-5 rounded-lg hover:bg-blue-700 transition">Pesan Sekarang</button>
                 </div>
                 <button id="mobile-menu-button" class="md:hidden text-gray-600 hover:text-blue-500">
@@ -101,7 +100,7 @@
                 <a href="#produk" class="block py-2 text-gray-600 hover:text-blue-500 font-medium">Produk</a>
                 <a href="#kalkulator" class="block py-2 text-gray-600 hover:text-blue-500 font-medium">Kalkulator Biaya</a>
                 <a href="#artikel" class="block py-2 text-gray-600 hover:text-blue-500 font-medium">Artikel & Tips</a>
-                <a href="https://frion-id.netlify.app" target="_blank" rel="noopener noreferrer" class="block py-2 text-gray-600 hover:text-blue-500 font-medium">🤖 Diagnosa AI</a>
+                <a href="https://frion-id.netlify.app" target="_blank" rel="noopener noreferrer" class="block py-2 text-gray-600 hover:text-blue-500 font-medium"> Diagnosa AI</a>
                 <button id="mobile-nav-order-btn" class="mt-2 w-full bg-blue-600 text-white font-bold py-2 px-5 rounded-lg hover:bg-blue-700 transition">Pesan Sekarang</button>
             </div>
         </header>
@@ -335,7 +334,7 @@
                     Anda dapat menggunakan asisten AI kami untuk mendapatkan diagnosis awal dan perkiraan masalah secara cepat sebelum memanggil teknisi, bahkan Anda dapat bertanya apapun kepada asisten AI kami seputar AC. 
                 </p>
                 <a href="https://frion-id.netlify.app" target="_blank" rel="noopener noreferrer" class="inline-block bg-blue-600 text-white font-bold py-4 px-10 rounded-lg shadow-lg hover:bg-blue-700 transition duration-300 transform hover:scale-105 text-xl">
-                    🤖 Mulai Percakapan Dengan AI Frion Sekarang
+                     Mulai Percakapan Dengan AI Frion Sekarang
                 </a>
             </section>
             
@@ -370,7 +369,7 @@
                 </div>
             </section>
         </main>
-
+        
         <section id="order-form-section" class="hidden bg-slate-100 flex items-center justify-center min-h-screen p-4">
             <div class="w-full max-w-2xl mx-auto">
                 <div id="mainContainer">
@@ -469,18 +468,57 @@
 
         <footer id="main-footer" class="bg-gray-800 text-white py-8 px-6">
             <div class="container mx-auto text-center">
-                <p>© 2025 FRION. All rights reserved.</p>
+                <p>� 2025 FRION. All rights reserved.</p>
             </div>
         </footer>
+
     </div>
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-    
-    // FUNGSI UNTUK MENJALANKAN SEMUA SCRIPT UTAMA WEBSITE
+
+    // --- Bagian 1: Logika Video Pembuka (Jalankan Segera) ---
+    const splashScreen = document.getElementById('splash-screen');
+    const openingVideo = document.getElementById('opening-video');
+    const websiteContent = document.getElementById('website-content');
+    const muteButton = document.getElementById('mute-button');
+    const iconMuted = document.getElementById('icon-muted');
+    const iconUnmuted = document.getElementById('icon-unmuted');
+
+    if (splashScreen && openingVideo && websiteContent) {
+        document.body.style.overflow = 'hidden';
+
+        openingVideo.muted = true;
+        openingVideo.play().catch(error => {
+            console.log("Autoplay diblokir oleh browser.");
+        });
+
+        muteButton.addEventListener('click', () => {
+            openingVideo.muted = !openingVideo.muted;
+            iconMuted.classList.toggle('hidden');
+            iconUnmuted.classList.toggle('hidden');
+        });
+
+        openingVideo.addEventListener('ended', () => {
+            splashScreen.style.opacity = '0';
+            setTimeout(() => {
+                splashScreen.style.display = 'none';
+                websiteContent.style.opacity = '1';
+                document.body.style.overflow = 'auto';
+                
+                // HANYA SETELAH SEMUANYA TERLIHAT, JALANKAN SCRIPT UTAMA
+                initializeMainWebsite();
+            }, 1000); 
+        });
+    } else {
+        // Jika karena alasan tertentu splash screen tidak ada, jalankan script utama secara langsung
+        initializeMainWebsite();
+    }
+
+    // --- Bagian 2: Fungsi untuk Inisialisasi Website Utama (Jangan jalankan dulu) ---
     function initializeMainWebsite() {
         const acBaruData = [
-            { "Merk AC": "Daikin", "Ukuran PK": 0.5, "Tipe": "FTC15YV14", "Harga": 3900000, "BTU / H": 5000, "Watt": 390, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 3/8", "Buatan": "Indonesia", "Garansi Spare Part": "3 Tahun", "Garansi Kompresor": "5 Tahun" },
+                { "Merk AC": "Daikin", "Ukuran PK": 0.5, "Tipe": "FTC15YV14", "Harga": 3900000, "BTU / H": 5000, "Watt": 390, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 3/8", "Buatan": "Indonesia", "Garansi Spare Part": "3 Tahun", "Garansi Kompresor": "5 Tahun" },
             { "Merk AC": "Daikin", "Ukuran PK": 0.5, "Tipe": "FTP15AV149", "Harga": 3450000, "BTU / H": 5000, "Watt": 390, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 3/8", "Buatan": "Indonesia", "Garansi Spare Part": "1 Tahun", "Garansi Kompresor": "3 Tahun" },
             { "Merk AC": "Daikin", "Ukuran PK": 1, "Tipe": "FTC25YV14", "Harga": 4750000, "BTU / H": 9000, "Watt": 750, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 3/8", "Buatan": "Indonesia", "Garansi Spare Part": "3 Tahun", "Garansi Kompresor": "5 Tahun" },
             { "Merk AC": "Daikin", "Ukuran PK": 1.5, "Tipe": "FTC35YV14", "Harga": 5850000, "BTU / H": 12000, "Watt": 1050, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 3/8", "Buatan": "Indonesia", "Garansi Spare Part": "3 Tahun", "Garansi Kompresor": "5 Tahun" },
@@ -574,7 +612,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const initialCoords = [-6.175392, 106.827153];
                 map = L.map('map').setView(initialCoords, 13);
                 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                    attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                    attribution: '� <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                 }).addTo(map);
                 const marker = L.marker(initialCoords, { draggable: true }).addTo(map);
                 document.getElementById('map_coordinates').value = initialCoords.join(', ');
@@ -711,7 +749,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 newItemRow.querySelector('input').value = "1";
                 const deleteButton = document.createElement('button');
                 deleteButton.type = 'button';
-                deleteButton.innerHTML = '×';
+                deleteButton.innerHTML = '�';
                 deleteButton.className = 'text-red-500 hover:text-red-700 font-bold text-2xl leading-none self-end mb-2';
                 deleteButton.onclick = () => { newItemRow.remove(); updateAddButtonState(); };
                 newItemRow.classList.replace('md:grid-cols-6', 'md:grid-cols-7');
@@ -748,7 +786,7 @@ document.addEventListener('DOMContentLoaded', () => {
         cancelBtn.addEventListener('click', showMainContent);
         newOrderBtnConfirm.addEventListener('click', showMainContent);
         renderProducts();
-    } // Penutup initializeMainWebsite
+    }
 });
 </script>
 </body>
