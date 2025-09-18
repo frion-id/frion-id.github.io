@@ -372,50 +372,114 @@
         </main>
 
         <section id="order-form-section" class="hidden bg-slate-100 flex items-center justify-center min-h-screen p-4">
-           </section>
+            <div class="w-full max-w-2xl mx-auto">
+                <div id="mainContainer">
+                    <div id="formContainer" class="bg-white p-8 rounded-2xl shadow-lg transition-all duration-500">
+                        <div class="text-center mb-8">
+                            <h1 class="text-3xl font-bold text-slate-800">Form Order FRION ID</h1>
+                            <p class="text-slate-500 mt-2">Silakan isi detail di bawah ini untuk melakukan pemesanan.</p>
+                        </div>
+                        <form id="bookingForm" class="space-y-6">
+                            <div>
+                                <h2 class="text-xl font-semibold text-slate-700 border-b pb-2 mb-4">Informasi Pelanggan</h2>
+                                <div class="grid md:grid-cols-2 gap-6">
+                                    <div>
+                                        <label for="name" class="block text-sm font-medium text-slate-600 mb-1">Nama Lengkap</label>
+                                        <input type="text" id="name" name="name" required class="w-full px-4 py-2 bg-slate-50 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
+                                    </div>
+                                    <div>
+                                        <label for="phone" class="block text-sm font-medium text-slate-600 mb-1">Nomor Telepon (WhatsApp)</label>
+                                        <input type="tel" id="phone" name="phone" required class="w-full px-4 py-2 bg-slate-50 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
+                                    </div>
+                                </div>
+                                <div class="mt-6">
+                                    <label for="address" class="block text-sm font-medium text-slate-600 mb-1">Alamat</label>
+                                    <textarea id="address" name="address" rows="3" required class="w-full px-4 py-2 bg-slate-50 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition" placeholder="Masukkan alamat lengkap Anda"></textarea>
+                                </div>
+                                 <div class="mt-6">
+                                    <label class="block text-sm font-medium text-slate-600 mb-1">Tentukan Titik Peta Lokasi</label>
+                                    <button type="button" id="findMeBtn" class="mb-2 w-full flex items-center justify-center gap-2 px-4 py-2 bg-white border border-slate-300 rounded-lg hover:bg-slate-50 transition text-sm text-slate-700">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                            <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
+                                        </svg>
+                                        <span id="findMeBtnText">Gunakan Lokasi Saya Saat Ini</span>
+                                    </button>
+                                    <div id="map" class="w-full rounded-lg border border-slate-300 mt-1"></div>
+                                    <input type="hidden" id="map_coordinates" name="map_coordinates">
+                                    <p class="text-xs text-slate-500 mt-2">Atau geser penanda merah untuk menyesuaikan lokasi Anda.</p>
+                                </div>
+                            </div>
+
+                            <div>
+                                <h2 class="text-xl font-semibold text-slate-700 border-b pb-2 mb-4">Detail Pesanan</h2>
+                                <div id="orderItemsContainer" class="space-y-4">
+                                    <div class="order-item grid grid-cols-1 md:grid-cols-6 gap-4 items-center">
+                                        <div class="md:col-span-4">
+                                            <label class="block text-sm font-medium text-slate-600 mb-1">Kategori Layanan</label>
+                                            <select name="product[]" required class="w-full px-4 py-2 bg-slate-50 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
+                                                <option value="" disabled selected>-- Pilih salah satu --</option>
+                                                <option value="Beli AC Baru">Beli AC Baru</option>
+                                                <option value="Beli AC Bekas">Beli AC Bekas</option>
+                                                <option value="Jual AC">Jual AC</option>
+                                                <option value="Tukar Tambah AC">Tukar Tambah AC</option>
+                                                <option value="Perawatan AC">Perawatan AC</option>
+                                                <option value="Perbaikan AC">Perbaikan AC</option>
+                                            </select>
+                                        </div>
+                                        <div class="md:col-span-2">
+                                            <label class="block text-sm font-medium text-slate-600 mb-1">Jumlah Unit</label>
+                                            <input type="number" name="quantity[]" min="1" value="1" required class="w-full px-4 py-2 bg-slate-50 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
+                                        </div>
+                                    </div>
+                                </div>
+                                <button type="button" id="addOrderItemBtn" class="mt-4 text-sm font-semibold text-blue-600 hover:text-blue-800 transition">+ Tambah Pesanan Lain</button>
+                                
+                                <div class="mt-6">
+                                    <label for="booking_date" class="block text-sm font-medium text-slate-600 mb-1">Tanggal Layanan</label>
+                                    <input type="date" id="booking_date" name="booking_date" required class="w-full px-4 py-2 bg-slate-50 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
+                                </div>
+                            </div>
+
+                            <div>
+                                <label for="notes" class="block text-sm font-medium text-slate-600 mb-1">Catatan Tambahan (Opsional)</label>
+                                <textarea id="notes" name="notes" rows="4" class="w-full px-4 py-2 bg-slate-50 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition" placeholder="Contoh: AC tidak dingin, unit di lantai 2, dll."></textarea>
+                            </div>
+                        </form>
+                         <div class="flex flex-col md:flex-row gap-4 pt-6">
+                            <button type="button" id="cancelBtn" class="w-full md:w-1/2 bg-slate-600 text-white font-bold py-3 px-4 rounded-lg hover:bg-slate-700 transition">
+                                Kembali ke Halaman Utama
+                            </button>
+                            <button type="button" id="orderBtn" class="w-full md:w-1/2 bg-blue-600 text-white font-bold py-3 px-4 rounded-lg hover:bg-blue-700 transition">
+                                Kirim Pesanan
+                            </button>
+                        </div>
+                    </div>
+
+                    <div id="confirmationMessage" class="hidden bg-white p-8 rounded-2xl shadow-lg text-center">
+                         <svg class="w-16 h-16 mx-auto text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        <h1 class="text-3xl font-bold text-slate-800 mt-4">Terima Kasih!</h1>
+                        <p class="text-slate-500 mt-2 px-4">Pesanan Anda telah dikirim. Kami akan segera menghubungi Anda untuk konfirmasi.</p>
+                        <button id="new-order-btn-confirm" class="mt-8 w-full md:w-auto bg-blue-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-700 transition">
+                            Kembali ke Halaman Utama
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
 
         <footer id="main-footer" class="bg-gray-800 text-white py-8 px-6">
             <div class="container mx-auto text-center">
                 <p>© 2025 FRION. All rights reserved.</p>
             </div>
         </footer>
+    </div>
 
-    </div> <script>
+<script>
 document.addEventListener('DOMContentLoaded', () => {
-    // ===== KODE JAVASCRIPT UNTUK VIDEO PEMBUKA & TOMBOL SUARA =====
-    const splashScreen = document.getElementById('splash-screen');
-    const openingVideo = document.getElementById('opening-video');
-    const websiteContent = document.getElementById('website-content');
-    const muteButton = document.getElementById('mute-button');
-    const iconMuted = document.getElementById('icon-muted');
-    const iconUnmuted = document.getElementById('icon-unmuted');
-
-    if (splashScreen && openingVideo && websiteContent) {
-        document.body.style.overflow = 'hidden';
-
-        openingVideo.muted = true;
-        openingVideo.play().catch(error => {
-            console.log("Autoplay diblokir oleh browser.");
-        });
-
-        muteButton.addEventListener('click', () => {
-            openingVideo.muted = !openingVideo.muted;
-            iconMuted.classList.toggle('hidden');
-            iconUnmuted.classList.toggle('hidden');
-        });
-
-        openingVideo.addEventListener('ended', () => {
-            splashScreen.style.opacity = '0';
-            setTimeout(() => {
-                splashScreen.style.display = 'none';
-                websiteContent.style.opacity = '1';
-                document.body.style.overflow = 'auto';
-            }, 1000); 
-        });
-    }
-
-    // ===== KODE JAVASCRIPT LAMA ANDA DIMULAI DI SINI =====
-    const acBaruData = [
+    
+    // FUNGSI UNTUK MENJALANKAN SEMUA SCRIPT UTAMA WEBSITE
+    function initializeMainWebsite() {
+        const acBaruData = [
             { "Merk AC": "Daikin", "Ukuran PK": 0.5, "Tipe": "FTC15YV14", "Harga": 3900000, "BTU / H": 5000, "Watt": 390, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 3/8", "Buatan": "Indonesia", "Garansi Spare Part": "3 Tahun", "Garansi Kompresor": "5 Tahun" },
             { "Merk AC": "Daikin", "Ukuran PK": 0.5, "Tipe": "FTP15AV149", "Harga": 3450000, "BTU / H": 5000, "Watt": 390, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 3/8", "Buatan": "Indonesia", "Garansi Spare Part": "1 Tahun", "Garansi Kompresor": "3 Tahun" },
             { "Merk AC": "Daikin", "Ukuran PK": 1, "Tipe": "FTC25YV14", "Harga": 4750000, "BTU / H": 9000, "Watt": 750, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 3/8", "Buatan": "Indonesia", "Garansi Spare Part": "3 Tahun", "Garansi Kompresor": "5 Tahun" },
@@ -487,205 +551,205 @@ document.addEventListener('DOMContentLoaded', () => {
             { "Merk AC": "Hisense", "Ukuran PK": 1.5, "Tipe": "AN12CDG", "Harga": 3950000, "BTU / H": 12000, "Watt": 1019, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 1/2", "Buatan": "Cina", "Garansi Spare Part": "3 Tahun", "Garansi Kompresor": "10 Tahun" },
             { "Merk AC": "Hisense", "Ukuran PK": 2, "Tipe": "AN18CDG", "Harga": 5250000, "BTU / H": 18000, "Watt": 1589, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 1/2", "Buatan": "Cina", "Garansi Spare Part": "3 Tahun", "Garansi Kompresor": "10 Tahun" }
         ];
-    const acBekasData = [ { brand: 'Daikin', pk: '1/2', harga: 1800000 }, { brand: 'Daikin', pk: '1', harga: 2000000 }, { brand: 'Daikin', pk: '1.5', harga: 2200000 }, { brand: 'Daikin', pk: '2', harga: 2500000 }, { brand: 'Gree', pk: '1/2', harga: 1600000 }, { brand: 'Gree', pk: '1', harga: 1800000 }, { brand: 'Gree', pk: '1.5', harga: 2000000 }, { brand: 'Gree', pk: '2', harga: 2300000 }, { brand: 'Panasonic', pk: '1/2', harga: 1600000 }, { brand: 'Panasonic', pk: '1', harga: 1800000 }, { brand: 'Panasonic', pk: '1.5', harga: 2000000 }, { brand: 'Panasonic', pk: '2', harga: 2300000 }, { brand: 'Sharp', pk: '1/2', harga: 1500000 }, { brand: 'Sharp', pk: '1', harga: 1700000 }, { brand: 'Sharp', pk: '1.5', harga: 1900000 }, { brand: 'Sharp', pk: '2', harga: 2100000 }, { brand: 'Midea', pk: '1/2', harga: 1500000 }, { brand: 'Midea', pk: '1', harga: 1700000 }, { brand: 'Midea', pk: '1.5', harga: 1900000 }, { brand: 'Midea', pk: '2', harga: 2100000 }, { brand: 'Samsung', pk: '1/2', harga: 1500000 }, { brand: 'Samsung', pk: '1', harga: 1700000 }, { brand: 'Samsung', pk: '1.5', harga: 1900000 }, { brand: 'Samsung', pk: '2', harga: 2100000 }, { brand: 'LG', pk: '1/2', harga: 1500000 }, { brand: 'LG', pk: '1', harga: 1700000 }, { brand: 'LG', pk: '1.5', harga: 1900000 }, { brand: 'LG', pk: '2', harga: 2100000 }, { brand: 'Polytron', pk: '1/2', harga: 1500000 }, { brand: 'Polytron', pk: '1', harga: 1700000 }, { brand: 'Polytron', pk: '1.5', harga: 1900000 }, { brand: 'Polytron', pk: '2', harga: 2100000 }, { brand: 'Aqua', pk: '1/2', harga: 1500000 }, { brand: 'Aqua', pk: '1', harga: 1700000 }, { brand: 'Aqua', pk: '1.5', harga: 1900000 }, { brand: 'Aqua', pk: '2', harga: 2100000 }, { brand: 'Hisense', pk: '1/2', harga: 1500000 }, { brand: 'Hisense', pk: '1', harga: 1700000 }, { brand: 'Hisense', pk: '1.5', harga: 1900000 }, { brand: 'Hisense', pk: '2', harga: 2100000 }, { brand: 'Changhong', pk: '1/2', harga: 1500000 }, { brand: 'Changhong', pk: '1', harga: 1700000 }, { brand: 'Changhong', pk: '1.5', harga: 1900000 }, { brand: 'Changhong', pk: '2', harga: 2100000 }, { brand: 'Mitsubishi', pk: '1/2', harga: 1500000 }, { brand: 'Mitsubishi', pk: '1', harga: 1700000 }, { brand: 'Mitsubishi', pk: '1.5', harga: 1900000 }, { brand: 'Mitsubishi', pk: '2', harga: 2100000 } ];
-    const servicePrices = { 'jasa-pasang': { '0.5 - 1 PK': 350000, '1.5 PK': 450000, '2 PK': 600000, '2.5 PK': 750000 }, 'pipa': { '1/4 + 3/8': 80000, '1/4 + 1/2': 100000, '1/4 + 5/8': 120000, '3/8 + 5/8': 150000 }, 'kabel': { '3 x 1.5 mm': 20000, '4 x 1.5 mm': 25000, '3 x 2.5 mm': 30000, '4 x 2.5 mm': 35000 }, 'bracket': { '1/2 PK - 1 PK': 65000, '1.5 PK - 2 PK': 95000, '2.5 PK': 120000 }, 'selang_drain': 0 };
+        const acBekasData = [ { brand: 'Daikin', pk: '1/2', harga: 1800000 }, { brand: 'Daikin', pk: '1', harga: 2000000 }, { brand: 'Daikin', pk: '1.5', harga: 2200000 }, { brand: 'Daikin', pk: '2', harga: 2500000 }, { brand: 'Gree', pk: '1/2', harga: 1600000 }, { brand: 'Gree', pk: '1', harga: 1800000 }, { brand: 'Gree', pk: '1.5', harga: 2000000 }, { brand: 'Gree', pk: '2', harga: 2300000 }, { brand: 'Panasonic', pk: '1/2', harga: 1600000 }, { brand: 'Panasonic', pk: '1', harga: 1800000 }, { brand: 'Panasonic', pk: '1.5', harga: 2000000 }, { brand: 'Panasonic', pk: '2', harga: 2300000 }, { brand: 'Sharp', pk: '1/2', harga: 1500000 }, { brand: 'Sharp', pk: '1', harga: 1700000 }, { brand: 'Sharp', pk: '1.5', harga: 1900000 }, { brand: 'Sharp', pk: '2', harga: 2100000 }, { brand: 'Midea', pk: '1/2', harga: 1500000 }, { brand: 'Midea', pk: '1', harga: 1700000 }, { brand: 'Midea', pk: '1.5', harga: 1900000 }, { brand: 'Midea', pk: '2', harga: 2100000 }, { brand: 'Samsung', pk: '1/2', harga: 1500000 }, { brand: 'Samsung', pk: '1', harga: 1700000 }, { brand: 'Samsung', pk: '1.5', harga: 1900000 }, { brand: 'Samsung', pk: '2', harga: 2100000 }, { brand: 'LG', pk: '1/2', harga: 1500000 }, { brand: 'LG', pk: '1', harga: 1700000 }, { brand: 'LG', pk: '1.5', harga: 1900000 }, { brand: 'LG', pk: '2', harga: 2100000 }, { brand: 'Polytron', pk: '1/2', harga: 1500000 }, { brand: 'Polytron', pk: '1', harga: 1700000 }, { brand: 'Polytron', pk: '1.5', harga: 1900000 }, { brand: 'Polytron', pk: '2', harga: 2100000 }, { brand: 'Aqua', pk: '1/2', harga: 1500000 }, { brand: 'Aqua', pk: '1', harga: 1700000 }, { brand: 'Aqua', pk: '1.5', harga: 1900000 }, { brand: 'Aqua', pk: '2', harga: 2100000 }, { brand: 'Hisense', pk: '1/2', harga: 1500000 }, { brand: 'Hisense', pk: '1', harga: 1700000 }, { brand: 'Hisense', pk: '1.5', harga: 1900000 }, { brand: 'Hisense', pk: '2', harga: 2100000 }, { brand: 'Changhong', pk: '1/2', harga: 1500000 }, { brand: 'Changhong', pk: '1', harga: 1700000 }, { brand: 'Changhong', pk: '1.5', harga: 1900000 }, { brand: 'Changhong', pk: '2', harga: 2100000 }, { brand: 'Mitsubishi', pk: '1/2', harga: 1500000 }, { brand: 'Mitsubishi', pk: '1', harga: 1700000 }, { brand: 'Mitsubishi', pk: '1.5', harga: 1900000 }, { brand: 'Mitsubishi', pk: '2', harga: 2100000 } ];
+        const servicePrices = { 'jasa-pasang': { '0.5 - 1 PK': 350000, '1.5 PK': 450000, '2 PK': 600000, '2.5 PK': 750000 }, 'pipa': { '1/4 + 3/8': 80000, '1/4 + 1/2': 100000, '1/4 + 5/8': 120000, '3/8 + 5/8': 150000 }, 'kabel': { '3 x 1.5 mm': 20000, '4 x 1.5 mm': 25000, '3 x 2.5 mm': 30000, '4 x 2.5 mm': 35000 }, 'bracket': { '1/2 PK - 1 PK': 65000, '1.5 PK - 2 PK': 95000, '2.5 PK': 120000 }, 'selang_drain': 0 };
 
-    const mainHeader = document.getElementById('main-header');
-    const mainContent = document.getElementById('main-content');
-    const mainFooter = document.getElementById('main-footer');
-    const orderFormSection = document.getElementById('order-form-section');
-    const showOrderFormBtn = document.getElementById('show-order-form-btn');
-    const navOrderBtn = document.getElementById('nav-order-btn');
-    const mobileNavOrderBtn = document.getElementById('mobile-nav-order-btn');
-    const mobileMenuButton = document.getElementById('mobile-menu-button');
-    const mobileMenu = document.getElementById('mobile-menu');
-    let map = null;
-    function showOrderForm() {
-        mainHeader.classList.add('hidden');
-        mainContent.classList.add('hidden');
-        mainFooter.classList.add('hidden');
-        orderFormSection.classList.remove('hidden');
-        window.scrollTo(0, 0);
-        if (!map) {
-            const initialCoords = [-6.175392, 106.827153];
-            map = L.map('map').setView(initialCoords, 13);
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            }).addTo(map);
-            const marker = L.marker(initialCoords, { draggable: true }).addTo(map);
-            document.getElementById('map_coordinates').value = initialCoords.join(', ');
-            marker.on('dragend', function (event) {
-                const position = marker.getLatLng();
-                document.getElementById('map_coordinates').value = [position.lat, position.lng].join(', ');
-            });
+        const mainHeader = document.getElementById('main-header');
+        const mainContent = document.getElementById('main-content');
+        const mainFooter = document.getElementById('main-footer');
+        const orderFormSection = document.getElementById('order-form-section');
+        const showOrderFormBtn = document.getElementById('show-order-form-btn');
+        const navOrderBtn = document.getElementById('nav-order-btn');
+        const mobileNavOrderBtn = document.getElementById('mobile-nav-order-btn');
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        let map = null;
+        function showOrderForm() {
+            mainHeader.classList.add('hidden');
+            mainContent.classList.add('hidden');
+            mainFooter.classList.add('hidden');
+            orderFormSection.classList.remove('hidden');
+            window.scrollTo(0, 0);
+            if (!map) {
+                const initialCoords = [-6.175392, 106.827153];
+                map = L.map('map').setView(initialCoords, 13);
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                }).addTo(map);
+                const marker = L.marker(initialCoords, { draggable: true }).addTo(map);
+                document.getElementById('map_coordinates').value = initialCoords.join(', ');
+                marker.on('dragend', function (event) {
+                    const position = marker.getLatLng();
+                    document.getElementById('map_coordinates').value = [position.lat, position.lng].join(', ');
+                });
+            }
+            setTimeout(() => map.invalidateSize(), 10);
         }
-        setTimeout(() => map.invalidateSize(), 10);
-    }
-    function showMainContent() {
-        orderFormSection.classList.add('hidden');
-        mainHeader.classList.remove('hidden');
-        mainContent.classList.remove('hidden');
-        mainFooter.classList.remove('hidden');
-        window.scrollTo(0, 0);
-        document.getElementById('formContainer').classList.remove('hidden');
-        document.getElementById('confirmationMessage').classList.add('hidden');
-        document.getElementById('bookingForm').reset();
-    }
-    showOrderFormBtn.addEventListener('click', showOrderForm);
-    navOrderBtn.addEventListener('click', showOrderForm);
-    mobileNavOrderBtn.addEventListener('click', () => {
-        mobileMenu.classList.add('hidden');
-        showOrderForm();
-    });
-    mobileMenuButton.addEventListener('click', () => {
-        mobileMenu.classList.toggle('hidden');
-    });
+        function showMainContent() {
+            orderFormSection.classList.add('hidden');
+            mainHeader.classList.remove('hidden');
+            mainContent.classList.remove('hidden');
+            mainFooter.classList.remove('hidden');
+            window.scrollTo(0, 0);
+            document.getElementById('formContainer').classList.remove('hidden');
+            document.getElementById('confirmationMessage').classList.add('hidden');
+            document.getElementById('bookingForm').reset();
+        }
+        showOrderFormBtn.addEventListener('click', showOrderForm);
+        navOrderBtn.addEventListener('click', showOrderForm);
+        mobileNavOrderBtn.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+            showOrderForm();
+        });
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
 
-    function createProductCard(product) {
-        const card = document.createElement('div');
-        card.className = 'bg-white rounded-xl shadow-lg p-6 transform transition duration-300 hover:scale-105';
-        const imageSrc = `https://placehold.co/400x250/3b82f6/ffffff?text=${product['Merk AC']}`;
-        const formatter = new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 });
-        const formattedPrice = formatter.format(product['Harga']);
-        card.innerHTML = `
-            <img src="${imageSrc}" alt="${product['Merk AC']} AC" class="w-full h-40 object-cover rounded-md mb-4">
-            <h3 class="text-xl font-bold text-gray-800">${product['Merk AC']} ${product['Ukuran PK']} PK - ${product['Tipe']}</h3>
-            <p class="mt-2 text-2xl font-extrabold text-blue-600">${formattedPrice}</p>
-            <div class="mt-4 text-sm text-gray-600 space-y-1">
-                <p><strong>BTU/h:</strong> ${product['BTU / H']}</p>
-                <p><strong>Daya Listrik:</strong> ${product['Watt']} W</p>
-                <p><strong>Jenis Refrigerant:</strong> ${product['Jenis Refrigerant']}</p>
-                <p><strong>Ukuran Pipa:</strong> ${product['Ukuran Pipa']}</p>
-                <p><strong>Buatan:</strong> ${product['Buatan']}</p>
-                <p><strong>Garansi Spare Part:</strong> ${product['Garansi Spare Part']}</p>
-                <p><strong>Garansi Kompresor:</strong> ${product['Garansi Kompresor']}</p>
-            </div>`;
-        return card;
-    }
+        function createProductCard(product) {
+            const card = document.createElement('div');
+            card.className = 'bg-white rounded-xl shadow-lg p-6 transform transition duration-300 hover:scale-105';
+            const imageSrc = `https://placehold.co/400x250/3b82f6/ffffff?text=${product['Merk AC']}`;
+            const formatter = new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 });
+            const formattedPrice = formatter.format(product['Harga']);
+            card.innerHTML = `
+                <img src="${imageSrc}" alt="${product['Merk AC']} AC" class="w-full h-40 object-cover rounded-md mb-4">
+                <h3 class="text-xl font-bold text-gray-800">${product['Merk AC']} ${product['Ukuran PK']} PK - ${product['Tipe']}</h3>
+                <p class="mt-2 text-2xl font-extrabold text-blue-600">${formattedPrice}</p>
+                <div class="mt-4 text-sm text-gray-600 space-y-1">
+                    <p><strong>BTU/h:</strong> ${product['BTU / H']}</p>
+                    <p><strong>Daya Listrik:</strong> ${product['Watt']} W</p>
+                    <p><strong>Jenis Refrigerant:</strong> ${product['Jenis Refrigerant']}</p>
+                    <p><strong>Ukuran Pipa:</strong> ${product['Ukuran Pipa']}</p>
+                    <p><strong>Buatan:</strong> ${product['Buatan']}</p>
+                    <p><strong>Garansi Spare Part:</strong> ${product['Garansi Spare Part']}</p>
+                    <p><strong>Garansi Kompresor:</strong> ${product['Garansi Kompresor']}</p>
+                </div>`;
+            return card;
+        }
 
-    function renderProducts() {
-        const productListContainer = document.getElementById('product-list');
-        if (productListContainer) {
-            productListContainer.innerHTML = '';
-            acBaruData.forEach(product => productListContainer.appendChild(createProductCard(product)));
+        function renderProducts() {
+            const productListContainer = document.getElementById('product-list');
+            if (productListContainer) {
+                productListContainer.innerHTML = '';
+                acBaruData.forEach(product => productListContainer.appendChild(createProductCard(product)));
+            }
         }
-    }
-    const calculatorForm = document.getElementById('calculator-form');
-    if (calculatorForm) {
-        const totalCostElement = document.getElementById('total-cost');
-        const resultContainer = document.getElementById('result-container');
-        const unitACBaruDropdown = document.getElementById('unit-ac-baru');
-        const unitACBekasDropdown = document.getElementById('unit-ac-bekas');
-        const pipaTypeDropdown = document.getElementById('pipa-type');
-        const kabelTypeDropdown = document.getElementById('kabel-type');
-        const bracketDropdown = document.getElementById('bracket');
-        const jasaPasangDropdown = document.getElementById('jasa-pasang');
-        const jasaBongkarDropdown = document.getElementById('jasa-bongkar');
-        const jasaCuciDropdown = document.getElementById('jasa-cuci');
-        const populateDropdowns = () => {
-            acBaruData.forEach(p => { const opt = document.createElement('option'); opt.value = p['Harga']; opt.textContent = `${p['Merk AC']} ${p['Ukuran PK']} PK (${p['Tipe']}) - Rp ${p['Harga'].toLocaleString('id-ID')}`; unitACBaruDropdown.appendChild(opt); });
-            acBekasData.forEach(p => { const opt = document.createElement('option'); opt.value = p['harga']; opt.textContent = `${p['brand']} ${p['pk']} PK - Rp ${p['harga'].toLocaleString('id-ID')}`; unitACBekasDropdown.appendChild(opt); });
-            Object.keys(servicePrices['jasa-pasang']).forEach(key => { const opt = document.createElement('option'); opt.value = servicePrices['jasa-pasang'][key]; opt.textContent = `Pasang AC ${key} (Rp ${servicePrices['jasa-pasang'][key].toLocaleString('id-ID')})`; jasaPasangDropdown.appendChild(opt); });
-            Object.keys(servicePrices['pipa']).forEach(key => { const opt = document.createElement('option'); opt.value = servicePrices['pipa'][key]; opt.textContent = `${key} (Rp ${servicePrices['pipa'][key].toLocaleString('id-ID')} per meter)`; pipaTypeDropdown.appendChild(opt); });
-            Object.keys(servicePrices['kabel']).forEach(key => { const opt = document.createElement('option'); opt.value = servicePrices['kabel'][key]; opt.textContent = `${key} (Rp ${servicePrices['kabel'][key].toLocaleString('id-ID')} per meter)`; kabelTypeDropdown.appendChild(opt); });
-            Object.keys(servicePrices['bracket']).forEach(key => { const opt = document.createElement('option'); opt.value = servicePrices['bracket'][key]; opt.textContent = `${key} (Rp ${servicePrices['bracket'][key].toLocaleString('id-ID')})`; bracketDropdown.appendChild(opt); });
-        };
-        const updateUnitContainerDisplay = () => {
-            document.getElementById('pasang-unit-container').classList.toggle('hidden', jasaPasangDropdown.value === '0');
-            document.getElementById('bongkar-unit-container').classList.toggle('hidden', jasaBongkarDropdown.value === '0');
-            document.getElementById('cuci-unit-container').classList.toggle('hidden', jasaCuciDropdown.value === '0');
-            document.getElementById('baru-unit-container').classList.toggle('hidden', unitACBaruDropdown.value === '0');
-            document.getElementById('bekas-unit-container').classList.toggle('hidden', unitACBekasDropdown.value === '0');
-            document.getElementById('bracket-unit-container').classList.toggle('hidden', bracketDropdown.value === '0');
-        };
-        const calculateTotalCost = () => {
-            let total = 0;
-            const jasaPasangPrice = parseFloat(jasaPasangDropdown.value) || 0;
-            const jasaBongkarPrice = parseFloat(jasaBongkarDropdown.value) || 0;
-            const jasaCuciPrice = parseFloat(jasaCuciDropdown.value) || 0;
-            if (jasaPasangPrice > 0) total += jasaPasangPrice * parseInt(document.getElementById('pasang-units').value);
-            if (jasaBongkarPrice > 0) total += jasaBongkarPrice * parseInt(document.getElementById('bongkar-units').value);
-            if (jasaCuciPrice > 0) total += jasaCuciPrice * parseInt(document.getElementById('cuci-units').value);
-            const unitACBaruPrice = parseFloat(unitACBaruDropdown.value) || 0;
-            if (unitACBaruPrice > 0) { total += unitACBaruPrice * parseInt(document.getElementById('baru-units').value); }
-            if (parseFloat(unitACBekasDropdown.value) > 0) total += parseFloat(unitACBekasDropdown.value) * parseInt(document.getElementById('bekas-units').value);
-            total += (parseFloat(pipaTypeDropdown.value) || 0) * (parseInt(document.getElementById('pipa-length').value) || 0);
-            total += (parseFloat(kabelTypeDropdown.value) || 0) * (parseInt(document.getElementById('kabel-length').value) || 0);
-            if (parseFloat(bracketDropdown.value) > 0) total += parseFloat(bracketDropdown.value) * parseInt(document.getElementById('bracket-units').value);
-            totalCostElement.textContent = total.toLocaleString('id-ID', { style: 'currency', currency: 'IDR' });
-            resultContainer.classList.remove('hidden');
-        };
-        calculatorForm.addEventListener('change', () => { updateUnitContainerDisplay(); calculateTotalCost(); });
-        const populateUnitCounts = (selectId, label) => { const selectElement = document.getElementById(selectId); for (let i = 2; i <= 20; i++) { const option = document.createElement('option'); option.value = i; option.textContent = `${i} ${label}`; selectElement.appendChild(option); } };
-        populateUnitCounts('cuci-units', 'Unit');
-        populateUnitCounts('pasang-units', 'Unit');
-        populateUnitCounts('bongkar-units', 'Unit');
-        populateUnitCounts('baru-units', 'Unit');
-        populateUnitCounts('bekas-units', 'Unit');
-        populateUnitCounts('bracket-units', 'Set');
-        const populateLengths = (selectId, start, end) => { const selectElement = document.getElementById(selectId); for (let i = start; i <= end; i++) { const option = document.createElement('option'); option.value = i; option.textContent = `${i} meter`; selectElement.appendChild(option); } };
-        populateLengths('pipa-length', 3, 25);
-        populateLengths('kabel-length', 4, 26);
-        populateDropdowns();
-        updateUnitContainerDisplay();
-    }
-    const bookingForm = document.getElementById('bookingForm');
-    const formContainer = document.getElementById('formContainer');
-    const confirmationMessage = document.getElementById('confirmationMessage');
-    const orderItemsContainer = document.getElementById('orderItemsContainer');
-    const addOrderItemBtn = document.getElementById('addOrderItemBtn');
-    const orderBtn = document.getElementById('orderBtn');
-    const cancelBtn = document.getElementById('cancelBtn');
-    const findMeBtn = document.getElementById('findMeBtn');
-    const newOrderBtnConfirm = document.getElementById('new-order-btn-confirm');
-    findMeBtn.addEventListener('click', () => { if (navigator.geolocation) { document.getElementById('findMeBtnText').textContent = "Mencari lokasi..."; findMeBtn.disabled = true; navigator.geolocation.getCurrentPosition( (position) => { const userLocation = [position.coords.latitude, position.coords.longitude]; if(map) { map.setView(userLocation, 17); map.eachLayer(layer => { if (layer instanceof L.Marker) layer.setLatLng(userLocation); }); } document.getElementById('map_coordinates').value = userLocation.join(', '); document.getElementById('findMeBtnText').textContent = "Lokasi Ditemukan!"; setTimeout(() => { document.getElementById('findMeBtnText').textContent = "Gunakan Lokasi Saya Saat Ini"; findMeBtn.disabled = false; }, 2000); }, () => { document.getElementById('findMeBtnText').textContent = "Gagal Mendapatkan Lokasi"; setTimeout(() => { document.getElementById('findMeBtnText').textContent = "Gunakan Lokasi Saya Saat Ini"; findMeBtn.disabled = false; }, 3000); } ); } else { alert("Browser Anda tidak mendukung fitur lokasi."); } });
-    addOrderItemBtn.addEventListener('click', () => {
-        const currentItems = orderItemsContainer.querySelectorAll('.order-item').length;
-        if (currentItems < 3) {
-            const newItemRow = orderItemsContainer.children[0].cloneNode(true);
-            newItemRow.querySelector('select').value = "";
-            newItemRow.querySelector('input').value = "1";
-            const deleteButton = document.createElement('button');
-            deleteButton.type = 'button';
-            deleteButton.innerHTML = '×';
-            deleteButton.className = 'text-red-500 hover:text-red-700 font-bold text-2xl leading-none self-end mb-2';
-            deleteButton.onclick = () => { newItemRow.remove(); updateAddButtonState(); };
-            newItemRow.classList.replace('md:grid-cols-6', 'md:grid-cols-7');
-            newItemRow.children[0].classList.replace('md:col-span-4', 'md:col-span-3');
-            newItemRow.children[1].classList.replace('md:col-span-2', 'md:col-span-3');
-            const deleteColumn = document.createElement('div');
-            deleteColumn.className = 'md:col-span-1 flex items-end justify-start';
-            deleteColumn.appendChild(deleteButton);
-            newItemRow.appendChild(deleteColumn);
-            orderItemsContainer.appendChild(newItemRow);
-            updateAddButtonState();
+        const calculatorForm = document.getElementById('calculator-form');
+        if (calculatorForm) {
+            const totalCostElement = document.getElementById('total-cost');
+            const resultContainer = document.getElementById('result-container');
+            const unitACBaruDropdown = document.getElementById('unit-ac-baru');
+            const unitACBekasDropdown = document.getElementById('unit-ac-bekas');
+            const pipaTypeDropdown = document.getElementById('pipa-type');
+            const kabelTypeDropdown = document.getElementById('kabel-type');
+            const bracketDropdown = document.getElementById('bracket');
+            const jasaPasangDropdown = document.getElementById('jasa-pasang');
+            const jasaBongkarDropdown = document.getElementById('jasa-bongkar');
+            const jasaCuciDropdown = document.getElementById('jasa-cuci');
+            const populateDropdowns = () => {
+                acBaruData.forEach(p => { const opt = document.createElement('option'); opt.value = p['Harga']; opt.textContent = `${p['Merk AC']} ${p['Ukuran PK']} PK (${p['Tipe']}) - Rp ${p['Harga'].toLocaleString('id-ID')}`; unitACBaruDropdown.appendChild(opt); });
+                acBekasData.forEach(p => { const opt = document.createElement('option'); opt.value = p['harga']; opt.textContent = `${p['brand']} ${p['pk']} PK - Rp ${p['harga'].toLocaleString('id-ID')}`; unitACBekasDropdown.appendChild(opt); });
+                Object.keys(servicePrices['jasa-pasang']).forEach(key => { const opt = document.createElement('option'); opt.value = servicePrices['jasa-pasang'][key]; opt.textContent = `Pasang AC ${key} (Rp ${servicePrices['jasa-pasang'][key].toLocaleString('id-ID')})`; jasaPasangDropdown.appendChild(opt); });
+                Object.keys(servicePrices['pipa']).forEach(key => { const opt = document.createElement('option'); opt.value = servicePrices['pipa'][key]; opt.textContent = `${key} (Rp ${servicePrices['pipa'][key].toLocaleString('id-ID')} per meter)`; pipaTypeDropdown.appendChild(opt); });
+                Object.keys(servicePrices['kabel']).forEach(key => { const opt = document.createElement('option'); opt.value = servicePrices['kabel'][key]; opt.textContent = `${key} (Rp ${servicePrices['kabel'][key].toLocaleString('id-ID')} per meter)`; kabelTypeDropdown.appendChild(opt); });
+                Object.keys(servicePrices['bracket']).forEach(key => { const opt = document.createElement('option'); opt.value = servicePrices['bracket'][key]; opt.textContent = `${key} (Rp ${servicePrices['bracket'][key].toLocaleString('id-ID')})`; bracketDropdown.appendChild(opt); });
+            };
+            const updateUnitContainerDisplay = () => {
+                document.getElementById('pasang-unit-container').classList.toggle('hidden', jasaPasangDropdown.value === '0');
+                document.getElementById('bongkar-unit-container').classList.toggle('hidden', jasaBongkarDropdown.value === '0');
+                document.getElementById('cuci-unit-container').classList.toggle('hidden', jasaCuciDropdown.value === '0');
+                document.getElementById('baru-unit-container').classList.toggle('hidden', unitACBaruDropdown.value === '0');
+                document.getElementById('bekas-unit-container').classList.toggle('hidden', unitACBekasDropdown.value === '0');
+                document.getElementById('bracket-unit-container').classList.toggle('hidden', bracketDropdown.value === '0');
+            };
+            const calculateTotalCost = () => {
+                let total = 0;
+                const jasaPasangPrice = parseFloat(jasaPasangDropdown.value) || 0;
+                const jasaBongkarPrice = parseFloat(jasaBongkarDropdown.value) || 0;
+                const jasaCuciPrice = parseFloat(jasaCuciDropdown.value) || 0;
+                if (jasaPasangPrice > 0) total += jasaPasangPrice * parseInt(document.getElementById('pasang-units').value);
+                if (jasaBongkarPrice > 0) total += jasaBongkarPrice * parseInt(document.getElementById('bongkar-units').value);
+                if (jasaCuciPrice > 0) total += jasaCuciPrice * parseInt(document.getElementById('cuci-units').value);
+                const unitACBaruPrice = parseFloat(unitACBaruDropdown.value) || 0;
+                if (unitACBaruPrice > 0) { total += unitACBaruPrice * parseInt(document.getElementById('baru-units').value); }
+                if (parseFloat(unitACBekasDropdown.value) > 0) total += parseFloat(unitACBekasDropdown.value) * parseInt(document.getElementById('bekas-units').value);
+                total += (parseFloat(pipaTypeDropdown.value) || 0) * (parseInt(document.getElementById('pipa-length').value) || 0);
+                total += (parseFloat(kabelTypeDropdown.value) || 0) * (parseInt(document.getElementById('kabel-length').value) || 0);
+                if (parseFloat(bracketDropdown.value) > 0) total += parseFloat(bracketDropdown.value) * parseInt(document.getElementById('bracket-units').value);
+                totalCostElement.textContent = total.toLocaleString('id-ID', { style: 'currency', currency: 'IDR' });
+                resultContainer.classList.remove('hidden');
+            };
+            calculatorForm.addEventListener('change', () => { updateUnitContainerDisplay(); calculateTotalCost(); });
+            const populateUnitCounts = (selectId, label) => { const selectElement = document.getElementById(selectId); for (let i = 2; i <= 20; i++) { const option = document.createElement('option'); option.value = i; option.textContent = `${i} ${label}`; selectElement.appendChild(option); } };
+            populateUnitCounts('cuci-units', 'Unit');
+            populateUnitCounts('pasang-units', 'Unit');
+            populateUnitCounts('bongkar-units', 'Unit');
+            populateUnitCounts('baru-units', 'Unit');
+            populateUnitCounts('bekas-units', 'Unit');
+            populateUnitCounts('bracket-units', 'Set');
+            const populateLengths = (selectId, start, end) => { const selectElement = document.getElementById(selectId); for (let i = start; i <= end; i++) { const option = document.createElement('option'); option.value = i; option.textContent = `${i} meter`; selectElement.appendChild(option); } };
+            populateLengths('pipa-length', 3, 25);
+            populateLengths('kabel-length', 4, 26);
+            populateDropdowns();
+            updateUnitContainerDisplay();
         }
-    });
-    function updateAddButtonState() { const currentItems = orderItemsContainer.querySelectorAll('.order-item').length; addOrderItemBtn.style.display = currentItems >= 3 ? 'none' : 'block'; }
-    document.getElementById('booking_date').setAttribute('min', new Date().toISOString().split('T')[0]);
-    orderBtn.addEventListener('click', function() {
-        if (!bookingForm.checkValidity()) { bookingForm.reportValidity(); return; }
-        const yourWhatsAppNumber = '62881010050528'; 
-        const name = document.getElementById('name').value;
-        const phone = document.getElementById('phone').value;
-        const address = document.getElementById('address').value;
-        const coordinates = document.getElementById('map_coordinates').value;
-        const bookingDate = document.getElementById('booking_date').value;
-        const notes = document.getElementById('notes').value;
-        const formattedDate = new Date(bookingDate).toLocaleDateString('id-ID', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
-        let orderDetails = '';
-        orderItemsContainer.querySelectorAll('.order-item').forEach(item => { const product = item.querySelector('select[name="product[]"]').value; const quantity = item.querySelector('input[name="quantity[]"]').value; if (product) orderDetails += `\n- ${product} (${quantity} unit)`; });
-        let whatsappMessage = `*-- ORDER BARU FRION ID --*\n\n*Nama Pelanggan:*\n${name}\n\n*Nomor Telepon:*\n${phone}\n\n*Alamat:*\n${address}\n\n*Titik Lokasi (Google Maps):*\nhttps://www.google.com/maps?q=${coordinates}\n\n*Detail Pesanan:*${orderDetails}\n\n*Tanggal Layanan:*\n${formattedDate}\n\n*Catatan Tambahan:*\n${notes || 'Tidak ada'}`;
-        const whatsappURL = `https://wa.me/${yourWhatsAppNumber}?text=${encodeURIComponent(whatsappMessage)}`;
-        window.open(whatsappURL, '_blank');
-        formContainer.classList.add('hidden');
-        confirmationMessage.classList.remove('hidden');
-    });
-    cancelBtn.addEventListener('click', showMainContent);
-    newOrderBtnConfirm.addEventListener('click', showMainContent);
-    renderProducts();
+        const bookingForm = document.getElementById('bookingForm');
+        const formContainer = document.getElementById('formContainer');
+        const confirmationMessage = document.getElementById('confirmationMessage');
+        const orderItemsContainer = document.getElementById('orderItemsContainer');
+        const addOrderItemBtn = document.getElementById('addOrderItemBtn');
+        const orderBtn = document.getElementById('orderBtn');
+        const cancelBtn = document.getElementById('cancelBtn');
+        const findMeBtn = document.getElementById('findMeBtn');
+        const newOrderBtnConfirm = document.getElementById('new-order-btn-confirm');
+        findMeBtn.addEventListener('click', () => { if (navigator.geolocation) { document.getElementById('findMeBtnText').textContent = "Mencari lokasi..."; findMeBtn.disabled = true; navigator.geolocation.getCurrentPosition( (position) => { const userLocation = [position.coords.latitude, position.coords.longitude]; if(map) { map.setView(userLocation, 17); map.eachLayer(layer => { if (layer instanceof L.Marker) layer.setLatLng(userLocation); }); } document.getElementById('map_coordinates').value = userLocation.join(', '); document.getElementById('findMeBtnText').textContent = "Lokasi Ditemukan!"; setTimeout(() => { document.getElementById('findMeBtnText').textContent = "Gunakan Lokasi Saya Saat Ini"; findMeBtn.disabled = false; }, 2000); }, () => { document.getElementById('findMeBtnText').textContent = "Gagal Mendapatkan Lokasi"; setTimeout(() => { document.getElementById('findMeBtnText').textContent = "Gunakan Lokasi Saya Saat Ini"; findMeBtn.disabled = false; }, 3000); } ); } else { alert("Browser Anda tidak mendukung fitur lokasi."); } });
+        addOrderItemBtn.addEventListener('click', () => {
+            const currentItems = orderItemsContainer.querySelectorAll('.order-item').length;
+            if (currentItems < 3) {
+                const newItemRow = orderItemsContainer.children[0].cloneNode(true);
+                newItemRow.querySelector('select').value = "";
+                newItemRow.querySelector('input').value = "1";
+                const deleteButton = document.createElement('button');
+                deleteButton.type = 'button';
+                deleteButton.innerHTML = '×';
+                deleteButton.className = 'text-red-500 hover:text-red-700 font-bold text-2xl leading-none self-end mb-2';
+                deleteButton.onclick = () => { newItemRow.remove(); updateAddButtonState(); };
+                newItemRow.classList.replace('md:grid-cols-6', 'md:grid-cols-7');
+                newItemRow.children[0].classList.replace('md:col-span-4', 'md:col-span-3');
+                newItemRow.children[1].classList.replace('md:col-span-2', 'md:col-span-3');
+                const deleteColumn = document.createElement('div');
+                deleteColumn.className = 'md:col-span-1 flex items-end justify-start';
+                deleteColumn.appendChild(deleteButton);
+                newItemRow.appendChild(deleteColumn);
+                orderItemsContainer.appendChild(newItemRow);
+                updateAddButtonState();
+            }
+        });
+        function updateAddButtonState() { const currentItems = orderItemsContainer.querySelectorAll('.order-item').length; addOrderItemBtn.style.display = currentItems >= 3 ? 'none' : 'block'; }
+        document.getElementById('booking_date').setAttribute('min', new Date().toISOString().split('T')[0]);
+        orderBtn.addEventListener('click', function() {
+            if (!bookingForm.checkValidity()) { bookingForm.reportValidity(); return; }
+            const yourWhatsAppNumber = '62881010050528'; 
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const address = document.getElementById('address').value;
+            const coordinates = document.getElementById('map_coordinates').value;
+            const bookingDate = document.getElementById('booking_date').value;
+            const notes = document.getElementById('notes').value;
+            const formattedDate = new Date(bookingDate).toLocaleDateString('id-ID', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+            let orderDetails = '';
+            orderItemsContainer.querySelectorAll('.order-item').forEach(item => { const product = item.querySelector('select[name="product[]"]').value; const quantity = item.querySelector('input[name="quantity[]"]').value; if (product) orderDetails += `\n- ${product} (${quantity} unit)`; });
+            let whatsappMessage = `*-- ORDER BARU FRION ID --*\n\n*Nama Pelanggan:*\n${name}\n\n*Nomor Telepon:*\n${phone}\n\n*Alamat:*\n${address}\n\n*Titik Lokasi (Google Maps):*\nhttps://www.google.com/maps?q=${coordinates}\n\n*Detail Pesanan:*${orderDetails}\n\n*Tanggal Layanan:*\n${formattedDate}\n\n*Catatan Tambahan:*\n${notes || 'Tidak ada'}`;
+            const whatsappURL = `https://wa.me/${yourWhatsAppNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+            window.open(whatsappURL, '_blank');
+            formContainer.classList.add('hidden');
+            confirmationMessage.classList.remove('hidden');
+        });
+        cancelBtn.addEventListener('click', showMainContent);
+        newOrderBtnConfirm.addEventListener('click', showMainContent);
+        renderProducts();
+    } // Penutup initializeMainWebsite
 });
 </script>
 </body>
 </html>
-}
