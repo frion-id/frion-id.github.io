@@ -471,7 +471,6 @@
                 <p>© 2025 FRION. All rights reserved.</p>
             </div>
         </footer>
-
     </div>
 
 <script>
@@ -485,40 +484,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const iconMuted = document.getElementById('icon-muted');
     const iconUnmuted = document.getElementById('icon-unmuted');
 
-    if (splashScreen && openingVideo && websiteContent) {
-        document.body.style.overflow = 'hidden';
-
-        openingVideo.muted = true;
-        openingVideo.play().catch(error => {
-            console.log("Autoplay diblokir oleh browser.");
-        });
-
-        muteButton.addEventListener('click', () => {
-            openingVideo.muted = !openingVideo.muted;
-            iconMuted.classList.toggle('hidden');
-            iconUnmuted.classList.toggle('hidden');
-        });
-
-        openingVideo.addEventListener('ended', () => {
-            splashScreen.style.opacity = '0';
-            setTimeout(() => {
-                splashScreen.style.display = 'none';
-                websiteContent.style.opacity = '1';
-                document.body.style.overflow = 'auto';
-                
-                // HANYA SETELAH SEMUANYA TERLIHAT, JALANKAN SCRIPT UTAMA
-                initializeMainWebsite();
-            }, 1000); 
-        });
-    } else {
-        // Jika karena alasan tertentu splash screen tidak ada, jalankan script utama secara langsung
-        initializeMainWebsite();
-    }
-
-    // --- Bagian 2: Fungsi untuk Inisialisasi Website Utama (Jangan jalankan dulu) ---
+    // --- Bagian 2: Fungsi untuk Inisialisasi Website Utama (Disiapkan untuk dipanggil nanti) ---
     function initializeMainWebsite() {
         const acBaruData = [
-                { "Merk AC": "Daikin", "Ukuran PK": 0.5, "Tipe": "FTC15YV14", "Harga": 3900000, "BTU / H": 5000, "Watt": 390, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 3/8", "Buatan": "Indonesia", "Garansi Spare Part": "3 Tahun", "Garansi Kompresor": "5 Tahun" },
+            { "Merk AC": "Daikin", "Ukuran PK": 0.5, "Tipe": "FTC15YV14", "Harga": 3900000, "BTU / H": 5000, "Watt": 390, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 3/8", "Buatan": "Indonesia", "Garansi Spare Part": "3 Tahun", "Garansi Kompresor": "5 Tahun" },
             { "Merk AC": "Daikin", "Ukuran PK": 0.5, "Tipe": "FTP15AV149", "Harga": 3450000, "BTU / H": 5000, "Watt": 390, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 3/8", "Buatan": "Indonesia", "Garansi Spare Part": "1 Tahun", "Garansi Kompresor": "3 Tahun" },
             { "Merk AC": "Daikin", "Ukuran PK": 1, "Tipe": "FTC25YV14", "Harga": 4750000, "BTU / H": 9000, "Watt": 750, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 3/8", "Buatan": "Indonesia", "Garansi Spare Part": "3 Tahun", "Garansi Kompresor": "5 Tahun" },
             { "Merk AC": "Daikin", "Ukuran PK": 1.5, "Tipe": "FTC35YV14", "Harga": 5850000, "BTU / H": 12000, "Watt": 1050, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 3/8", "Buatan": "Indonesia", "Garansi Spare Part": "3 Tahun", "Garansi Kompresor": "5 Tahun" },
@@ -787,6 +756,7 @@ document.addEventListener('DOMContentLoaded', () => {
         newOrderBtnConfirm.addEventListener('click', showMainContent);
         renderProducts();
     }
+
 });
 </script>
 </body>
