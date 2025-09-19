@@ -476,7 +476,7 @@
 <script>
 document.addEventListener('DOMContentLoaded', () => {
 
-    // --- Bagian 1: Logika Video Pembuka (Jalankan Segera) ---
+    // --- Bagian 1: Logika Video Pembuka ---
     const splashScreen = document.getElementById('splash-screen');
     const openingVideo = document.getElementById('opening-video');
     const websiteContent = document.getElementById('website-content');
@@ -484,7 +484,36 @@ document.addEventListener('DOMContentLoaded', () => {
     const iconMuted = document.getElementById('icon-muted');
     const iconUnmuted = document.getElementById('icon-unmuted');
 
-    // --- Bagian 2: Fungsi untuk Inisialisasi Website Utama (Disiapkan untuk dipanggil nanti) ---
+    // Fungsi untuk transisi dari video ke konten utama
+    function startMainWebsite() {
+        splashScreen.style.opacity = '0'; // Mulai fade out splash screen
+        setTimeout(() => {
+            splashScreen.style.display = 'none'; // Sembunyikan setelah transisi selesai
+            websiteContent.style.opacity = '1'; // Tampilkan konten website
+            initializeMainWebsite(); // Inisialisasi semua fungsi website utama
+        }, 1000); // Sesuaikan durasi dengan transisi CSS (1s)
+    }
+
+    // Pemicu 1: Jalankan website jika video selesai diputar
+    openingVideo.addEventListener('ended', startMainWebsite);
+
+    // Pemicu 2: Fallback jika video gagal diputar setelah beberapa detik
+    setTimeout(() => {
+        // Cek apakah splash screen masih terlihat, jika ya, paksa mulai website
+        if (getComputedStyle(splashScreen).display !== 'none') {
+            console.log("Video playback timeout. Starting website.");
+            startMainWebsite();
+        }
+    }, 15000); // Timeout 15 detik sebagai pengaman
+
+    // Logika tombol mute/unmute
+    muteButton.addEventListener('click', () => {
+        openingVideo.muted = !openingVideo.muted;
+        iconMuted.classList.toggle('hidden');
+        iconUnmuted.classList.toggle('hidden');
+    });
+
+    // --- Bagian 2: Fungsi untuk Inisialisasi Website Utama (Akan dipanggil setelah video) ---
     function initializeMainWebsite() {
         const acBaruData = [
             { "Merk AC": "Daikin", "Ukuran PK": 0.5, "Tipe": "FTC15YV14", "Harga": 3900000, "BTU / H": 5000, "Watt": 390, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 3/8", "Buatan": "Indonesia", "Garansi Spare Part": "3 Tahun", "Garansi Kompresor": "5 Tahun" },
@@ -581,7 +610,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const initialCoords = [-6.175392, 106.827153];
                 map = L.map('map').setView(initialCoords, 13);
                 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                    attribution: 'Â© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                    attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                 }).addTo(map);
                 const marker = L.marker(initialCoords, { draggable: true }).addTo(map);
                 document.getElementById('map_coordinates').value = initialCoords.join(', ');
@@ -718,7 +747,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 newItemRow.querySelector('input').value = "1";
                 const deleteButton = document.createElement('button');
                 deleteButton.type = 'button';
-                deleteButton.innerHTML = 'Ã—';
+                deleteButton.innerHTML = '×';
                 deleteButton.className = 'text-red-500 hover:text-red-700 font-bold text-2xl leading-none self-end mb-2';
                 deleteButton.onclick = () => { newItemRow.remove(); updateAddButtonState(); };
                 newItemRow.classList.replace('md:grid-cols-6', 'md:grid-cols-7');
@@ -746,7 +775,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const formattedDate = new Date(bookingDate).toLocaleDateString('id-ID', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
             let orderDetails = '';
             orderItemsContainer.querySelectorAll('.order-item').forEach(item => { const product = item.querySelector('select[name="product[]"]').value; const quantity = item.querySelector('input[name="quantity[]"]').value; if (product) orderDetails += `\n- ${product} (${quantity} unit)`; });
-            let whatsappMessage = `*-- ORDER BARU FRION ID --*\n\n*Nama Pelanggan:*\n${name}\n\n*Nomor Telepon:*\n${phone}\n\n*Alamat:*\n${address}\n\n*Titik Lokasi (Google Maps):*\nhttps://www.google.com/maps?q=${coordinates}\n\n*Detail Pesanan:*${orderDetails}\n\n*Tanggal Layanan:*\n${formattedDate}\n\n*Catatan Tambahan:*\n${notes || 'Tidak ada'}`;
+            let whatsappMessage = `*-- ORDER BARU FRION ID --*\n\n*Nama Pelanggan:*\n${name}\n\n*Nomor Telepon:*\n${phone}\n\n*Alamat:*\n${address}\n\n*Titik Lokasi (Google Maps):*\nhttp://maps.google.com/maps?q=${coordinates}\n\n*Detail Pesanan:*${orderDetails}\n\n*Tanggal Layanan:*\n${formattedDate}\n\n*Catatan Tambahan:*\n${notes || 'Tidak ada'}`;
             const whatsappURL = `https://wa.me/${yourWhatsAppNumber}?text=${encodeURIComponent(whatsappMessage)}`;
             window.open(whatsappURL, '_blank');
             formContainer.classList.add('hidden');
