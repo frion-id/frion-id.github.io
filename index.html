@@ -338,34 +338,38 @@
                 </a>
             </section>
             
-            <section id="artikel" class="py-16 px-6 container mx-auto">
+            <section id="artikel" class="py-16 px-6 container mx-auto bg-gray-100">
                 <h2 class="text-3xl font-bold text-center text-gray-800">Artikel & Tips Perawatan AC</h2>
                 <div class="section-separator mx-auto"></div>
-                <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <div class="bg-white rounded-xl shadow-lg overflow-hidden">
-                        <img src="https://placehold.co/400x250/3b82f6/ffffff?text=Cara+Mencuci+AC" alt="Tips Mencuci AC" class="w-full h-48 object-cover">
+                <div class="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden transform transition duration-300 hover:scale-105">
+                        <img src="https://placehold.co/400x250/3b82f6/ffffff?text=Tanda+Isi+Ulang+Freon" alt="Tanda Isi Ulang Freon AC" class="w-full h-48 object-cover">
                         <div class="p-6">
-                            <h3 class="text-xl font-bold text-gray-800">5 Tips Mudah Mencuci AC Sendiri di Rumah</h3>
-                            <p class="mt-2 text-gray-600 text-sm">Mencuci AC secara rutin bisa meningkatkan efisiensi dan menghemat biaya listrik.</p>
-                            <a href="#" class="mt-4 inline-block text-blue-500 font-medium hover:underline">Baca Selengkapnya</a>
+                            <h3 class="text-xl font-bold text-gray-800">Kenali Freon AC: Tanda-Tanda AC Perlu Diisi Ulang</h3>
+                            <p class="mt-2 text-gray-600 text-sm">Freon adalah kunci pendinginan AC. Pelajari tanda-tanda umum yang menunjukkan freon AC Anda perlu diisi ulang agar tetap sejuk.</p>
+                            <a href="https://frion-id.github.io/kenali-freon-ac-tanda-isi-ulang.html" class="mt-4 inline-block text-blue-500 font-medium hover:underline">Baca Selengkapnya →</a>
                         </div>
                     </div>
-                    <div class="bg-white rounded-xl shadow-lg overflow-hidden">
-                        <img src="https://placehold.co/400x250/3b82f6/ffffff?text=Pentingnya+Service+AC" alt="Manfaat Service AC" class="w-full h-48 object-cover">
+
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden transform transition duration-300 hover:scale-105">
+                        <img src="https://placehold.co/400x250/3b82f6/ffffff?text=Biaya+Kebocoran+Freon" alt="Penyebab Kebocoran Freon AC" class="w-full h-48 object-cover">
                         <div class="p-6">
-                            <h3 class="text-xl font-bold text-gray-800">Mengapa Servis AC Berkala Sangat Penting?</h3>
-                            <p class="mt-2 text-gray-600 text-sm">Temukan manfaat kesehatan dan penghematan energi dari perawatan AC secara teratur.</p>
-                            <a href="#" class="mt-4 inline-block text-blue-500 font-medium hover:underline">Baca Selengkapnya</a>
+                            <h3 class="text-xl font-bold text-gray-800">Penyebab dan Biaya Perbaikan Kebocoran Freon AC</h3>
+                            <p class="mt-2 text-gray-600 text-sm">Kebocoran freon adalah masalah umum. Ketahui penyebab utamanya dan dapatkan estimasi biaya perbaikannya agar Anda tidak salah langkah.</p>
+                            <a href="https://frion-id.github.io/penyebab-biaya-kebocoran-freon-ac.html" class="mt-4 inline-block text-blue-500 font-medium hover:underline">Baca Selengkapnya →</a>
                         </div>
                     </div>
-                    <div class="bg-white rounded-xl shadow-lg overflow-hidden">
-                        <img src="https://placehold.co/400x250/3b82f6/ffffff?text=AC+Tidak+Dingin" alt="AC Tidak Dingin" class="w-full h-48 object-cover">
+
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden transform transition duration-300 hover:scale-105">
+                        <img src="https://placehold.co/400x250/3b82f6/ffffff?text=Tambah+Freon+vs+Cari+Bocor" alt="Tambah Freon atau Cari Kebocoran" class="w-full h-48 object-cover">
                         <div class="p-6">
-                            <h3 class="text-xl font-bold text-gray-800">AC Tidak Dingin? Ini 5 Penyebab Utamanya</h3>
-                            <p class="mt-2 text-gray-600 text-sm">Pelajari masalah umum AC dan cara cepat untuk mengidentifikasi penyebabnya.</p>
-                            <a href="#" class="mt-4 inline-block text-blue-500 font-medium hover:underline">Baca Selengkapnya</a>
+                            <h3 class="text-xl font-bold text-gray-800">Tambah Freon vs. Cari Bocor: Mana yang Lebih Baik?</h3>
+                            <p class="mt-2 text-gray-600 text-sm">AC kurang dingin, haruskah langsung tambah freon atau cari dulu sumber kebocorannya? Pahami perbedaannya di sini.</p>
+                            <a href="https://frion-id.github.io/tambah-freon-vs-cari-bocor.html" class="mt-4 inline-block text-blue-500 font-medium hover:underline">Baca Selengkapnya →</a>
                         </div>
                     </div>
+
                 </div>
             </section>
         </main>
@@ -486,6 +490,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Fungsi untuk transisi dari video ke konten utama
     function startMainWebsite() {
+        if (splashScreen.style.display === 'none') return; // Mencegah fungsi berjalan dua kali
+        
         splashScreen.style.opacity = '0'; // Mulai fade out splash screen
         setTimeout(() => {
             splashScreen.style.display = 'none'; // Sembunyikan setelah transisi selesai
@@ -498,13 +504,17 @@ document.addEventListener('DOMContentLoaded', () => {
     openingVideo.addEventListener('ended', startMainWebsite);
 
     // Pemicu 2: Fallback jika video gagal diputar setelah beberapa detik
-    setTimeout(() => {
-        // Cek apakah splash screen masih terlihat, jika ya, paksa mulai website
+    const videoTimeout = setTimeout(() => {
         if (getComputedStyle(splashScreen).display !== 'none') {
             console.log("Video playback timeout. Starting website.");
             startMainWebsite();
         }
     }, 15000); // Timeout 15 detik sebagai pengaman
+
+    openingVideo.addEventListener('canplay', () => {
+       clearTimeout(videoTimeout); // Batalkan timeout jika video bisa diputar
+    });
+
 
     // Logika tombol mute/unmute
     muteButton.addEventListener('click', () => {
@@ -610,7 +620,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const initialCoords = [-6.175392, 106.827153];
                 map = L.map('map').setView(initialCoords, 13);
                 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                    attribution: '� <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                    attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                 }).addTo(map);
                 const marker = L.marker(initialCoords, { draggable: true }).addTo(map);
                 document.getElementById('map_coordinates').value = initialCoords.join(', ');
@@ -747,7 +757,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 newItemRow.querySelector('input').value = "1";
                 const deleteButton = document.createElement('button');
                 deleteButton.type = 'button';
-                deleteButton.innerHTML = '�';
+                deleteButton.innerHTML = '×';
                 deleteButton.className = 'text-red-500 hover:text-red-700 font-bold text-2xl leading-none self-end mb-2';
                 deleteButton.onclick = () => { newItemRow.remove(); updateAddButtonState(); };
                 newItemRow.classList.replace('md:grid-cols-6', 'md:grid-cols-7');
@@ -775,7 +785,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const formattedDate = new Date(bookingDate).toLocaleDateString('id-ID', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
             let orderDetails = '';
             orderItemsContainer.querySelectorAll('.order-item').forEach(item => { const product = item.querySelector('select[name="product[]"]').value; const quantity = item.querySelector('input[name="quantity[]"]').value; if (product) orderDetails += `\n- ${product} (${quantity} unit)`; });
-            let whatsappMessage = `*-- ORDER BARU FRION ID --*\n\n*Nama Pelanggan:*\n${name}\n\n*Nomor Telepon:*\n${phone}\n\n*Alamat:*\n${address}\n\n*Titik Lokasi (Google Maps):*\nhttp://maps.google.com/maps?q=${coordinates}\n\n*Detail Pesanan:*${orderDetails}\n\n*Tanggal Layanan:*\n${formattedDate}\n\n*Catatan Tambahan:*\n${notes || 'Tidak ada'}`;
+            let whatsappMessage = `*-- ORDER BARU FRION ID --*\n\n*Nama Pelanggan:*\n${name}\n\n*Nomor Telepon:*\n${phone}\n\n*Alamat:*\n${address}\n\n*Titik Lokasi (Google Maps):*\nhttp://maps.google.com/?q=${coordinates}\n\n*Detail Pesanan:*${orderDetails}\n\n*Tanggal Layanan:*\n${formattedDate}\n\n*Catatan Tambahan:*\n${notes || 'Tidak ada'}`;
             const whatsappURL = `https://wa.me/${yourWhatsAppNumber}?text=${encodeURIComponent(whatsappMessage)}`;
             window.open(whatsappURL, '_blank');
             formContainer.classList.add('hidden');
