@@ -471,12 +471,12 @@
                 <p>© 2025 FRION. All rights reserved.</p>
             </div>
         </footer>
-
     </div>
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
 
+    // --- Bagian 1: Logika Video Pembuka (Jalankan Segera) ---
     const splashScreen = document.getElementById('splash-screen');
     const openingVideo = document.getElementById('opening-video');
     const websiteContent = document.getElementById('website-content');
@@ -484,6 +484,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const iconMuted = document.getElementById('icon-muted');
     const iconUnmuted = document.getElementById('icon-unmuted');
 
+    // --- Bagian 2: Fungsi untuk Inisialisasi Website Utama (Disiapkan untuk dipanggil nanti) ---
     function initializeMainWebsite() {
         const acBaruData = [
             { "Merk AC": "Daikin", "Ukuran PK": 0.5, "Tipe": "FTC15YV14", "Harga": 3900000, "BTU / H": 5000, "Watt": 390, "Jenis Refrigerant": "R32", "Ukuran Pipa": "1/4 + 3/8", "Buatan": "Indonesia", "Garansi Spare Part": "3 Tahun", "Garansi Kompresor": "5 Tahun" },
@@ -589,11 +590,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     document.getElementById('map_coordinates').value = [position.lat, position.lng].join(', ');
                 });
             }
-            setTimeout(() => {
-                if (map) {
-                    map.invalidateSize();
-                }
-            }, 10);
+            setTimeout(() => map.invalidateSize(), 10);
         }
         function showMainContent() {
             orderFormSection.classList.add('hidden');
