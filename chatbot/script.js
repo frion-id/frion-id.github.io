@@ -26,7 +26,7 @@ async function sendMessage() {
 
     try {
         // Mengirim pertanyaan ke "kurir aman" kita
-        const response = await fetch('/.netlify/functions/diagnose-ac', {
+        const response = await fetch('/api/diagnose-ac', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ message: userMessage })
