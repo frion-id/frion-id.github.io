@@ -1,9 +1,14 @@
+# Konfigurasi untuk proses build di Netlify
 [build]
-  # Direktori publish adalah direktori utama (root) dari proyek
-  publish   = "."
-  # Lokasi function kita
+  # Memberi tahu Netlify bahwa semua file web (index.html, dll.) ada di dalam folder 'chatbot'
+  publish   = "chatbot"
+  # Lokasi folder functions Anda, sesuai dengan struktur di GitHub Anda
   functions = "chatbot/netlify/functions"
 
+# Konfigurasi spesifik untuk serverless functions
 [functions]
+  # Menggunakan bundler esbuild yang cepat dan efisien
   node_bundler = "esbuild"
-  external_node_modules = ["@google/generative-ai"]
+  # Baris 'external_node_modules' yang menyebabkan error telah dihapus.
+  # Library Google AI sekarang akan disertakan dengan benar.
+
