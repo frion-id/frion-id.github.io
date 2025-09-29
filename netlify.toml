@@ -1,10 +1,9 @@
 [build]
-  base      = "chatbot"
+  # Direktori publish adalah direktori utama (root) dari proyek
   publish   = "."
-  functions = "netlify/functions"
+  # Lokasi function kita
+  functions = "chatbot/netlify/functions"
 
 [functions]
   node_bundler = "esbuild"
-  # Baris ini memberitahu Netlify untuk tidak menggabungkan modul Google
-  # dan menyediakannya secara eksternal.
   external_node_modules = ["@google/generative-ai"]
