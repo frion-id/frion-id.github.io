@@ -29,22 +29,24 @@ async function sendMessage() {
         const response = await fetch('/.netlify/functions/diagnose-ac', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ message: userMessage })
+            // PERBAIKAN KRITIS: Mengganti kunci 'message' menjadi 'prompt'
+            body: JSON.stringify({ prompt: userMessage })
         });
 
         if (!response.ok) {
-            throw new Error('Gagal mendapatkan respon dari AI.');
+            throw new Error(`Gagal mendapatkan respon dari AI. Status: ${response.status}`);
         }
 
         const data = await response.json();
-        const aiResponse = data.reply;
+        // PERBAIKAN KRITIS: Mengganti kunci 'reply' menjadi 'response'
+        const aiResponse = data.response; 
 
         // Hapus pesan loading dan ganti dengan jawaban AI
         chatBox.removeChild(chatBox.lastChild);
         addMessage(aiResponse, 'ai');
 
     } catch (error) {
-        console.error(error);
+        console.error("Kesalahan Fetch atau Parsing:", error);
         // Hapus pesan loading dan tampilkan pesan error
         chatBox.removeChild(chatBox.lastChild);
         addMessage('Maaf, terjadi kesalahan. Coba lagi nanti.', 'ai');
