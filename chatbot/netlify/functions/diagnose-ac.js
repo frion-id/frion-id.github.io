@@ -3,15 +3,13 @@
  * File: chatbot/netlify/functions/diagnose-ac.js
  */
 
-// Perubahan Kritis: Mengatasi 'GoogleGenAI is not a constructor'
-// Kita memuat seluruh objek yang diekspor dan menggunakan constructor-nya.
-const packageExports = require("@google/generative-ai");
-const GoogleGenAI = packageExports.GoogleGenAI || packageExports.default.GoogleGenAI;
+// PERBAIKAN KRITIS: Menggunakan nama kelas yang benar dari package: GoogleGenerativeAI (Bukan GoogleGenAI)
+const { GoogleGenerativeAI } = require("@google/generative-ai");
 
-// Inisialisasi GoogleGenAI dengan API Key dari environment variable Netlify
+// Inisialisasi GoogleGenerativeAI dengan API Key dari environment variable Netlify
 // Variabel GOOGLE_API_KEY harus sudah disetel di pengaturan Netlify Anda.
-const ai = new GoogleGenAI({ apiKey: process.env.GOOGLE_API_KEY });
-const model = "gemini-2.5-flash";
+const ai = new GoogleGenerativeAI({ apiKey: process.env.GOOGLE_API_KEY });
+const model = "gemini-2.5-flash"; // Menggunakan model stabil
 
 exports.handler = async (event) => {
     // Memastikan metode adalah POST
@@ -33,11 +31,13 @@ exports.handler = async (event) => {
             };
         }
         
-        // System instruction untuk menyesuaikan persona Frion
-        const systemInstruction = `Anda adalah Frion, seorang Asisten AI khusus untuk Diagnosis Kerusakan AC. 
-        Jawablah pertanyaan pengguna dengan ramah, profesional, dan fokus pada diagnosis masalah AC. 
-        Jika masalah yang dipertanyakan bukan tentang AC atau layanan Anda, berikan tanggapan yang sopan bahwa fokus Anda hanya pada AC. 
-        Jawaban harus ringkas dan langsung memberikan 1-3 kemungkinan penyebab dan saran tindakan.`;
+        // System instruction untuk menyesuaikan persona Frion dan Call-to-Action (CTA)
+        const systemInstruction = `Anda adalah Asisten AI bernama Frion, seorang teknisi AC profesional, ramah, dan sangat berpengalaman. Tugas Anda adalah:
+1. Mendiagnosis masalah AC (Pendingin Udara) yang dijelaskan oleh pengguna.
+2. Memberikan jawaban yang ringkas, mudah dipahami, dan profesional.
+3. Selalu mengakhiri setiap balasan Anda dengan ajakan bertindak (Call-to-Action) yang mengarahkan pengguna untuk memesan layanan perbaikan atau perawatan dari perusahaan jasa AC Anda.
+4. Contoh CTA: "Kami siap membantu! Segera hubungi tim teknisi profesional Frion di 0812-XXXX-XXXX untuk mendapatkan solusi cepat dan terjamin."
+5. Jangan pernah menjawab pertanyaan di luar diagnosis AC.`;
 
         // Panggil Gemini API
         const result = await ai.models.generateContent({
@@ -48,7 +48,7 @@ exports.handler = async (event) => {
             },
         });
 
-        // Ekstraksi teks respons
+        // Ekstraksi teks respons yang aman
         const text = result.candidates?.[0]?.content?.parts?.[0]?.text || "Maaf, AI gagal menghasilkan respons yang valid.";
 
         // Mengembalikan respons sukses ke front-end
@@ -67,7 +67,7 @@ exports.handler = async (event) => {
         return {
             statusCode: 500,
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ error: `Kesalahan Internal Server: ${error.message}` }),
+            body: JSON.stringify({ response: "Maaf, terjadi kesalahan. Coba jelaskan masalah AC Anda lagi." }),
         };
     }
 };
