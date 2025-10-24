@@ -1,36 +1,16 @@
 /**
  * Netlify Function untuk menangani permintaan diagnosis AC menggunakan Gemini API.
- * File: chatbot/netlify/functions/diagnose-ac.js
- * KRITIS: Menggunakan sintaks CommonJS (require) dengan logika fallback untuk 
- * mengatasi masalah inisialisasi 'GoogleGenerativeAI' yang tidak konsisten di Netlify.
+ * KRITIS: Menggunakan sintaks CommonJS (require) yang paling stabil di lingkungan Node.js
+ * Netlify Functions. API Key diambil dari GOOGLE_API_KEY environment variable.
  */
 
-// Memuat paket secara universal
-const geminiModule = require("@google/generative-ai");
+// Import paket dengan require, lalu akses properti utama (GoogleGenerativeAI) dari properti .default
+// Ini adalah pattern yang paling stabil untuk ES Modules di CommonJS environment.
+const { GoogleGenerativeAI } = require("@google/generative-ai").default || require("@google/generative-ai");
 
-// Mencoba semua nama kelas yang mungkin diekspor oleh modul.
-let AI_CLASS;
-try {
-    // Varian 1: Nama kelas yang benar (resmi)
-    AI_CLASS = geminiModule.GoogleGenerativeAI;
-} catch (e) {
-    // Varian 2: Jika terbungkus dalam .default
-    AI_CLASS = geminiModule.default?.GoogleGenerativeAI || geminiModule.GoogleGenAI;
-}
-
-// Memastikan AI_CLASS ditemukan sebelum inisialisasi
-if (!AI_CLASS) {
-    console.error("KRITIS: Kelas GoogleGenerativeAI tidak ditemukan dalam modul.");
-    // Jika masih gagal, kita kembalikan error yang jelas
-    module.exports.handler = async () => ({
-        statusCode: 500,
-        body: JSON.stringify({ error: "API Initialization Failed (Missing AI Class)" }),
-    });
-    return;
-}
-
-// Inisialisasi GoogleGenerativeAI dengan API Key dari environment variable Netlify
-const ai = new AI_CLASS({ apiKey: process.env.GOOGLE_API_KEY });
+// Inisialisasi GoogleGenerativeAI
+// Key GOOGLE_API_KEY sudah dipastikan namanya benar.
+const ai = new GoogleGenerativeAI(process.env.GOOGLE_API_KEY);
 const model = "gemini-2.5-flash"; 
 
 exports.handler = async (event) => {
@@ -53,7 +33,7 @@ exports.handler = async (event) => {
             };
         }
         
-        // System instruction untuk menyesuaikan persona Frion dan Call-to-Action (CTA)
+        // System instruction untuk menyesuaikan persona Frion
         const systemInstruction = `Anda adalah Asisten AI bernama Frion, seorang teknisi AC profesional, ramah, dan sangat berpengalaman. Tugas Anda adalah:
 1. Mendiagnosis masalah AC (Pendingin Udara) yang dijelaskan oleh pengguna.
 2. Memberikan jawaban yang ringkas, mudah dipahami, dan profesional.
@@ -61,9 +41,8 @@ exports.handler = async (event) => {
 4. Contoh CTA: "Kami siap membantu! Segera hubungi tim teknisi profesional Frion di 0812-XXXX-XXXX untuk mendapatkan solusi cepat dan terjamin."
 5. Jangan pernah menjawab pertanyaan di luar diagnosis AC.`;
 
-        // Panggil Gemini API
-        const result = await ai.models.generateContent({
-            model: model,
+        // Panggil Gemini API menggunakan metode getGenerativeModel yang lebih stabil
+        const response = await ai.getGenerativeModel({ model }).generateContent({
             contents: [{ role: "user", parts: [{ text: prompt }] }],
             config: {
                 systemInstruction: systemInstruction,
@@ -71,7 +50,7 @@ exports.handler = async (event) => {
         });
 
         // Ekstraksi teks respons yang aman
-        const text = result.candidates?.[0]?.content?.parts?.[0]?.text || "Maaf, AI gagal menghasilkan respons yang valid.";
+        const text = response.text || "Maaf, AI gagal menghasilkan respons yang valid.";
 
         // Mengembalikan respons sukses ke front-end
         return {
