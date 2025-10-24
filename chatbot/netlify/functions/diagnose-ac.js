@@ -1,4 +1,15 @@
+// PERBAIKAN KRITIS: Mengimpor objek library secara keseluruhan.
+// Library menggunakan ekspor default, sehingga kita perlu mengakses constructor-nya.
 const { GoogleGenAI } = require("@google/generative-ai");
+
+// PENTING: Dalam environment Node.js modern, kita seringkali hanya perlu
+// const GoogleGenAI = require("@google/generative-ai");
+// Namun, karena Netlify (esbuild) sering mem-bundelnya, kita gunakan destructuring 
+// yang paling umum untuk Node.js.
+
+// PENTING: Jika error di atas masih muncul, coba ganti baris 1 menjadi:
+// const { GoogleGenAI } = require("@google/generative-ai").default;
+// TAPI, coba kode di bawah ini dulu.
 
 // Inisialisasi GoogleGenAI dengan API Key dari environment variable Netlify
 // Variabel GOOGLE_API_KEY harus sudah disetel di pengaturan Netlify Anda.
