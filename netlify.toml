@@ -5,4 +5,3 @@ publish = "chatbot"
 directory = "chatbot/netlify/functions"
 node_bundler = "esbuild"
 external_node_modules = ["@google/generative-ai"]
-timeout = 30
