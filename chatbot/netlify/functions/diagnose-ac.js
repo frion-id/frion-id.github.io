@@ -1,17 +1,16 @@
 /**
  * Netlify Function untuk menangani permintaan diagnosis AC menggunakan Gemini API.
  * File: chatbot/netlify/functions/diagnose-ac.js
+ * * KRITIS: Menggunakan sintaks ES Module (import/export) untuk mengatasi 
+ * TypeError yang disebabkan oleh ketidakcocokan CommonJS di Node.js Netlify.
  */
-
-// PERBAIKAN KRITIS: Menggunakan nama kelas yang benar dari package: GoogleGenerativeAI (Bukan GoogleGenAI)
-const { GoogleGenerativeAI } = require("@google/generative-ai");
+import { GoogleGenerativeAI } from "@google/generative-ai";
 
 // Inisialisasi GoogleGenerativeAI dengan API Key dari environment variable Netlify
-// Variabel GOOGLE_API_KEY harus sudah disetel di pengaturan Netlify Anda.
 const ai = new GoogleGenerativeAI({ apiKey: process.env.GOOGLE_API_KEY });
-const model = "gemini-2.5-flash"; // Menggunakan model stabil
+const model = "gemini-2.5-flash"; 
 
-exports.handler = async (event) => {
+const handler = async (event) => {
     // Memastikan metode adalah POST
     if (event.httpMethod !== 'POST') {
         return {
@@ -71,3 +70,5 @@ exports.handler = async (event) => {
         };
     }
 };
+
+export { handler };
