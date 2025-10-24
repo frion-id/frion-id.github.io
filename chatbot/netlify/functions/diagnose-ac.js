@@ -1,15 +1,12 @@
-// PERBAIKAN KRITIS: Mengimpor objek library secara keseluruhan.
-// Library menggunakan ekspor default, sehingga kita perlu mengakses constructor-nya.
-const { GoogleGenAI } = require("@google/generative-ai");
+/**
+ * Netlify Function untuk menangani permintaan diagnosis AC menggunakan Gemini API.
+ * File: chatbot/netlify/functions/diagnose-ac.js
+ */
 
-// PENTING: Dalam environment Node.js modern, kita seringkali hanya perlu
-// const GoogleGenAI = require("@google/generative-ai");
-// Namun, karena Netlify (esbuild) sering mem-bundelnya, kita gunakan destructuring 
-// yang paling umum untuk Node.js.
-
-// PENTING: Jika error di atas masih muncul, coba ganti baris 1 menjadi:
-// const { GoogleGenAI } = require("@google/generative-ai").default;
-// TAPI, coba kode di bawah ini dulu.
+// Perubahan Kritis: Mengatasi 'GoogleGenAI is not a constructor'
+// Kita memuat seluruh objek yang diekspor dan menggunakan constructor-nya.
+const packageExports = require("@google/generative-ai");
+const GoogleGenAI = packageExports.GoogleGenAI || packageExports.default.GoogleGenAI;
 
 // Inisialisasi GoogleGenAI dengan API Key dari environment variable Netlify
 // Variabel GOOGLE_API_KEY harus sudah disetel di pengaturan Netlify Anda.
@@ -26,7 +23,7 @@ exports.handler = async (event) => {
     }
 
     try {
-        // Parsing body
+        // Parsing body. Kunci yang diharapkan adalah 'prompt' (diselaraskan dengan script.js)
         const { prompt } = JSON.parse(event.body);
 
         if (!prompt) {
@@ -51,6 +48,7 @@ exports.handler = async (event) => {
             },
         });
 
+        // Ekstraksi teks respons
         const text = result.candidates?.[0]?.content?.parts?.[0]?.text || "Maaf, AI gagal menghasilkan respons yang valid.";
 
         // Mengembalikan respons sukses ke front-end
@@ -62,9 +60,10 @@ exports.handler = async (event) => {
         };
 
     } catch (error) {
-        console.error("Kesalahan dalam Netlify Function:", error.message);
+        // Log error secara detail di konsol Netlify
+        console.error("Kesalahan dalam Netlify Function:", error.message, error.stack);
 
-        // Mengembalikan respons error
+        // Mengembalikan respons error ke front-end
         return {
             statusCode: 500,
             headers: { "Content-Type": "application/json" },
