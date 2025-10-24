@@ -1,1 +1,7 @@
-[build]publish = "chatbot"functions = "chatbot/netlify/functions"[functions]node_bundler = "esbuild"external_node_modules = ["@google/generative-ai"]
+[build]
+publish = "chatbot"
+functions = "chatbot/netlify/functions"
+
+[functions]
+node_bundler = "esbuild"
+external_node_modules = ["@google/generative-ai"]
