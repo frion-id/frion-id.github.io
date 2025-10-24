@@ -1,16 +1,39 @@
 /**
  * Netlify Function untuk menangani permintaan diagnosis AC menggunakan Gemini API.
  * File: chatbot/netlify/functions/diagnose-ac.js
- * * KRITIS: Menggunakan sintaks ES Module (import/export) untuk mengatasi 
- * TypeError yang disebabkan oleh ketidakcocokan CommonJS di Node.js Netlify.
+ * KRITIS: Menggunakan sintaks CommonJS (require) dengan logika fallback untuk 
+ * mengatasi masalah inisialisasi 'GoogleGenerativeAI' yang tidak konsisten di Netlify.
  */
-import { GoogleGenerativeAI } from "@google/generative-ai";
+
+// Memuat paket secara universal
+const geminiModule = require("@google/generative-ai");
+
+// Mencoba semua nama kelas yang mungkin diekspor oleh modul.
+let AI_CLASS;
+try {
+    // Varian 1: Nama kelas yang benar (resmi)
+    AI_CLASS = geminiModule.GoogleGenerativeAI;
+} catch (e) {
+    // Varian 2: Jika terbungkus dalam .default
+    AI_CLASS = geminiModule.default?.GoogleGenerativeAI || geminiModule.GoogleGenAI;
+}
+
+// Memastikan AI_CLASS ditemukan sebelum inisialisasi
+if (!AI_CLASS) {
+    console.error("KRITIS: Kelas GoogleGenerativeAI tidak ditemukan dalam modul.");
+    // Jika masih gagal, kita kembalikan error yang jelas
+    module.exports.handler = async () => ({
+        statusCode: 500,
+        body: JSON.stringify({ error: "API Initialization Failed (Missing AI Class)" }),
+    });
+    return;
+}
 
 // Inisialisasi GoogleGenerativeAI dengan API Key dari environment variable Netlify
-const ai = new GoogleGenerativeAI({ apiKey: process.env.GOOGLE_API_KEY });
+const ai = new AI_CLASS({ apiKey: process.env.GOOGLE_API_KEY });
 const model = "gemini-2.5-flash"; 
 
-const handler = async (event) => {
+exports.handler = async (event) => {
     // Memastikan metode adalah POST
     if (event.httpMethod !== 'POST') {
         return {
@@ -20,7 +43,7 @@ const handler = async (event) => {
     }
 
     try {
-        // Parsing body. Kunci yang diharapkan adalah 'prompt' (diselaraskan dengan script.js)
+        // Parsing body. Kunci yang diharapkan adalah 'prompt'
         const { prompt } = JSON.parse(event.body);
 
         if (!prompt) {
@@ -70,5 +93,3 @@ const handler = async (event) => {
         };
     }
 };
-
-export { handler };
