@@ -1,10 +1,12 @@
 [build]
-publish = "chatbot"
-
+  publish = "chatbot"
+  functions = "chatbot/netlify/functions"
+  
 [functions]
-directory = "chatbot/netlify/functions"
-node_bundler = "esbuild"
-external_node_modules = ["@google/generative-ai"]
-
+  node_bundler = "esbuild"
+  external_node_modules = ["@google/generative-ai"]
+  # Menambahkan timeout untuk menghindari kegagalan saat AI lambat merespons
+  timeout = 30
+  
 [functions.environment]
-GOOGLE_API_KEY = "$GOOGLE_API_KEY"
+  GOOGLE_API_KEY = "$GOOGLE_API_KEY"
