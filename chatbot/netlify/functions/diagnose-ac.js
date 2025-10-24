@@ -9,7 +9,6 @@
 const { GoogleGenerativeAI } = require("@google/generative-ai").default || require("@google/generative-ai");
 
 // Inisialisasi GoogleGenerativeAI
-// Key GOOGLE_API_KEY sudah dipastikan namanya benar.
 const ai = new GoogleGenerativeAI(process.env.GOOGLE_API_KEY);
 const model = "gemini-2.5-flash"; 
 
@@ -41,12 +40,17 @@ exports.handler = async (event) => {
 4. Contoh CTA: "Kami siap membantu! Segera hubungi tim teknisi profesional Frion di 0812-XXXX-XXXX untuk mendapatkan solusi cepat dan terjamin."
 5. Jangan pernah menjawab pertanyaan di luar diagnosis AC.`;
 
-        // Panggil Gemini API menggunakan metode getGenerativeModel yang lebih stabil
-        const response = await ai.getGenerativeModel({ model }).generateContent({
-            contents: [{ role: "user", parts: [{ text: prompt }] }],
+        // Panggil Gemini API. 
+        // Perhatikan: systemInstruction dipindahkan ke dalam konfigurasi model (getGenerativeModel)
+        // BUKAN di dalam generateContent (yang sebelumnya menyebabkan error 400 Bad Request).
+        const response = await ai.getGenerativeModel({ 
+            model,
             config: {
-                systemInstruction: systemInstruction,
+                systemInstruction: systemInstruction, // Perbaikan: Dipindahkan ke sini
             },
+        }).generateContent({
+            // Contents adalah satu-satunya properti di sini
+            contents: [{ role: "user", parts: [{ text: prompt }] }],
         });
 
         // Ekstraksi teks respons yang aman
