@@ -1,88 +1,63 @@
-const { GoogleGenerativeAI } = require("@google/generative-ai");
+const { GoogleGenAI } = require("@google/generative-ai");
+
+// Inisialisasi GoogleGenAI dengan API Key dari environment variable Netlify
+// Variabel GOOGLE_API_KEY harus sudah disetel di pengaturan Netlify Anda.
+const ai = new GoogleGenAI({ apiKey: process.env.GOOGLE_API_KEY });
+const model = "gemini-2.5-flash";
 
 exports.handler = async (event) => {
-    // Memastikan request adalah POST dan body ada
-    if (event.httpMethod !== "POST" || !event.body) {
+    // Memastikan metode adalah POST
+    if (event.httpMethod !== 'POST') {
         return {
             statusCode: 405,
-            body: JSON.stringify({ error: "Metode tidak diizinkan atau body kosong" }),
+            body: JSON.stringify({ error: "Method Not Allowed" }),
         };
     }
 
     try {
+        // Parsing body
         const { prompt } = JSON.parse(event.body);
 
         if (!prompt) {
             return {
                 statusCode: 400,
-                body: JSON.stringify({ error: "Prompt tidak boleh kosong." }),
+                body: JSON.stringify({ error: "Missing prompt in request body" }),
             };
         }
+        
+        // System instruction untuk menyesuaikan persona Frion
+        const systemInstruction = `Anda adalah Frion, seorang Asisten AI khusus untuk Diagnosis Kerusakan AC. 
+        Jawablah pertanyaan pengguna dengan ramah, profesional, dan fokus pada diagnosis masalah AC. 
+        Jika masalah yang dipertanyakan bukan tentang AC atau layanan Anda, berikan tanggapan yang sopan bahwa fokus Anda hanya pada AC. 
+        Jawaban harus ringkas dan langsung memberikan 1-3 kemungkinan penyebab dan saran tindakan.`;
 
-        // Variabel Lingkungan sudah disinkronkan ke GOOGLE_API_KEY
-        const apiKey = process.env.GOOGLE_API_KEY;
-
-        if (!apiKey) {
-            // Ini akan muncul jika Kunci API di Netlify Dashboard kosong atau salah nama
-            console.error("API Key is missing or incorrectly named.");
-            return {
-                statusCode: 500,
-                body: JSON.stringify({ error: "Kesalahan server: Kunci API AI tidak ditemukan." }),
-            };
-        }
-
-        const ai = new GoogleGenerativeAI(apiKey);
-
-        // System Instruction yang disesuaikan untuk bisnis Frion
-        const systemInstruction = `Anda adalah Asisten AI bernama Frion, seorang teknisi AC profesional, ramah, dan sangat berpengalaman. Tugas Anda adalah:
-1. Mendiagnosis masalah AC (Pendingin Udara) yang dijelaskan oleh pengguna.
-2. Memberikan jawaban yang ringkas, mudah dipahami, dan profesional.
-3. Selalu mengakhiri setiap balasan Anda dengan ajakan bertindak (Call-to-Action) yang mengarahkan pengguna untuk memesan layanan perbaikan atau perawatan dari perusahaan jasa AC Anda.
-4. Contoh CTA: "Kami siap membantu! Segera hubungi tim teknisi profesional Frion di 0812-XXXX-XXXX untuk mendapatkan solusi cepat dan terjamin."
-5. Jangan pernah menjawab pertanyaan di luar diagnosis AC.`;
-
-        const response = await ai.models.generateContent({
-            model: "gemini-2.5-flash", // Menggunakan model stabil
+        // Panggil Gemini API
+        const result = await ai.models.generateContent({
+            model: model,
             contents: [{ role: "user", parts: [{ text: prompt }] }],
             config: {
                 systemInstruction: systemInstruction,
             },
         });
 
-        // --- Perbaikan Kritis untuk Mengatasi Masalah 'undefined' ---
-        let text = "Maaf, Frissa belum bisa menemukan diagnosisnya. Ada kesalahan pada struktur balasan AI.";
+        const text = result.candidates?.[0]?.content?.parts?.[0]?.text || "Maaf, AI gagal menghasilkan respons yang valid.";
 
-        if (response && response.candidates && response.candidates.length > 0) {
-            const candidate = response.candidates[0];
-            if (candidate.content && candidate.content.parts && candidate.content.parts.length > 0) {
-                // Mencoba mengambil teks dari bagian pertama
-                text = candidate.content.parts[0].text;
-            }
-        }
-        // --- Akhir Perbaikan Kritis ---
-
-
-        if (!text || text.includes("Maaf, Frissa belum bisa menemukan diagnosisnya")) {
-             return {
-                statusCode: 500,
-                body: JSON.stringify({ response: "Maaf, terjadi kesalahan atau balasan AI tidak jelas. Coba jelaskan masalah AC Anda dengan lebih rinci." }),
-            };
-        }
-
-        // Sukses: Mengembalikan teks balasan AI
+        // Mengembalikan respons sukses ke front-end
         return {
             statusCode: 200,
+            headers: { "Content-Type": "application/json" },
+            // Menggunakan kunci 'response' agar sesuai dengan script.js (Front-End)
             body: JSON.stringify({ response: text }),
         };
 
     } catch (error) {
-        // Log error server untuk debugging Netlify Function
         console.error("Kesalahan dalam Netlify Function:", error.message);
 
-        // Mengembalikan pesan yang ramah kepada pengguna
+        // Mengembalikan respons error
         return {
             statusCode: 500,
-            body: JSON.stringify({ response: "Maaf, terjadi kesalahan. Coba jelaskan masalah AC Anda lagi nanti." }),
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ error: `Kesalahan Internal Server: ${error.message}` }),
         };
     }
 };
