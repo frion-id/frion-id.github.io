@@ -28,7 +28,7 @@ exports.handler = async (event) => {
 1. Mendiagnosis masalah AC (Pendingin Udara) yang dijelaskan oleh pengguna.
 2. Memberikan jawaban yang ringkas, mudah dipahami, dan profesional.
 3. Selalu mengakhiri setiap balasan Anda dengan ajakan bertindak (Call-to-Action) yang mengarahkan pengguna untuk memesan layanan perbaikan atau perawatan dari perusahaan jasa AC Anda.
-4. Contoh CTA: "Kami siap membantu! Segera hubungi tim teknisi profesional Frion di 0812-XXXX-XXXX untuk mendapatkan solusi cepat dan terjamin."
+4. Contoh CTA: "Kami siap membantu! Segera hubungi tim teknisi profesional Frion di 0881010050528 untuk mendapatkan solusi cepat dan terjamin."
 5. Jangan pernah menjawab pertanyaan di luar diagnosis AC.`;
 
         // Payload untuk API HTTP (Format REST API Google)
