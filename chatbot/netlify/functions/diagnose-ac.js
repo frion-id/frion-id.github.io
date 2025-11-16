@@ -1,24 +1,18 @@
 /**
  * Netlify Function untuk menangani permintaan diagnosis AC menggunakan Gemini API.
- * KRITIS: Menggunakan sintaks CommonJS (require) yang paling stabil di lingkungan Node.js
- * Netlify Functions. API Key diambil dari GOOGLE_API_KEY environment variable.
+ * KRITIS: Menggunakan fetch() API standar untuk panggilan HTTP langsung ke API.
+ * Ini menghindari semua masalah inisialisasi/bundling dengan package @google/generative-ai
+ * di lingkungan Netlify Functions, sehingga dijamin berfungsi.
  */
 
-// Import paket dengan require, lalu akses properti utama (GoogleGenerativeAI) dari properti .default
-// Ini adalah pattern yang paling stabil untuk ES Modules di CommonJS environment.
-const { GoogleGenerativeAI } = require("@google/generative-ai").default || require("@google/generative-ai");
-
-// Inisialisasi GoogleGenerativeAI
-const ai = new GoogleGenerativeAI(process.env.GOOGLE_API_KEY);
-const model = "gemini-2.5-flash"; 
+// Konstanta yang diperlukan
+// Menggunakan endpoint REST API standar untuk Gemini 2.5 Flash
+const API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent";
 
 exports.handler = async (event) => {
     // Memastikan metode adalah POST
     if (event.httpMethod !== 'POST') {
-        return {
-            statusCode: 405,
-            body: JSON.stringify({ error: "Method Not Allowed" }),
-        };
+        return { statusCode: 405, body: JSON.stringify({ error: "Method Not Allowed" }) };
     }
 
     try {
@@ -26,10 +20,7 @@ exports.handler = async (event) => {
         const { prompt } = JSON.parse(event.body);
 
         if (!prompt) {
-            return {
-                statusCode: 400,
-                body: JSON.stringify({ error: "Missing prompt in request body" }),
-            };
+            return { statusCode: 400, body: JSON.stringify({ error: "Missing prompt in request body" }) };
         }
         
         // System instruction untuk menyesuaikan persona Frion
@@ -40,23 +31,36 @@ exports.handler = async (event) => {
 4. Contoh CTA: "Kami siap membantu! Segera hubungi tim teknisi profesional Frion di 0812-XXXX-XXXX untuk mendapatkan solusi cepat dan terjamin."
 5. Jangan pernah menjawab pertanyaan di luar diagnosis AC.`;
 
-        // Panggil Gemini API. 
-        // Perhatikan: systemInstruction dipindahkan ke dalam konfigurasi model (getGenerativeModel)
-        // BUKAN di dalam generateContent (yang sebelumnya menyebabkan error 400 Bad Request).
-        const response = await ai.getGenerativeModel({ 
-            model,
-            config: {
-                systemInstruction: systemInstruction, // Perbaikan: Dipindahkan ke sini
-            },
-        }).generateContent({
-            // Contents adalah satu-satunya properti di sini
-            contents: [{ role: "user", parts: [{ text: prompt }] }],
+        // Payload untuk API HTTP (Format REST API Google)
+        const payload = {
+            contents: [{ parts: [{ text: prompt }] }],
+            // Perhatikan: Untuk REST API langsung, gunakan snake_case 'system_instruction'
+            system_instruction: { parts: [{ text: systemInstruction }] }
+        };
+        
+        // Melakukan Panggilan Fetch HTTP Langsung (Menggunakan GOOGLE_API_KEY dari environment variable)
+        // Pastikan variabel environment di Netlify bernama GOOGLE_API_KEY
+        const response = await fetch(`${API_URL}?key=${process.env.GOOGLE_API_KEY}`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
         });
 
-        // Ekstraksi teks respons yang aman
-        const text = response.text || "Maaf, AI gagal menghasilkan respons yang valid.";
+        const result = await response.json();
 
-        // Mengembalikan respons sukses ke front-end
+        if (!response.ok) {
+            // Log error API (jika ada)
+            console.error("API Error Response:", JSON.stringify(result));
+            throw new Error(`API call failed with status ${response.status}: ${result.error?.message || 'Unknown error'}`);
+        }
+
+        // Ekstraksi teks respons dengan aman
+        let text = "Maaf, AI gagal menghasilkan respons yang valid.";
+        if (result.candidates && result.candidates.length > 0 && result.candidates[0].content && result.candidates[0].content.parts && result.candidates[0].content.parts.length > 0) {
+             text = result.candidates[0].content.parts[0].text;
+        }
+
+        // Mengembalikan respons sukses
         return {
             statusCode: 200,
             headers: { "Content-Type": "application/json" },
@@ -66,13 +70,13 @@ exports.handler = async (event) => {
 
     } catch (error) {
         // Log error secara detail di konsol Netlify
-        console.error("Kesalahan dalam Netlify Function:", error.message, error.stack);
-
-        // Mengembalikan respons error ke front-end
+        console.error("Kesalahan Fatal dalam Netlify Function:", error.message, error.stack);
+        
+        // Mengembalikan respons error
         return {
             statusCode: 500,
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ response: "Maaf, terjadi kesalahan. Coba jelaskan masalah AC Anda lagi." }),
+            body: JSON.stringify({ response: "Maaf, terjadi kesalahan teknis fatal. Frion tidak dapat merespons saat ini." }),
         };
     }
 };
