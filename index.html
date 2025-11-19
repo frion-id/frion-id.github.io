@@ -109,7 +109,7 @@
 
         <main id="main-content" class="mt-20">
             <section class="bg-blue-500 text-white py-20 px-6 text-center shadow-lg">
-                <h1 class="text-4xl sm:text-5xl font-bold fade-in">Solusi Layanan Terbaik untuk Kebutuhan AC Anda</h1>
+                <h1 class="text-4xl sm:text-5xl font-bold fade-in">FRION Jasa Service AC Jakarta, Bekasi, Bogor. Solusi Layanan Terbaik untuk Kebutuhan AC Anda</h1>
                 <p class="mt-4 text-xl fade-in-delay">Berpengalaman dalam Instalasi, Perbaikan, dan Perawatan AC</p>
                 <a href="#kalkulator" class="mt-8 inline-block bg-white text-blue-500 font-bold py-3 px-8 rounded-full shadow-lg hover:bg-gray-100 transition duration-300 transform hover:scale-105">Hitung Biaya Sekarang</a>
             </section>
@@ -787,7 +787,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const formattedDate = new Date(bookingDate).toLocaleDateString('id-ID', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
             let orderDetails = '';
             orderItemsContainer.querySelectorAll('.order-item').forEach(item => { const product = item.querySelector('select[name="product[]"]').value; const quantity = item.querySelector('input[name="quantity[]"]').value; if (product) orderDetails += `\n- ${product} (${quantity} unit)`; });
-            let whatsappMessage = `*-- ORDER BARU FRION ID --*\n\n*Nama Pelanggan:*\n${name}\n\n*Nomor Telepon:*\n${phone}\n\n*Alamat:*\n${address}\n\n*Titik Lokasi (Google Maps):*\nhttp://maps.google.com/?q=${coordinates}\n\n*Detail Pesanan:*${orderDetails}\n\n*Tanggal Layanan:*\n${formattedDate}\n\n*Catatan Tambahan:*\n${notes || 'Tidak ada'}`;
+            let whatsappMessage = `*-- ORDER BARU FRION ID --*\n\n*Nama Pelanggan:*\n${name}\n\n*Nomor Telepon:*\n${phone}\n\n*Alamat:*\n${address}\n\n*Titik Lokasi (Google Maps):*\nhttps://www.google.com/maps/search/?api=1&query=${coordinates}\n\n*Detail Pesanan:*${orderDetails}\n\n*Tanggal Layanan:*\n${formattedDate}\n\n*Catatan Tambahan:*\n${notes || 'Tidak ada'}`;
             const whatsappURL = `https://wa.me/${yourWhatsAppNumber}?text=${encodeURIComponent(whatsappMessage)}`;
             window.open(whatsappURL, '_blank');
             formContainer.classList.add('hidden');
@@ -800,10 +800,52 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HVACBusiness",
+  "name": "FRION Service AC",
+  "image": "https://frion-id.github.io/logo.png",
+  "@id": "https://frion-id.github.io",
+  "url": "https://frion-id.github.io",
+  "telephone": "+62881010050528", 
+  "priceRange": "Rp 80.000 - Rp 2.000.000",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Jakarta", 
+    "addressLocality": "Jakarta",
+    "addressRegion": "DKI Jakarta",
+    "postalCode": "10110",
+    "addressCountry": "ID"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": -6.2088,
+    "longitude": 106.8456
+  },
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+      "Sunday"
+    ],
+    "opens": "08:00",
+    "closes": "18:00"
+  },
+  "sameAs": [
+    "https://instagram.com/frion.id", 
+    "https://facebook.com/frion.id"
+  ]
+}
+</script>
 </body>
 
 </html>
-
 
 
 
